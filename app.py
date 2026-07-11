@@ -1,3 +1,4 @@
+
 import os
 import re
 import json
@@ -6,7 +7,16 @@ from datetime import datetime, timedelta
 from functools import wraps
 from flask import Flask, flash, redirect, render_template, request, session, url_for, abort, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
-
+# --- DB INIT FIX: Flask-Migrate wraps Alembic and gives us proper,
+# versioned schema migrations (flask db init / migrate / upgrade) instead
+# of blindly calling db.create_all() on every cold start. It's used below
+# so future schema changes go through migrations rather than create_all().
+from flask_migrate import Migrate
+# --- DB INIT FIX: `inspect` lets us check which tables ALREADY exist in
+# Postgres/SQLite before trying to create anything, so create_all() is
+# only ever called when a table is genuinely missing (e.g. first deploy).
+from sqlalchemy import inspect as sa_inspect
+ 
 from authlib.integrations.flask_client import OAuth
 from werkzeug.middleware.proxy_fix import ProxyFix
 try:
@@ -18,7 +28,7 @@ except ImportError:
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
  
 app = Flask(__name__, static_folder='static')
-
+ 
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
  
 app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(32)
@@ -42,6 +52,11 @@ app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=24)
  
 db = SQLAlchemy(app)
+# --- DB INIT FIX: Registers Alembic migration commands (flask db init/
+# migrate/upgrade). This does NOT run anything automatically — it just
+# makes proper migrations available as the recommended path forward.
+# It has no effect on OAuth, login, or complaint logic.
+migrate = Migrate(app, db)
  
 oauth = OAuth(app)
 google_oauth = oauth.register(
@@ -304,12 +319,63 @@ def _allowed_image(filename):
     return ext in {"png", "jpg", "jpeg", "webp", "gif"}
  
  
+def _tables_missing():
+    """
+    --- DB INIT FIX ---
+    Returns the set of expected tables that do NOT yet exist in the
+    connected database. This is what lets us skip db.create_all()
+    entirely on every warm/normal request — we only ever attempt to
+    create tables when one is actually missing (e.g. the very first
+    time the app talks to a brand-new Neon database).
+    """
+    required_tables = {"complaints", "issue_counter", "student_profiles", "wardens", "notices"}
+    try:
+        inspector = sa_inspect(db.engine)
+        existing = set(inspector.get_table_names())
+    except Exception as e:
+        # If we can't even inspect the DB, treat as "unknown" and let
+        # the create_all() call below (which is itself guarded) decide.
+        print(f"[HOSTEL APP] Could not inspect database schema: {e}")
+        return required_tables
+    return required_tables - existing
+ 
+ 
 def _init_db():
     global DB_READY
     if not DB_READY:
         db_type = "PostgreSQL" if os.environ.get("DATABASE_URL") else "SQLite"
-        print(f"[HOSTEL APP] Initializing with {db_type} database...")
-        db.create_all()
+ 
+        # --- DB INIT FIX (root cause of the UniqueViolation) ---
+        # The old code called db.create_all() unconditionally on every
+        # request. On Vercel each request/cold-start is a fresh process,
+        # so DB_READY resets to False constantly, and db.create_all() kept
+        # firing again and again against the SAME already-initialized Neon
+        # database. Under concurrent cold starts, two invocations could
+        # both decide the "complaints" sequence didn't exist yet and both
+        # try to create it at the same instant, producing:
+        #   duplicate key value violates unique constraint "pg_class_relname_nsp_index"
+        #
+        # Fix: check with the inspector first. If every expected table is
+        # already there (the normal case in production), skip create_all()
+        # completely — no DDL, no race, no error, and it's fast.
+        missing = _tables_missing()
+        if missing:
+            print(f"[HOSTEL APP] Initializing with {db_type} database... missing tables: {sorted(missing)}")
+            try:
+                db.create_all()
+                db.session.commit()
+            except Exception as e:
+                # Belt-and-braces: if a concurrent cold start won the race
+                # and created the tables/sequences a split second before us,
+                # Postgres will raise a duplicate/already-exists error here.
+                # That's not a real failure — the schema ended up correct
+                # either way — so we roll back and continue instead of
+                # crashing the request.
+                db.session.rollback()
+                print(f"[HOSTEL APP] create_all() raced with a concurrent init "
+                      f"(safe to ignore, schema already exists): {e}")
+        else:
+            print(f"[HOSTEL APP] {db_type} schema already present, skipping create_all().")
  
         columns_to_add = [
             ("password", "VARCHAR(255)"),
@@ -421,12 +487,37 @@ def uploaded_file(filename):
  
 @app.before_request
 def _setup():
+    # --- DB INIT FIX: _init_db() no longer runs here. Running it on every
+    # single request was the root cause of the UniqueViolation — it doesn't
+    # need to happen per-request at all, only once when the app/process
+    # starts. See the call to _init_db() further below (module scope) for
+    # where it now actually happens.
     try:
         os.makedirs(UPLOAD_DIR, exist_ok=True)
     except OSError:
         pass
-    _init_db()
  
+ 
+# --- DB INIT FIX: Run database initialization ONCE, at import time
+# (i.e. once per cold start on Vercel, never per-request), instead of
+# inside @app.before_request. _init_db() itself is still safe to call
+# more than once (it checks DB_READY and inspects existing tables), but
+# this placement means normal warm requests never touch this code path
+# at all — only a fresh process/cold start does.
+#
+# Recommended longer-term path: once the schema is stable, prefer
+# `flask db migrate` / `flask db upgrade` (Flask-Migrate, wired up above)
+# for any future schema changes, and treat _init_db()'s create_all() call
+# purely as a safety net for first-time/empty databases.
+try:
+    with app.app_context():
+        _init_db()
+except Exception as e:
+    # Never let a DB hiccup at cold-start prevent the app from booting —
+    # individual routes already handle DB errors (see error handlers and
+    # try/except blocks throughout). Log and continue; _init_db() will
+    # simply be retried (DB_READY is still False) on the next cold start.
+    print(f"[HOSTEL APP] Deferred: database initialization failed at startup: {e}")
  
 @app.after_request
 def add_security_headers(response):
@@ -490,15 +581,15 @@ def handle_login():
  
     return render_template("login.html", error="Email not registered. Use your official SECE email.")
  
-
+ 
 @app.route("/login/google")
 def google_login():
     if "user" in session:
         return redirect(url_for("welcome"))
     redirect_uri = url_for("google_authorize", _external=True)
     return google_oauth.authorize_redirect(redirect_uri)
-
-
+ 
+ 
 @app.route("/login/google/callback")
 def google_authorize():
     try:
