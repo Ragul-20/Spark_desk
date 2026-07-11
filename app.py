@@ -7,11 +7,6 @@ from datetime import datetime, timedelta
 from functools import wraps
 from flask import Flask, flash, redirect, render_template, request, session, url_for, abort, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
-# --- DB INIT FIX: Flask-Migrate wraps Alembic and gives us proper,
-# versioned schema migrations (flask db init / migrate / upgrade) instead
-# of blindly calling db.create_all() on every cold start. It's used below
-# so future schema changes go through migrations rather than create_all().
-from flask_migrate import Migrate
 # --- DB INIT FIX: `inspect` lets us check which tables ALREADY exist in
 # Postgres/SQLite before trying to create anything, so create_all() is
 # only ever called when a table is genuinely missing (e.g. first deploy).
@@ -52,11 +47,6 @@ app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=24)
  
 db = SQLAlchemy(app)
-# --- DB INIT FIX: Registers Alembic migration commands (flask db init/
-# migrate/upgrade). This does NOT run anything automatically — it just
-# makes proper migrations available as the recommended path forward.
-# It has no effect on OAuth, login, or complaint logic.
-migrate = Migrate(app, db)
  
 oauth = OAuth(app)
 google_oauth = oauth.register(
@@ -505,10 +495,10 @@ def _setup():
 # this placement means normal warm requests never touch this code path
 # at all — only a fresh process/cold start does.
 #
-# Recommended longer-term path: once the schema is stable, prefer
-# `flask db migrate` / `flask db upgrade` (Flask-Migrate, wired up above)
-# for any future schema changes, and treat _init_db()'s create_all() call
-# purely as a safety net for first-time/empty databases.
+# Schema changes going forward are handled by the self-healing column
+# checks below (SELECT ... LIMIT 1 -> ALTER TABLE ADD COLUMN if missing),
+# combined with the inspector-guarded create_all() as a safety net for
+# first-time/empty databases. No external migration tool is required.
 try:
     with app.app_context():
         _init_db()
