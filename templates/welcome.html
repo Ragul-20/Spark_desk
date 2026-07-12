@@ -760,6 +760,10 @@
       align-items: start;
     }
 
+    .student-grid > * {
+      min-width: 0;
+    }
+
     /* TABLE */
     .tbl-top {
       display: flex;
@@ -808,6 +812,7 @@
     .tbl-scroll {
       overflow-x: auto;
       width: 100%;
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
@@ -1781,6 +1786,116 @@
       }
     }
 
+    /* ── MOBILE RESPONSIVENESS IMPROVEMENTS ── */
+    @media (max-width: 768px) {
+      /* Navbar responsiveness */
+      .navbar {
+        padding: 0 12px !important;
+      }
+      .nb-sep, .nb-logo-wrap {
+        display: none !important;
+      }
+      .nb-left {
+        gap: 8px !important;
+      }
+      .nb-name {
+        font-size: 16px !important;
+      }
+      .nb-right {
+        gap: 6px !important;
+      }
+      .nb-right .nb-link {
+        padding: 6px 10px !important;
+        font-size: 0 !important;
+      }
+      .nb-right .nb-link span {
+        font-size: 14px !important;
+      }
+      .nb-right .nb-link.logout::after {
+        content: "⏻" !important;
+        font-size: 14px !important;
+      }
+      .nb-right .user-chip {
+        padding: 5px !important;
+        max-width: none !important;
+      }
+      .nb-right .user-chip span {
+        display: none !important;
+      }
+      .admin-badge {
+        display: none !important;
+      }
+
+      /* Page margins and layout */
+      .page-wrap {
+        margin: 12px 8px 80px !important;
+        padding: 16px 12px 60px !important;
+      }
+      
+      /* Student Banner mobile wrap */
+      .student-banner {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 16px !important;
+        padding: 16px 12px !important;
+      }
+      .sb-avatar {
+        margin: 0 auto !important;
+      }
+      .sb-stats {
+        justify-content: space-around !important;
+        flex-wrap: wrap !important;
+        gap: 12px !important;
+        width: 100% !important;
+      }
+
+      /* Hostel explorer grids responsiveness */
+      #hostelSummaryStrip {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      #hostelSummaryStrip .h-stat-card:first-child {
+        grid-column: span 2 !important;
+      }
+      .explorer-charts-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 600px) {
+      /* Stats strip compact 2x2 grid */
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+      }
+      .s-card {
+        padding: 10px 12px !important;
+        gap: 8px !important;
+      }
+      .s-icon {
+        width: 32px !important;
+        height: 32px !important;
+        font-size: 16px !important;
+      }
+      .s-num {
+        font-size: 20px !important;
+      }
+      .s-lbl {
+        font-size: 9px !important;
+        margin-top: 2px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      /* Hostel summary strip: full-width items */
+      #hostelSummaryStrip {
+        grid-template-columns: 1fr !important;
+      }
+      #hostelSummaryStrip .h-stat-card:first-child {
+        grid-column: 1 !important;
+      }
+    }
+
     /* ── HOSTEL EXPLORER ── */
     .h-tab-btn {
       display: flex;
@@ -2227,6 +2342,10 @@
       <a href="/admin/notices" class="sidebar-report-btn">
         <span>📢</span> Notice Board
       </a>
+
+      <a href="/logout" class="sidebar-report-btn" style="color: #f87171 !important; border-color: rgba(239, 68, 68, 0.4);">
+        <span>⏻</span> Logout
+      </a>
     </div>
   </div>
   {% elif role == 'student' %}
@@ -2252,6 +2371,9 @@
       <a href="#" class="sidebar-report-btn"
         onclick="toggleStudentSidebar(false); openWardensModal(); event.preventDefault();">
         <span>📞</span> Contact Warden
+      </a>
+      <a href="/logout" class="sidebar-report-btn" style="color: #f87171 !important; border-color: rgba(239, 68, 68, 0.4);">
+        <span>⏻</span> Logout
       </a>
     </div>
   </div>
@@ -2577,7 +2699,7 @@
       </div>
 
       <!-- STEP 3: Charts row (bar + doughnut) always visible -->
-      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:18px;">
+      <div class="explorer-charts-grid" style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:18px;">
         <div class="chart-card">
           <h4 id="hostelBarTitle">🏢 Block-wise Complaints</h4>
           <p class="chart-sub" id="hostelBarSub">Pending · In Progress · Resolved per block — click a bar or a block tab
@@ -2637,7 +2759,7 @@
         <!-- Panel tri-bar -->
         <div id="hostelBlockPanelBar" style="height:6px;display:flex;"></div>
         <!-- Panel complaint list -->
-        <div style="overflow-x:auto;">
+        <div class="tbl-scroll">
           <table style="width:100%;border-collapse:collapse;min-width:680px;">
             <thead>
               <tr style="border-bottom:1px solid var(--border);">
@@ -2735,7 +2857,7 @@
                   </div>
                   {% endif %}
                   {% if c.image_filename %}<a class="photo-link"
-                    href="{{ url_for('uploaded_file', filename=c.image_filename) }}" target="_blank">🖼
+                    href="{{ url_for('static', filename='uploads/' ~ c.image_filename) }}" target="_blank">🖼
                     Photo</a>{% endif %}
                 </td>
                 <td style="font-weight:600;white-space:nowrap;">
@@ -2896,7 +3018,7 @@
                     </div>
                     {% endif %}
                     {% if c.image_filename %}<a class="photo-link"
-                      href="{{ url_for('uploaded_file', filename=c.image_filename) }}" target="_blank">🖼
+                      href="{{ url_for('static', filename='uploads/' ~ c.image_filename) }}" target="_blank">🖼
                       Photo</a>{% endif %}
                   </td>
                   <td style="font-weight:600;white-space:nowrap;">
