@@ -25,7 +25,7 @@
     }
     html, body { width: 100%; overflow-x: hidden; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
- 
+
     /* NAVBAR */
     .navbar { position: sticky; top: 0; z-index: 300; background: var(--surface); border-bottom: 2px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 64px; width: 100%; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
     .nb-left { display: flex; align-items: center; gap: 18px; flex-shrink: 0; }
@@ -51,7 +51,7 @@
     .nb-link.active { background: var(--gold); border-color: var(--gold); color: #1f180a; }
     .nb-link.logout { border-color: rgba(239, 68, 68, 0.4); color: #ef4444; }
     .nb-link.logout:hover { background: rgba(239, 68, 68, 0.1); border-color: #ef4444; }
- 
+
     /* HERO */
     .hero { position: relative; background: radial-gradient(circle at 80% 20%, #1c150c 0%, #0e0d0c 100%); border-bottom: 2px solid var(--gold); color: white; padding: 48px 32px 64px; text-align: left; overflow: hidden; }
     .hero-orb1 { position: absolute; top: -100px; right: -100px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(140,109,48,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
@@ -59,7 +59,7 @@
     .hero-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,215,0,0.08); border: 1px solid rgba(255,215,0,0.2); color: #ffd700; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 5px 12px; border-radius: 20px; margin-bottom: 16px; }
     .hero h1 { font-family: 'Cinzel', serif; font-size: clamp(26px, 3.5vw, 42px); color: #fff; line-height: 1.15; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px; }
     .hero-sub { color: #8f9bb3; font-size: 14px; line-height: 1.7; max-width: 580px; font-style: italic; }
- 
+
     /* LAYOUT */
     .page-wrap { max-width: 600px; margin: 0 auto; padding: 40px 24px 80px; }
     .card { background: var(--card); border: 2.5px solid var(--border); border-radius: 12px; padding: 40px; position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.1); }
@@ -67,7 +67,7 @@
     
     .sec-label { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 800; color: #8a1e2b; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
     .sec-label::after { content: ''; flex: 1; height: 1.5px; background: linear-gradient(to right, rgba(138, 30, 43, 0.25), transparent); }
- 
+
     /* FORM & INPUTS */
     .field { margin-bottom: 24px; position: relative; z-index: 10; }
     .field label { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 8px; }
@@ -78,46 +78,16 @@
     .btn-download { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 14px 28px; background: linear-gradient(135deg, #c5a86a, #9e8143); border: 2.5px solid #8c6d30; border-radius: 8px; color: #1f180a; font-size: 13px; font-weight: 800; cursor: pointer; transition: transform .18s, background .18s; text-transform: uppercase; letter-spacing: 1.5px; text-decoration: none; position: relative; z-index: 10; margin-top: 10px; border: 1.5px solid #8c6d30; }
     .btn-download:hover { transform: translateY(-1.5px); background: linear-gradient(135deg, #d3b77a, #a98d4d); box-shadow: 0 4px 15px rgba(140, 109, 48, 0.3); }
     .btn-download:active { transform: translateY(0); }
- 
+
     /* FLASH TOAST */
     .toast { position: fixed; bottom: 30px; right: 30px; z-index: 1000; background: #d1fae5; border: 1.5px solid #10b981; color: #065f46; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 13px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 8px; animation: slideIn 0.3s ease-out; }
     .toast-err { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
     .toast-warn { background: #fef3c7; border-color: #d97706; color: #92400e; }
     @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
- 
-    /* ===== MOBILE RESPONSIVE ===== */
-    @media (max-width: 860px) {
-      .navbar { padding: 0 16px; height: auto; min-height: 64px; flex-wrap: wrap; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
-      .nb-left { gap: 10px; }
-      .nb-logo-wrap { padding: 3px 8px; }
-      .nb-logo-wrap img { height: 20px; }
-      .nb-name { font-size: 16px; }
-      .nb-right { gap: 8px; flex-wrap: wrap; }
-      .user-chip { max-width: 140px; padding: 4px 10px 4px 4px; }
-      .admin-badge { display: none; }
-      .hero { padding: 32px 20px 40px; }
-      .hero-inner { flex-direction: column; align-items: flex-start; }
-      .hero h1 { font-size: 24px; }
-      .hero-sub { font-size: 13px; }
-      .page-wrap { padding: 28px 16px 60px; }
-      .card { padding: 24px 18px; }
-    }
-    @media (max-width: 480px) {
-      .nb-name { font-size: 14px; }
-      .nb-sep { display: none; }
-      .nb-link { padding: 7px 12px; font-size: 11px; }
-      .user-chip span { max-width: 70px; }
-      .hero h1 { font-size: 20px; }
-      div[style*="display: flex; gap: 16px; margin-bottom: 24px;"] { flex-direction: column; gap: 16px !important; }
-      div[style*="display: flex; gap: 16px; margin-top: 10px;"] { flex-direction: column; }
-      .btn-download { font-size: 12px; padding: 13px 20px; }
-      .card { padding: 20px 14px; }
-      .sec-label { font-size: 11px; }
-    }
   </style>
 </head>
 <body oncontextmenu="return false;">
- 
+
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nb-left">
@@ -142,7 +112,7 @@
       <a href="/logout" class="nb-link logout">Logout ⏻</a>
     </div>
   </nav>
- 
+
   <!-- HERO -->
   <section class="hero">
     <div class="hero-orb1"></div>
@@ -154,7 +124,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- MAIN CARD -->
   <div class="page-wrap">
     <div class="card">
@@ -170,7 +140,7 @@
             <option value="girls">Girls Hostel</option>
           </select>
         </div>
- 
+
         <!-- Report Type Config -->
         <div class="field">
           <label>Download Option / Report Scope</label>
@@ -181,7 +151,7 @@
             <option value="all_blocks_each_category">All Blocks with Each Category</option>
           </select>
         </div>
- 
+
         <!-- Date Filters -->
         <div style="display: flex; gap: 16px; margin-bottom: 24px;">
           <div class="field" style="flex: 1; margin-bottom: 0;">
@@ -193,7 +163,7 @@
             <input type="date" name="to_date" id="to_date">
           </div>
         </div>
- 
+
         <!-- Specific Block (Conditional) -->
         <div class="field" id="block_field_wrap" style="display: none;">
           <label>Select Block</label>
@@ -201,7 +171,7 @@
             <!-- Populated dynamically via javascript -->
           </select>
         </div>
- 
+
         <!-- Specific Category (Conditional) -->
         <div class="field" id="category_field_wrap" style="display: none;">
           <label>Select Category</label>
@@ -215,7 +185,7 @@
             <option value="Others">📌 Others</option>
           </select>
         </div>
- 
+
         <!-- Download Actions -->
         <div style="display: flex; gap: 16px; margin-top: 10px;">
           <button type="submit" formaction="/admin/reports/download" class="btn-download" style="flex: 1;">
@@ -225,11 +195,11 @@
             📄 Download PDF
           </button>
         </div>
- 
+
       </form>
     </div>
   </div>
- 
+
   <script>
     function updateFormFields() {
       const hostelType = document.getElementById('report_hostel_type').value;
@@ -237,7 +207,7 @@
       const blockField = document.getElementById('block_field_wrap');
       const categoryField = document.getElementById('category_field_wrap');
       const blockSelect = document.getElementById('report_block');
- 
+
       // Update block options based on hostel type selection
       const prevBlock = blockSelect.value;
       blockSelect.innerHTML = '';
@@ -249,7 +219,7 @@
         if (b === prevBlock) opt.selected = true;
         blockSelect.appendChild(opt);
       });
- 
+
       // Show/Hide filter inputs based on scope selection
       if (reportType === 'all_blocks_all_categories') {
         blockField.style.display = 'none';
@@ -265,11 +235,11 @@
         categoryField.style.display = 'block';
       }
     }
- 
+
     // Run initial configuration load
     updateFormFields();
   </script>
- 
+
   <!-- FLASH TOAST -->
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
