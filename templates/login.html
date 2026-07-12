@@ -360,11 +360,7 @@
             <div class="success-alert" role="alert">✓ {{ success }}</div>
             {% endif %}
           </form>
- 
-          <!-- GOOGLE OAUTH ADDITION: "Continue with Google" button.
-               Links to the /login/google route added in app.py, which starts
-               the OpenID Connect flow. Restricted server-side to @sece.ac.in
-               accounts. Existing email/password login above is unchanged. -->
+
           <div class="or-divider"><span>OR</span></div>
           <a href="{{ url_for('google_login') }}" class="btn-google">
             <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -406,7 +402,7 @@
                 <div class="iw">
                   <span class="ico">🆔</span>
                   <input type="text" name="roll_number" id="signup-roll"
-                         placeholder="25AD167" required autocomplete="off">
+                         placeholder="25AD160" required autocomplete="off">
                 </div>
               </div>
  
@@ -524,7 +520,7 @@
                 <div class="iw">
                   <span class="ico">🪜</span>
                   <input type="text" name="floor" id="signup-floor"
-                         placeholder="e.g. 2nd Floor" required autocomplete="off">
+                         placeholder="e.g. 2" required autocomplete="off">
                 </div>
               </div>
 
@@ -533,7 +529,7 @@
                 <div class="iw">
                   <span class="ico">🔑</span>
                   <input type="text" name="room_no" id="signup-room"
-                         placeholder="e.g. 204" required autocomplete="off">
+                         placeholder="e.g. 211" required autocomplete="off">
                 </div>
               </div>
             </div>
