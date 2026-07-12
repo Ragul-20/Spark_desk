@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
   <title>SPARK Desk — Submit Complaint</title>
@@ -166,47 +166,25 @@
       .navbar { padding:0 20px; }
       .breadcrumb { padding:14px 20px 0; }
     }
-
-    @media (max-width: 768px) {
-      .navbar {
-        padding: 0 12px !important;
-      }
-      .nb-sep, .nb-logo-wrap {
-        display: none !important;
-      }
-      .nb-left {
-        gap: 8px !important;
-      }
-      .nb-name {
-        font-size: 16px !important;
-      }
-      .nb-right {
-        gap: 6px !important;
-      }
-      .nb-right .nb-link {
-        padding: 6px 10px !important;
-        font-size: 0 !important;
-      }
-      .nb-right .nb-link span {
-        font-size: 14px !important;
-      }
-      .nb-right .nb-link.logout::after {
-        content: "⏻" !important;
-        font-size: 14px !important;
-      }
-      .nb-right .user-chip {
-        padding: 5px !important;
-        max-width: none !important;
-      }
-      .nb-right .user-chip span {
-        display: none !important;
-      }
-      .admin-badge {
-        display: none !important;
-      }
-      .page {
-        margin: 12px 8px 80px !important;
-      }
+ 
+    /* ===== MOBILE RESPONSIVE ===== */
+    @media(max-width:640px) {
+      .navbar { padding:0 14px; height:auto; min-height:60px; flex-wrap:wrap; gap:8px; padding-top:8px; padding-bottom:8px; }
+      .nb-name { font-size:16px; }
+      .nb-right { gap:8px; flex-wrap:wrap; }
+      .nb-link { padding:7px 12px; font-size:11px; }
+      .breadcrumb { padding:12px 14px 0; font-size:11px; }
+      .page { margin:16px auto 60px; padding:16px; border-radius:10px; }
+      .form-body { padding:20px 16px; }
+      .form-body h2 { font-size:18px; }
+      .steps { flex-wrap:wrap; }
+      .step { flex:1 1 33%; padding:9px 4px; font-size:9px; }
+      .pri-row { flex-wrap:wrap; }
+      .pri { flex:1 1 30%; }
+      .chips { gap:6px; }
+      .chip { padding:6px 10px; font-size:12px; }
+      input, select, textarea { font-size:16px; } /* prevents iOS zoom-on-focus */
+      .toast, .toast-err, .toast-warn { left:16px; right:16px; bottom:16px; }
     }
   </style>
 </head>
@@ -255,7 +233,7 @@
                 <input type="text" name="name" placeholder="Your full name" value="{{ profile.name or full_name }}" required>
               </div>
             </div>
-
+ 
             <div class="field">
               <label class="req">Room Number</label>
               <div class="iw">
@@ -263,7 +241,7 @@
                 <input type="text" name="room" placeholder="e.g. 204" value="{{ profile.room_no or '' }}" required>
               </div>
             </div>
-
+ 
             <div class="field">
               <label class="req">Hostel Type</label>
               <div class="iw">
@@ -275,7 +253,7 @@
                 </select>
               </div>
             </div>
-
+ 
             <div class="field">
               <label>Block <span style="color:var(--dim);font-weight:400;">(Select hostel type first)</span></label>
               <div class="iw">
@@ -285,7 +263,7 @@
                 </select>
               </div>
             </div>
-
+ 
             <div class="field">
               <label class="req">Floor Number</label>
               <div class="iw">
@@ -307,7 +285,7 @@
               </div>
               <input type="hidden" name="category" id="catSel" value="">
             </div>
-
+ 
             <div class="field full" id="otherCategoryField" style="display: none; margin-top: 10px;">
               <label class="req">Specify Category</label>
               <input type="text" name="other_category" id="otherCategoryInput" placeholder="Specify your category..." class="no-ico">
