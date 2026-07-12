@@ -35,7 +35,7 @@
     .no-print-btn:hover {
       background: #9e8143;
     }
- 
+
     /* HEADER */
     .header {
       text-align: center;
@@ -79,7 +79,7 @@
       border-bottom: 0.5px solid #111827;
       height: 3px;
     }
- 
+
     /* METADATA BLOCK */
     .metadata-section {
       display: grid;
@@ -113,7 +113,7 @@
       font-weight: 600;
       color: #1f2937;
     }
- 
+
     /* TABLE */
     table {
       width: 100%;
@@ -162,7 +162,7 @@
     .status-resolved { color: #15803d; }
     .desc-text { line-height: 1.4; color: #374151; white-space: pre-wrap; word-break: break-word; }
     .note-text { font-style: italic; color: #4b5563; font-size: 10px; }
- 
+
     /* SIGNATURE FOOTER */
     .signature-area {
       display: flex;
@@ -184,7 +184,7 @@
       color: #4b5563;
       text-transform: uppercase;
     }
- 
+
     /* PRINT LAYOUT ADJUSTMENTS */
     @media print {
       body {
@@ -199,33 +199,13 @@
         margin: 15mm;
       }
     }
- 
-    /* ===== MOBILE / ON-SCREEN RESPONSIVE (viewing before printing) ===== */
-    @media screen and (max-width: 860px) {
-      body { padding: 20px 14px 60px; }
-      .no-print-btn { position: fixed; top: 10px; right: 10px; padding: 10px 16px; font-size: 11px; }
-      .college-title { font-size: 15px; }
-      .college-sub { font-size: 9px; }
-      .report-title { font-size: 12px; }
-      .metadata-section { grid-template-columns: 1fr; padding: 12px; gap: 10px; }
-      /* Make the wide data table horizontally scrollable instead of squeezing columns */
-      table { display: block; overflow-x: auto; white-space: nowrap; font-size: 11px; }
-      thead, tbody, tr { display: table; width: 100%; table-layout: fixed; }
-      .signature-area { flex-direction: column; gap: 40px; margin-top: 50px; align-items: center; }
-      .sig-box { width: 100%; max-width: 260px; }
-    }
-    @media screen and (max-width: 480px) {
-      .college-title { font-size: 13px; }
-      .report-title { font-size: 11px; }
-      .meta-label, .meta-value { font-size: 10px; }
-    }
   </style>
 </head>
 <body oncontextmenu="return false;">
- 
+
   <!-- Printable Header Controls -->
   <button class="no-print-btn no-print" onclick="window.print()">Print / Save PDF</button>
- 
+
   <!-- OFFICIAL REPORT HEADER -->
   <div class="header">
     <div class="logo-container">
@@ -236,7 +216,7 @@
     <div class="report-title">Hostel Maintenance System — Complaint Report</div>
     <div class="divider"></div>
   </div>
- 
+
   <!-- METADATA BLOCK -->
   <div class="metadata-section">
     <div>
@@ -264,7 +244,7 @@
       </div>
     </div>
   </div>
- 
+
   <!-- COMPLAINTS DATA TABLE -->
   <table>
     <thead>
@@ -324,7 +304,7 @@
       {% endif %}
     </tbody>
   </table>
- 
+
   <!-- SIGNATURE BLOCKS -->
   <div class="signature-area">
     <div class="sig-box">
@@ -336,7 +316,7 @@
       <div class="sig-title">System Administrator</div>
     </div>
   </div>
- 
+
   <script>
     // Automatically open the print preview dialog on load
     window.addEventListener('DOMContentLoaded', () => {
