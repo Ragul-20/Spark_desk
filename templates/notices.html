@@ -124,6 +124,52 @@
     .toast-err { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
     .toast-warn { background: #fef3c7; border-color: #d97706; color: #92400e; }
     @keyframes slideIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0 12px !important;
+      }
+      .nb-sep, .nb-logo-wrap {
+        display: none !important;
+      }
+      .nb-left {
+        gap: 8px !important;
+      }
+      .nb-name {
+        font-size: 16px !important;
+      }
+      .nb-right {
+        gap: 6px !important;
+      }
+      .nb-right .nb-link {
+        padding: 6px 10px !important;
+        font-size: 0 !important;
+      }
+      .nb-right .nb-link span {
+        font-size: 14px !important;
+      }
+      .nb-right .nb-link.logout::after {
+        content: "⏻" !important;
+        font-size: 14px !important;
+      }
+      .nb-right .user-chip {
+        padding: 5px !important;
+        max-width: none !important;
+      }
+      .nb-right .user-chip span {
+        display: none !important;
+      }
+      .admin-badge {
+        display: none !important;
+      }
+      .page-wrap {
+        margin: 12px 8px 80px !important;
+        padding: 16px 12px 60px !important;
+      }
+      .card {
+        padding: 20px !important;
+      }
+    }
   </style>
 </head>
 <body oncontextmenu="return false;">
