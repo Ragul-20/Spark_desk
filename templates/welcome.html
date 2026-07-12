@@ -1769,6 +1769,28 @@
       .nb-logo-wrap {
         display: none;
       }
+
+      .navbar {
+        height: auto;
+        min-height: 64px;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .nb-right {
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .admin-badge {
+        display: none;
+      }
+
+      .user-chip {
+        max-width: 140px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1778,6 +1800,37 @@
 
       .info-strip {
         grid-template-columns: 1fr;
+      }
+
+      .nb-name {
+        font-size: 15px;
+      }
+
+      .nb-sep {
+        display: none;
+      }
+
+      .user-chip span {
+        max-width: 70px;
+      }
+
+      .nb-link {
+        padding: 7px 11px;
+        font-size: 11px;
+      }
+
+      .shortlist-sidebar {
+        width: 88vw;
+        left: -88vw;
+      }
+
+      .search-inp {
+        width: 100%;
+        max-width: 220px;
+      }
+
+      .modal {
+        padding: 22px 18px;
       }
     }
 
@@ -1955,7 +2008,6 @@
       top: 0;
       left: -320px;
       width: 320px;
-      max-width: 85vw;
       height: 100vh;
       background: var(--surface);
       border-right: 2px solid var(--gold);
@@ -2167,220 +2219,6 @@
       color: white;
       border-color: #735925;
     }
-
-    /* ═══════════════════════════════════════════════════
-       MOBILE / RESPONSIVE FIXES (added)
-       ═══════════════════════════════════════════════════ */
-
-    /* NAVBAR — stop overflow on phones */
-    @media (max-width: 760px) {
-      .navbar {
-        height: auto;
-        min-height: 60px;
-        padding: 8px 12px;
-        flex-wrap: wrap;
-        row-gap: 8px;
-      }
-
-      .nb-left {
-        gap: 8px;
-      }
-
-      .nb-icon {
-        width: 28px;
-        height: 28px;
-        font-size: 14px;
-      }
-
-      .nb-name {
-        font-size: 14px;
-        letter-spacing: 0.5px;
-      }
-
-      .nb-sep {
-        display: none;
-      }
-
-      #navDashboardLink {
-        display: none;
-      }
-
-      .nb-right {
-        gap: 6px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-      }
-
-      .admin-badge {
-        display: none;
-      }
-
-      .user-chip {
-        max-width: 110px;
-        padding: 4px 10px 4px 4px;
-      }
-
-      .user-chip span {
-        font-size: 11px;
-      }
-
-      .nb-link {
-        padding: 6px 10px;
-        font-size: 10px;
-      }
-
-      .nav-tabs-container {
-        padding: 0 12px;
-      }
-
-      .nav-tab {
-        padding: 11px 12px;
-        font-size: 9.5px;
-        gap: 5px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .user-chip span {
-        display: none;
-      }
-
-      .user-chip {
-        max-width: none;
-        padding: 4px;
-      }
-    }
-
-    /* HERO / STATS tweaks already partially handled above; extra tightening */
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: 20px;
-      }
-
-      .s-num {
-        font-size: 21px;
-      }
-
-      .s-icon {
-        width: 38px;
-        height: 38px;
-        font-size: 17px;
-      }
-    }
-
-    /* TABLE TOOLBAR — stack search + filters on small screens */
-    @media (max-width: 620px) {
-      .tbl-top {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .tbl-top>div {
-        width: 100%;
-      }
-
-      .search-wrap,
-      .search-inp {
-        width: 100%;
-      }
-    }
-
-    /* STUDENT BANNER — wrap stats under name on narrow screens */
-    @media (max-width: 620px) {
-      .student-banner {
-        flex-wrap: wrap;
-      }
-
-      .sb-stats {
-        width: 100%;
-        justify-content: space-between;
-        gap: 8px;
-      }
-
-      .sb-info {
-        min-width: 140px;
-      }
-    }
-
-    /* MODAL — tighter padding on phones */
-    @media (max-width: 480px) {
-      .modal {
-        padding: 20px;
-      }
-
-      .modal h3 {
-        font-size: 16px;
-      }
-    }
-
-    /* HOSTEL EXPLORER — hostel tab buttons + step hint */
-    @media (max-width: 900px) {
-      .hostel-steps-hint {
-        display: none !important;
-      }
-    }
-
-    @media (max-width: 560px) {
-      .h-tab-btn {
-        min-width: 100%;
-        flex: 1 1 100%;
-        padding: 12px 16px;
-      }
-    }
-
-    /* HOSTEL EXPLORER — summary strip (5 stat cards) */
-    @media (max-width: 760px) {
-      #hostelSummaryStrip {
-        grid-template-columns: repeat(3, 1fr) !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      #hostelSummaryStrip {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
-    }
-
-    /* HOSTEL EXPLORER — bar chart + category doughnut row */
-    @media (max-width: 900px) {
-      .hostel-charts-row {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-    /* HOSTEL EXPLORER — block detail panel header wraps tighter */
-    @media (max-width: 620px) {
-      #hostelBlockPanelHeader {
-        padding: 14px 16px;
-      }
-
-      #hostelBlockPanelHeader>div:last-child {
-        width: 100%;
-        justify-content: flex-start;
-      }
-    }
-
-    /* BLOCK STAT ROW on very small screens */
-    @media (max-width: 400px) {
-      .block-stat-row {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Ensure charts don't collapse to 0 height on narrow flex/grid parents */
-    @media (max-width: 480px) {
-      .chart-wrap {
-        height: 190px;
-      }
-
-      .chart-wrap-sm {
-        height: 150px;
-      }
-
-      .chart-wrap-xs {
-        height: 170px;
-      }
-    }
   </style>
 </head>
 
@@ -2498,7 +2336,7 @@
       </div>
     </div>
     <div class="nb-right">
-      <a href="/welcome" id="navDashboardLink" class="nb-link active"><span>⌂</span> Dashboard</a>
+      <a href="/welcome" class="nb-link active"><span>⌂</span> Dashboard</a>
       {% if role == 'admin' %}
       <span class="admin-badge"><span class="pulse-dot">●</span> System Live</span>
       {% else %}
@@ -2745,7 +2583,7 @@
           </div>
           <span id="htab-girls-count" class="h-tab-badge">0</span>
         </button>
-        <div class="hostel-steps-hint" style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--dim);">
+        <div style="margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11px;color:var(--dim);">
           <span>①</span> Pick hostel &nbsp;→&nbsp; <span>②</span> Pick block &nbsp;→&nbsp; <span>③</span> View
           complaints
         </div>
@@ -2792,7 +2630,7 @@
       </div>
 
       <!-- STEP 3: Charts row (bar + doughnut) always visible -->
-      <div class="hostel-charts-row" style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:18px;">
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:18px;">
         <div class="chart-card">
           <h4 id="hostelBarTitle">🏢 Block-wise Complaints</h4>
           <p class="chart-sub" id="hostelBarSub">Pending · In Progress · Resolved per block — click a bar or a block tab
