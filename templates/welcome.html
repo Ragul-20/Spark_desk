@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
   <title>SPARK Desk — {% if role == 'admin' %}Admin Dashboard{% else %}Dashboard{% endif %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+ 
     :root {
       --bg: #eae3d0;
       /* Light warm parchment outer body background */
@@ -49,20 +49,20 @@
       --dim: #8f826d;
       /* Dimmed brown-slate */
     }
-
+ 
     html,
     body {
       width: 100%;
       overflow-x: hidden;
     }
-
+ 
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       min-height: 100vh;
     }
-
+ 
     /* NAVBAR */
     .navbar {
       position: sticky;
@@ -78,14 +78,14 @@
       width: 100%;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
-
+ 
     .nb-left {
       display: flex;
       align-items: center;
       gap: 18px;
       flex-shrink: 0;
     }
-
+ 
     .nb-brand {
       display: flex;
       align-items: center;
@@ -93,7 +93,7 @@
       text-decoration: none;
       flex-shrink: 0;
     }
-
+ 
     .nb-icon {
       width: 34px;
       height: 34px;
@@ -106,7 +106,7 @@
       flex-shrink: 0;
       box-shadow: 0 2px 8px rgba(140, 109, 48, 0.4);
     }
-
+ 
     .nb-name {
       font-family: 'Cinzel', serif;
       font-size: 20px;
@@ -117,18 +117,18 @@
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
       white-space: nowrap;
     }
-
+ 
     .nb-name span {
       color: white;
     }
-
+ 
     .nb-sep {
       width: 1px;
       height: 22px;
       background: rgba(255, 255, 255, 0.1);
       flex-shrink: 0;
     }
-
+ 
     .nb-logo-wrap {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 7px;
@@ -136,19 +136,19 @@
       display: flex;
       align-items: center;
     }
-
+ 
     .nb-logo-wrap img {
       height: 26px;
       display: block;
     }
-
+ 
     .nb-right {
       display: flex;
       align-items: center;
       gap: 12px;
       flex-shrink: 0;
     }
-
+ 
     .admin-badge {
       font-size: 10px;
       font-weight: 700;
@@ -162,21 +162,21 @@
       white-space: nowrap;
       animation: glowPulse 2s infinite ease-in-out;
     }
-
+ 
     @keyframes glowPulse {
       0% {
         box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
       }
-
+ 
       50% {
         box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
       }
-
+ 
       100% {
         box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
       }
     }
-
+ 
     .user-chip {
       display: flex;
       align-items: center;
@@ -192,13 +192,13 @@
       font-weight: 600;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
-
+ 
     .user-chip span {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-
+ 
     .user-av {
       width: 26px;
       height: 26px;
@@ -212,12 +212,12 @@
       font-weight: 700;
       flex-shrink: 0;
     }
-
+ 
     .user-av.admin-av {
       background: #1f180a;
       color: var(--gold);
     }
-
+ 
     .nb-link {
       text-decoration: none;
       color: #a8b3cf;
@@ -231,7 +231,7 @@
       transition: .18s;
       white-space: nowrap;
     }
-
+ 
     .nb-link:hover,
     .nb-link.active {
       color: #0e0d0c;
@@ -239,18 +239,18 @@
       border-color: #8c6d30;
       box-shadow: 0 0 10px rgba(140, 109, 48, 0.3);
     }
-
+ 
     .nb-link.logout {
       color: #f87171;
       border: 1.5px solid rgba(239, 68, 68, 0.4);
       background: transparent;
     }
-
+ 
     .nb-link.logout:hover {
       background: rgba(239, 68, 68, 0.15);
       color: #ef4444;
     }
-
+ 
     /* SECONDARY TABS BAR */
     .nav-tabs-container {
       background: var(--surface);
@@ -259,7 +259,7 @@
       width: 100%;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
     }
-
+ 
     .nav-tabs-inner {
       max-width: 1280px;
       margin: 0 auto;
@@ -268,11 +268,11 @@
       overflow-x: auto;
       scrollbar-width: none;
     }
-
+ 
     .nav-tabs-inner::-webkit-scrollbar {
       display: none;
     }
-
+ 
     .nav-tab {
       display: flex;
       align-items: center;
@@ -290,12 +290,12 @@
       transition: all 0.2s;
       white-space: nowrap;
     }
-
+ 
     .nav-tab:hover {
       color: white;
       background: rgba(255, 255, 255, 0.02);
     }
-
+ 
     .nav-tab.active {
       color: #ffd700;
       background: #151413;
@@ -304,12 +304,12 @@
       border-right-color: rgba(140, 109, 48, 0.3);
       box-shadow: inset 0 2px 8px rgba(140, 109, 48, 0.15);
     }
-
+ 
     .tab-icon {
       font-size: 13px;
       color: #ffd700;
     }
-
+ 
     /* HERO */
     .hero {
       background: linear-gradient(135deg, #121213 0%, #080809 100%);
@@ -319,7 +319,7 @@
       overflow: hidden;
       width: 100%;
     }
-
+ 
     .hero-orb1 {
       position: absolute;
       width: 400px;
@@ -330,7 +330,7 @@
       right: -60px;
       pointer-events: none;
     }
-
+ 
     .hero-orb2 {
       position: absolute;
       width: 240px;
@@ -341,7 +341,7 @@
       left: 240px;
       pointer-events: none;
     }
-
+ 
     .hero-inner {
       position: relative;
       z-index: 1;
@@ -353,7 +353,7 @@
       max-width: 1280px;
       margin: 0 auto;
     }
-
+ 
     .hero-tag {
       font-size: 10px;
       font-weight: 700;
@@ -362,7 +362,7 @@
       color: #ffd700;
       margin-bottom: 10px;
     }
-
+ 
     .hero h1 {
       font-family: 'Cinzel', serif;
       font-size: clamp(22px, 2.6vw, 36px);
@@ -371,19 +371,19 @@
       margin-bottom: 8px;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     }
-
+ 
     .hero-sub {
       font-size: 13px;
       color: #a8b3cf;
       margin-bottom: 22px;
     }
-
+ 
     .hero-btns {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
     }
-
+ 
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -403,13 +403,13 @@
       letter-spacing: .5px;
       white-space: nowrap;
     }
-
+ 
     .btn-primary:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 18px rgba(140, 109, 48, 0.4);
       background: linear-gradient(135deg, #d3b77a, #a98d4d);
     }
-
+ 
     .btn-ghost {
       display: inline-flex;
       align-items: center;
@@ -427,13 +427,13 @@
       letter-spacing: .5px;
       white-space: nowrap;
     }
-
+ 
     .btn-ghost:hover {
       background: #dfd8c2;
       color: #2c251a;
       border-color: #8c6d30;
     }
-
+ 
     /* STATS STRIP */
     .stats-wrap {
       max-width: 1280px;
@@ -443,13 +443,13 @@
       position: relative;
       z-index: 10;
     }
-
+ 
     .stats-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
     }
-
+ 
     .s-card {
       background: var(--card);
       border: 1.5px solid var(--border);
@@ -462,12 +462,12 @@
       position: relative;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
-
+ 
     .s-card:hover {
       transform: translateY(-3px);
       border-color: var(--gold);
     }
-
+ 
     .s-card::before {
       content: '';
       position: absolute;
@@ -476,7 +476,7 @@
       border-radius: 7px;
       pointer-events: none;
     }
-
+ 
     .s-card::after {
       content: '';
       position: absolute;
@@ -495,7 +495,7 @@
       background-repeat: no-repeat;
       background-size: 8px 8px;
     }
-
+ 
     .s-icon {
       width: 44px;
       height: 44px;
@@ -507,27 +507,27 @@
       flex-shrink: 0;
       box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
     }
-
+ 
     .si-blue {
       background: #e0f2fe;
       border: 1px solid #bae6fd;
     }
-
+ 
     .si-orange {
       background: #fef3c7;
       border: 1px solid #fde68a;
     }
-
+ 
     .si-sky {
       background: #e0f2fe;
       border: 1px solid #bae6fd;
     }
-
+ 
     .si-green {
       background: #d1fae5;
       border: 1px solid #a7f3d0;
     }
-
+ 
     .s-num {
       font-family: 'Sora', sans-serif;
       font-size: 26px;
@@ -535,7 +535,7 @@
       color: #2c251a;
       line-height: 1;
     }
-
+ 
     .s-lbl {
       font-size: 11px;
       color: var(--muted);
@@ -544,19 +544,19 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
+ 
     .c-orange .s-num {
       color: var(--orange);
     }
-
+ 
     .c-sky .s-num {
       color: var(--blue);
     }
-
+ 
     .c-green .s-num {
       color: var(--green);
     }
-
+ 
     /* PAGE WRAP (Ornate parchment scroll look) */
     .page-wrap {
       max-width: 1280px;
@@ -569,7 +569,7 @@
       margin-top: 24px;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     }
-
+ 
     .page-wrap::before {
       content: '';
       position: absolute;
@@ -578,7 +578,7 @@
       border-radius: 8px;
       pointer-events: none;
     }
-
+ 
     .page-wrap::after {
       content: '';
       position: absolute;
@@ -597,7 +597,7 @@
       background-repeat: no-repeat;
       background-size: 20px 20px;
     }
-
+ 
     .sec-label {
       font-family: 'Cinzel', serif;
       font-size: 12px;
@@ -610,13 +610,13 @@
       align-items: center;
       gap: 8px;
     }
-
+ 
     .sec-label::before {
       content: '✥';
       font-size: 14px;
       color: var(--gold);
     }
-
+ 
     /* CHARTS & CARDS */
     .charts-row1 {
       display: grid;
@@ -624,14 +624,14 @@
       gap: 16px;
       margin-bottom: 16px;
     }
-
+ 
     .charts-row2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
       margin-bottom: 16px;
     }
-
+ 
     .chart-card,
     .tbl-card,
     .side-card {
@@ -643,7 +643,7 @@
       position: relative;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     }
-
+ 
     .chart-card::before,
     .tbl-card::before,
     .side-card::before {
@@ -654,7 +654,7 @@
       border-radius: 7px;
       pointer-events: none;
     }
-
+ 
     .chart-card::after,
     .tbl-card::after,
     .side-card::after {
@@ -675,7 +675,7 @@
       background-repeat: no-repeat;
       background-size: 10px 10px;
     }
-
+ 
     .chart-card h4,
     .tbl-top h3,
     .side-card h4,
@@ -691,29 +691,29 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
+ 
     .chart-sub {
       font-size: 11px;
       color: var(--muted);
       margin-bottom: 14px;
       font-style: italic;
     }
-
+ 
     .chart-wrap {
       position: relative;
       height: 200px;
     }
-
+ 
     .chart-wrap-sm {
       position: relative;
       height: 160px;
     }
-
+ 
     .chart-wrap-xs {
       position: relative;
       height: 180px;
     }
-
+ 
     .res-meter {
       margin-top: 14px;
       padding: 12px;
@@ -721,7 +721,7 @@
       border: 1px solid var(--border);
       border-radius: 8px;
     }
-
+ 
     .res-label {
       font-size: 11px;
       color: var(--muted);
@@ -729,21 +729,21 @@
       font-weight: 600;
       text-transform: uppercase;
     }
-
+ 
     .res-bar {
       height: 8px;
       background: rgba(0, 0, 0, 0.06);
       border-radius: 4px;
       overflow: hidden;
     }
-
+ 
     .res-fill {
       height: 100%;
       border-radius: 4px;
       background: linear-gradient(90deg, var(--green), #4ade80);
       transition: width 1.2s ease;
     }
-
+ 
     .res-pct {
       font-size: 22px;
       font-weight: 800;
@@ -751,7 +751,7 @@
       color: var(--green);
       margin-top: 6px;
     }
-
+ 
     /* STUDENT LAYOUT */
     .student-grid {
       display: grid;
@@ -759,11 +759,7 @@
       gap: 20px;
       align-items: start;
     }
-
-    .student-grid > * {
-      min-width: 0;
-    }
-
+ 
     /* TABLE */
     .tbl-top {
       display: flex;
@@ -774,13 +770,13 @@
       flex-wrap: wrap;
       gap: 10px;
     }
-
+ 
     .filter-row {
       display: flex;
       gap: 5px;
       flex-wrap: wrap;
     }
-
+ 
     .flt {
       background: #faf6eb;
       border: 1.5px solid var(--border);
@@ -795,12 +791,12 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
+ 
     .flt:hover {
       border-color: var(--gold);
       color: var(--text);
     }
-
+ 
     .flt.on {
       background: #fdfcf7;
       border-color: var(--gold);
@@ -808,24 +804,23 @@
       font-weight: 800;
       box-shadow: inset 0 2px 4px rgba(140, 109, 48, 0.08);
     }
-
+ 
     .tbl-scroll {
       overflow-x: auto;
       width: 100%;
-      -webkit-overflow-scrolling: touch;
     }
-
+ 
     table {
       width: 100%;
       border-collapse: collapse;
       min-width: 720px;
     }
-
+ 
     thead tr {
       border-bottom: 1.5px solid var(--border);
       background: #faf6eb;
     }
-
+ 
     th {
       font-family: 'Cinzel', serif;
       font-size: 10px;
@@ -837,7 +832,7 @@
       text-align: left;
       white-space: nowrap;
     }
-
+ 
     td {
       padding: 13px 14px;
       font-size: 13px;
@@ -845,15 +840,15 @@
       border-bottom: 1px solid rgba(140, 109, 48, 0.12);
       vertical-align: middle;
     }
-
+ 
     tbody tr:last-child td {
       border-bottom: none;
     }
-
+ 
     tbody tr:hover td {
       background: rgba(140, 109, 48, 0.03);
     }
-
+ 
     /* BADGES */
     .badge {
       font-size: 11px;
@@ -863,25 +858,25 @@
       white-space: nowrap;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
-
+ 
     .b-pending {
       background: #fef3c7;
       color: #854d0e;
       border: 1px solid #fde68a;
     }
-
+ 
     .b-progress {
       background: #dbeafe;
       color: #1e40af;
       border: 1px solid #bfdbfe;
     }
-
+ 
     .b-solved {
       background: #d1fae5;
       color: #166534;
       border: 1px solid #a7f3d0;
     }
-
+ 
     .pri-badge {
       font-size: 11px;
       font-weight: 700;
@@ -890,25 +885,25 @@
       white-space: nowrap;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
     }
-
+ 
     .pri-low {
       background: #fef3c7;
       color: #854d0e;
       border: 1px solid #fde68a;
     }
-
+ 
     .pri-med {
       background: #dcfce7;
       color: #15803d;
       border: 1px solid #bbf7d0;
     }
-
+ 
     .pri-high {
       background: #fee2e2;
       color: #991b1b;
       border: 1px solid #fecaca;
     }
-
+ 
     .cat-tag {
       font-size: 11px;
       font-weight: 600;
@@ -919,7 +914,7 @@
       border-radius: 6px;
       white-space: nowrap;
     }
-
+ 
     .hostel-badge {
       display: inline-block;
       font-size: 11px;
@@ -928,19 +923,19 @@
       border-radius: 20px;
       white-space: nowrap;
     }
-
+ 
     .hostel-boys {
       background: #e0f2fe;
       color: #0369a1;
       border: 1.5px solid #bae6fd;
     }
-
+ 
     .hostel-girls {
       background: #fce7f3;
       color: #9d174d;
       border: 1.5px solid #fbcfe8;
     }
-
+ 
     .block-badge {
       display: inline-block;
       font-size: 12px;
@@ -952,24 +947,24 @@
       border-radius: 7px;
       letter-spacing: .5px;
     }
-
+ 
     .nil-val {
       color: var(--muted);
       font-size: 12px;
       font-style: italic;
     }
-
+ 
     .student-name {
       font-size: 12px;
       font-weight: 700;
       color: var(--text);
     }
-
+ 
     .student-email {
       font-size: 11px;
       color: var(--muted);
     }
-
+ 
     .student-details-btn {
       display: inline-flex;
       align-items: center;
@@ -986,17 +981,17 @@
       transition: all 0.2s;
       text-transform: uppercase;
     }
-
+ 
     .student-details-btn:hover {
       background: #735925;
       color: white;
       border-color: #735925;
     }
-
+ 
     .desc-cell {
       max-width: 180px;
     }
-
+ 
     .desc-truncate {
       display: block;
       white-space: nowrap;
@@ -1005,19 +1000,19 @@
       cursor: pointer;
       transition: color 0.2s;
     }
-
+ 
     .desc-truncate:hover {
       text-decoration: underline;
       color: var(--gold);
     }
-
+ 
     .note-line {
       font-size: 11px;
       color: var(--blue);
       margin-top: 3px;
       font-weight: 600;
     }
-
+ 
     .photo-link {
       display: inline-flex;
       align-items: center;
@@ -1035,33 +1030,33 @@
       text-transform: uppercase;
       text-decoration: none;
     }
-
+ 
     .photo-link:hover {
       background: #735925;
       color: white;
       border-color: #735925;
       text-decoration: none;
     }
-
+ 
     .empty-row td {
       text-align: center;
       padding: 56px 20px;
       color: var(--muted);
       font-style: italic;
     }
-
+ 
     .e-icon {
       font-size: 34px;
       margin-bottom: 10px;
       opacity: 0.6;
     }
-
+ 
     .act-row {
       display: flex;
       gap: 5px;
       align-items: center;
     }
-
+ 
     .act-btn {
       font-size: 11px;
       font-weight: 700;
@@ -1073,31 +1068,31 @@
       white-space: nowrap;
       text-transform: uppercase;
     }
-
+ 
     .act-edit {
       background: #e0f2fe;
       color: #0369a1;
       border: 1px solid #bae6fd;
     }
-
+ 
     .act-del {
       background: #fee2e2;
       color: #991b1b;
       border: 1px solid #fecaca;
     }
-
+ 
     .act-btn:hover {
       filter: brightness(0.95);
       transform: translateY(-1px);
     }
-
+ 
     /* SIDEBAR */
     .sidebar {
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
-
+ 
     .side-card h4 {
       font-family: 'Cinzel', serif;
       font-size: 12px;
@@ -1108,13 +1103,13 @@
       align-items: center;
       gap: 8px;
     }
-
+ 
     .qa-list {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
-
+ 
     .qa {
       display: flex;
       align-items: center;
@@ -1127,27 +1122,27 @@
       transition: .16s;
       font-weight: 600;
     }
-
+ 
     .qa:hover {
       background: rgba(140, 109, 48, 0.06);
       color: #8a1e2b;
     }
-
+ 
     .qa-ico {
       font-size: 15px;
     }
-
+ 
     .qa-arr {
       margin-left: auto;
       opacity: .6;
     }
-
+ 
     .notices {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
-
+ 
     .student-notices-container {
       max-height: 350px;
       overflow-y: auto;
@@ -1156,27 +1151,27 @@
       flex-direction: column;
       gap: 12px;
     }
-
+ 
     .student-notices-container::-webkit-scrollbar {
       width: 6px;
     }
-
+ 
     .student-notices-container::-webkit-scrollbar-thumb {
       background: rgba(140, 109, 48, 0.4);
       border-radius: 3px;
     }
-
+ 
     .student-notices-container::-webkit-scrollbar-track {
       background: rgba(140, 109, 48, 0.08);
       border-radius: 3px;
     }
-
+ 
     .notice {
       display: flex;
       gap: 10px;
       align-items: flex-start;
     }
-
+ 
     .n-dot {
       width: 8px;
       height: 8px;
@@ -1184,7 +1179,7 @@
       flex-shrink: 0;
       margin-top: 4px;
     }
-
+ 
     .n-title {
       font-family: 'Cinzel', serif;
       font-size: 12px;
@@ -1192,13 +1187,13 @@
       color: #8a1e2b;
       margin-bottom: 2px;
     }
-
+ 
     .n-body {
       font-size: 11px;
       color: var(--muted);
       line-height: 1.65;
     }
-
+ 
     .emer-box {
       background: #faf6eb;
       border: 1px solid var(--border);
@@ -1208,24 +1203,24 @@
       color: var(--muted);
       line-height: 1.75;
     }
-
+ 
     .emer-box strong {
       color: #8a1e2b;
       font-family: 'Cinzel', serif;
     }
-
+ 
     .emer-warn {
       color: var(--red);
       font-weight: 700;
       margin-top: 8px;
       display: block;
     }
-
+ 
     /* SEARCH */
     .search-wrap {
       position: relative;
     }
-
+ 
     .search-ico {
       position: absolute;
       left: 11px;
@@ -1235,7 +1230,7 @@
       opacity: .6;
       pointer-events: none;
     }
-
+ 
     .search-inp {
       padding: 8px 14px 8px 36px;
       background: #ffffff;
@@ -1248,12 +1243,12 @@
       width: 220px;
       transition: border-color .2s;
     }
-
+ 
     .search-inp:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(140, 109, 48, 0.15);
     }
-
+ 
     /* MODAL */
     .modal-backdrop {
       position: fixed;
@@ -1266,11 +1261,11 @@
       justify-content: center;
       padding: 20px;
     }
-
+ 
     .modal-backdrop.open {
       display: flex;
     }
-
+ 
     .modal {
       background: #faf5e9;
       border: 2.5px solid var(--gold);
@@ -1284,7 +1279,7 @@
       animation: mIn .22s ease;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
     }
-
+ 
     .modal::before {
       content: '';
       position: absolute;
@@ -1293,19 +1288,19 @@
       border-radius: 8px;
       pointer-events: none;
     }
-
+ 
     @keyframes mIn {
       from {
         opacity: 0;
         transform: translateY(16px)
       }
-
+ 
       to {
         opacity: 1;
         transform: translateY(0)
       }
     }
-
+ 
     .modal h3 {
       font-family: 'Cinzel', serif;
       font-size: 18px;
@@ -1313,14 +1308,14 @@
       margin-bottom: 4px;
       text-transform: uppercase;
     }
-
+ 
     .modal-sub {
       font-size: 13px;
       color: var(--muted);
       margin-bottom: 20px;
       font-style: italic;
     }
-
+ 
     .modal label {
       font-size: 11px;
       font-weight: 700;
@@ -1330,7 +1325,7 @@
       display: block;
       margin-bottom: 7px;
     }
-
+ 
     .modal select,
     .modal textarea,
     .modal input {
@@ -1344,23 +1339,23 @@
       font-size: 14px;
       outline: none;
     }
-
+ 
     .modal select option {
       background: #ffffff;
       color: var(--text);
     }
-
+ 
     .modal textarea {
       resize: vertical;
       min-height: 88px;
     }
-
+ 
     .mfield {
       margin-bottom: 16px;
       position: relative;
       z-index: 10;
     }
-
+ 
     .modal-actions {
       display: flex;
       gap: 10px;
@@ -1369,7 +1364,7 @@
       position: relative;
       z-index: 10;
     }
-
+ 
     .btn-cancel {
       padding: 10px 20px;
       background: #eae3d0;
@@ -1382,12 +1377,12 @@
       font-weight: 700;
       text-transform: uppercase;
     }
-
+ 
     .btn-cancel:hover {
       background: #dfd8c2;
       color: var(--text);
     }
-
+ 
     .btn-save {
       padding: 10px 22px;
       background: linear-gradient(135deg, #c5a86a, #9e8143);
@@ -1400,12 +1395,12 @@
       transition: transform .18s;
       text-transform: uppercase;
     }
-
+ 
     .btn-save:hover {
       transform: translateY(-1px);
       background: linear-gradient(135deg, #d3b77a, #a98d4d);
     }
-
+ 
     .modal-close {
       position: absolute;
       top: 14px;
@@ -1417,11 +1412,11 @@
       cursor: pointer;
       z-index: 20;
     }
-
+ 
     .modal-close:hover {
       color: #8a1e2b;
     }
-
+ 
     /* TOAST */
     .toast {
       position: fixed;
@@ -1441,7 +1436,7 @@
       z-index: 999;
       animation: su .3s ease;
     }
-
+ 
     .toast-err {
       position: fixed;
       bottom: 28px;
@@ -1460,7 +1455,7 @@
       z-index: 999;
       animation: su .3s ease;
     }
-
+ 
     .toast-warn {
       position: fixed;
       bottom: 28px;
@@ -1479,19 +1474,19 @@
       z-index: 999;
       animation: su .3s ease;
     }
-
+ 
     @keyframes su {
       from {
         opacity: 0;
         transform: translateY(14px)
       }
-
+ 
       to {
         opacity: 1;
         transform: translateY(0)
       }
     }
-
+ 
     /* ADMIN QUICK INFO */
     .info-strip {
       display: grid;
@@ -1499,7 +1494,7 @@
       gap: 14px;
       margin-bottom: 16px;
     }
-
+ 
     .info-card {
       background: var(--card);
       border: 1.5px solid var(--border);
@@ -1507,7 +1502,7 @@
       padding: 16px 20px;
       position: relative;
     }
-
+ 
     .info-card .ic-label {
       font-size: 10px;
       font-weight: 700;
@@ -1516,26 +1511,26 @@
       color: var(--muted);
       margin-bottom: 8px;
     }
-
+ 
     .info-card .ic-val {
       font-family: 'Sora', sans-serif;
       font-size: 22px;
       font-weight: 800;
       color: #2c251a;
     }
-
+ 
     .info-card .ic-sub {
       font-size: 11px;
       color: var(--muted);
       margin-top: 3px;
       font-style: italic;
     }
-
+ 
     /* BLOCK SELECTOR TABS */
     .block-section {
       margin-bottom: 16px;
     }
-
+ 
     .block-tabs {
       display: flex;
       gap: 8px;
@@ -1543,7 +1538,7 @@
       margin-bottom: 14px;
       align-items: center;
     }
-
+ 
     .block-tab {
       display: flex;
       align-items: center;
@@ -1561,14 +1556,14 @@
       white-space: nowrap;
       position: relative;
     }
-
+ 
     .block-tab .bt-letter {
       font-family: 'Cinzel', serif;
       font-size: 14px;
       font-weight: 700;
       color: #8a1e2b;
     }
-
+ 
     .block-tab .bt-count {
       font-size: 10px;
       font-weight: 700;
@@ -1577,49 +1572,49 @@
       padding: 2px 7px;
       color: var(--muted);
     }
-
+ 
     .block-tab:hover {
       border-color: var(--gold);
       color: var(--text);
     }
-
+ 
     .block-tab.active {
       background: #fdfcf7;
       border-color: var(--gold);
       box-shadow: inset 0 2px 4px rgba(140, 109, 48, 0.08);
     }
-
+ 
     .block-tab.active .bt-count {
       background: #8c6d30;
       color: white;
     }
-
+ 
     .block-tab-all {
       background: #eae3d0;
       border-color: #c8bc9c;
       color: #8a1e2b;
     }
-
+ 
     .block-tab-all.active {
       background: #fdfcf7;
       border-color: var(--gold);
       color: #8a1e2b;
     }
-
+ 
     .block-chart-row {
       display: grid;
       grid-template-columns: 1.2fr 1fr;
       gap: 16px;
       margin-bottom: 16px;
     }
-
+ 
     .block-stat-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
       margin-top: 14px;
     }
-
+ 
     .bstat {
       background: #faf6eb;
       border: 1px solid var(--border);
@@ -1629,14 +1624,14 @@
       align-items: center;
       gap: 10px;
     }
-
+ 
     .bstat-n {
       font-family: 'Sora', sans-serif;
       font-size: 22px;
       font-weight: 800;
       line-height: 1;
     }
-
+ 
     .bstat-l {
       font-size: 11px;
       color: var(--muted);
@@ -1644,7 +1639,7 @@
       font-weight: 600;
       text-transform: uppercase;
     }
-
+ 
     /* STUDENT PERSONAL BANNER */
     .student-banner {
       background: #faf6eb !important;
@@ -1656,7 +1651,7 @@
       align-items: center;
       gap: 16px;
     }
-
+ 
     .sb-avatar {
       width: 48px;
       height: 48px;
@@ -1669,26 +1664,26 @@
       flex-shrink: 0;
       box-shadow: 0 2px 8px rgba(140, 109, 48, 0.3);
     }
-
+ 
     .sb-info {
       flex: 1;
     }
-
+ 
     .sb-email {
       font-size: 11px;
       color: var(--muted);
       margin-top: 2px;
     }
-
+ 
     .sb-stats {
       display: flex;
       gap: 16px;
     }
-
+ 
     .sb-stat {
       text-align: center;
     }
-
+ 
     .sb-stat-n {
       font-family: 'Sora', sans-serif;
       font-size: 20px;
@@ -1696,7 +1691,7 @@
       color: #2c251a;
       line-height: 1;
     }
-
+ 
     .sb-stat-l {
       font-size: 10px;
       color: var(--muted);
@@ -1705,197 +1700,140 @@
       text-transform: uppercase;
       font-weight: 600;
     }
-
+ 
     .sb-stat-n.orange {
       color: var(--orange);
     }
-
+ 
     .sb-stat-n.sky {
       color: var(--blue);
     }
-
+ 
     .sb-stat-n.green {
       color: var(--green);
     }
-
+ 
     @media (max-width: 1100px) {
       .charts-row1 {
         grid-template-columns: 1fr 1fr;
       }
-
+ 
       .charts-row1 .chart-card:last-child {
         grid-column: 1/-1;
       }
-
+ 
       .charts-row2 {
         grid-template-columns: 1fr;
       }
-
+ 
       .block-chart-row {
         grid-template-columns: 1fr;
       }
     }
-
+ 
     @media (max-width: 900px) {
       .student-grid {
         grid-template-columns: 1fr;
       }
-
+ 
       .stats-strip {
         grid-template-columns: repeat(2, 1fr);
       }
-
+ 
       .info-strip {
         grid-template-columns: 1fr 1fr;
       }
     }
-
+ 
     @media (max-width: 700px) {
       .charts-row1 {
         grid-template-columns: 1fr;
       }
-
+ 
       .navbar {
         padding: 0 16px;
       }
-
+ 
       .page-wrap {
         padding: 20px 16px 60px;
       }
-
+ 
       .hero {
         padding: 32px 16px 60px;
       }
-
+ 
       .stats-wrap {
         padding: 0 16px;
       }
-
+ 
       .nb-logo-wrap {
         display: none;
       }
+ 
+      .navbar {
+        height: auto;
+        min-height: 64px;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+ 
+      .nb-right {
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+ 
+      .admin-badge {
+        display: none;
+      }
+ 
+      .user-chip {
+        max-width: 140px;
+      }
     }
-
+ 
     @media (max-width: 480px) {
       .stats-strip {
         grid-template-columns: 1fr;
       }
-
+ 
       .info-strip {
         grid-template-columns: 1fr;
       }
-    }
-
-    /* ── MOBILE RESPONSIVENESS IMPROVEMENTS ── */
-    @media (max-width: 768px) {
-      /* Navbar responsiveness */
-      .navbar {
-        padding: 0 12px !important;
-      }
-      .nb-sep, .nb-logo-wrap {
-        display: none !important;
-      }
-      .nb-left {
-        gap: 8px !important;
-      }
+ 
       .nb-name {
-        font-size: 16px !important;
+        font-size: 15px;
       }
-      .nb-right {
-        gap: 6px !important;
+ 
+      .nb-sep {
+        display: none;
       }
-      .nb-right .nb-link {
-        padding: 6px 10px !important;
-        font-size: 0 !important;
+ 
+      .user-chip span {
+        max-width: 70px;
       }
-      .nb-right .nb-link span {
-        font-size: 14px !important;
+ 
+      .nb-link {
+        padding: 7px 11px;
+        font-size: 11px;
       }
-      .nb-right .nb-link.logout::after {
-        content: "⏻" !important;
-        font-size: 14px !important;
+ 
+      .shortlist-sidebar {
+        width: 88vw;
+        left: -88vw;
       }
-      .nb-right .user-chip {
-        padding: 5px !important;
-        max-width: none !important;
+ 
+      .search-inp {
+        width: 100%;
+        max-width: 220px;
       }
-      .nb-right .user-chip span {
-        display: none !important;
-      }
-      .admin-badge {
-        display: none !important;
-      }
-
-      /* Page margins and layout */
-      .page-wrap {
-        margin: 12px 8px 80px !important;
-        padding: 16px 12px 60px !important;
-      }
-      
-      /* Student Banner mobile wrap */
-      .student-banner {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        gap: 16px !important;
-        padding: 16px 12px !important;
-      }
-      .sb-avatar {
-        margin: 0 auto !important;
-      }
-      .sb-stats {
-        justify-content: space-around !important;
-        flex-wrap: wrap !important;
-        gap: 12px !important;
-        width: 100% !important;
-      }
-
-      /* Hostel explorer grids responsiveness */
-      #hostelSummaryStrip {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
-      #hostelSummaryStrip .h-stat-card:first-child {
-        grid-column: span 2 !important;
-      }
-      .explorer-charts-grid {
-        grid-template-columns: 1fr !important;
+ 
+      .modal {
+        padding: 22px 18px;
       }
     }
-
-    @media (max-width: 600px) {
-      /* Stats strip compact 2x2 grid */
-      .stats-strip {
-        grid-template-columns: repeat(2, 1fr) !important;
-        gap: 8px !important;
-      }
-      .s-card {
-        padding: 10px 12px !important;
-        gap: 8px !important;
-      }
-      .s-icon {
-        width: 32px !important;
-        height: 32px !important;
-        font-size: 16px !important;
-      }
-      .s-num {
-        font-size: 20px !important;
-      }
-      .s-lbl {
-        font-size: 9px !important;
-        margin-top: 2px !important;
-      }
-    }
-
-    @media (max-width: 480px) {
-      /* Hostel summary strip: full-width items */
-      #hostelSummaryStrip {
-        grid-template-columns: 1fr !important;
-      }
-      #hostelSummaryStrip .h-stat-card:first-child {
-        grid-column: 1 !important;
-      }
-    }
-
+ 
     /* ── HOSTEL EXPLORER ── */
     .h-tab-btn {
       display: flex;
@@ -1913,12 +1851,12 @@
       font-weight: 700;
       text-transform: uppercase;
     }
-
+ 
     .h-tab-btn:hover {
       border-color: var(--gold);
       color: var(--text);
     }
-
+ 
     .h-tab-badge {
       margin-left: auto;
       font-size: 12px;
@@ -1929,7 +1867,7 @@
       color: var(--muted);
       white-space: nowrap;
     }
-
+ 
     .h-stat-card {
       background: #fdfcf7;
       border: 1.5px solid var(--border);
@@ -1940,12 +1878,12 @@
       gap: 12px;
       transition: transform .2s, border-color .2s;
     }
-
+ 
     .h-stat-card:hover {
       transform: translateY(-2px);
       border-color: var(--gold);
     }
-
+ 
     .h-stat-icon {
       width: 36px;
       height: 36px;
@@ -1956,14 +1894,14 @@
       font-size: 17px;
       flex-shrink: 0;
     }
-
+ 
     .h-stat-num {
       font-family: 'Sora', sans-serif;
       font-size: 20px;
       font-weight: 800;
       line-height: 1;
     }
-
+ 
     .h-stat-lbl {
       font-size: 10px;
       color: var(--muted);
@@ -1971,7 +1909,7 @@
       font-weight: 600;
       text-transform: uppercase;
     }
-
+ 
     .h-block-pill {
       display: inline-flex;
       align-items: center;
@@ -1986,25 +1924,25 @@
       position: relative;
       overflow: hidden;
     }
-
+ 
     .h-block-pill:hover {
       border-color: var(--gold);
       color: var(--text);
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     }
-
+ 
     .h-block-pill.active {
       color: var(--text);
     }
-
+ 
     .h-block-pill .pill-letter {
       font-family: 'Cinzel', sans-serif;
       font-size: 16px;
       font-weight: 900;
       line-height: 1;
     }
-
+ 
     .h-block-pill .pill-count {
       font-size: 11px;
       font-weight: 700;
@@ -2012,7 +1950,7 @@
       border-radius: 20px;
       background: rgba(0, 0, 0, 0.05);
     }
-
+ 
     .h-block-pill .pill-bar {
       position: absolute;
       bottom: 0;
@@ -2020,7 +1958,7 @@
       right: 0;
       height: 3px;
     }
-
+ 
     /* HAMBURGER BUTTON & SIDEBAR */
     .hamburger-btn {
       background: transparent;
@@ -2036,7 +1974,7 @@
       z-index: 1001;
       flex-shrink: 0;
     }
-
+ 
     .hamburger-btn span {
       width: 100%;
       height: 2px;
@@ -2044,11 +1982,11 @@
       border-radius: 2px;
       transition: all 0.3s ease;
     }
-
+ 
     .hamburger-btn:hover span {
       background-color: white;
     }
-
+ 
     .sidebar-backdrop {
       position: fixed;
       inset: 0;
@@ -2059,12 +1997,12 @@
       visibility: hidden;
       transition: all 0.3s ease;
     }
-
+ 
     .sidebar-backdrop.active {
       opacity: 1;
       visibility: visible;
     }
-
+ 
     .shortlist-sidebar {
       position: fixed;
       top: 0;
@@ -2080,11 +2018,11 @@
       flex-direction: column;
       padding: 24px;
     }
-
+ 
     .shortlist-sidebar.open {
       left: 0;
     }
-
+ 
     .sidebar-header {
       display: flex;
       align-items: center;
@@ -2093,7 +2031,7 @@
       padding-bottom: 16px;
       margin-bottom: 20px;
     }
-
+ 
     .sidebar-header h3 {
       font-family: 'Cinzel', serif;
       font-size: 18px;
@@ -2101,7 +2039,7 @@
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
-
+ 
     .sidebar-close-btn {
       background: transparent;
       border: none;
@@ -2110,11 +2048,11 @@
       cursor: pointer;
       transition: color 0.2s;
     }
-
+ 
     .sidebar-close-btn:hover {
       color: #8a1e2b;
     }
-
+ 
     .sidebar-content {
       display: flex;
       flex-direction: column;
@@ -2123,16 +2061,16 @@
       flex: 1;
       padding-right: 4px;
     }
-
+ 
     .sidebar-content::-webkit-scrollbar {
       width: 4px;
     }
-
+ 
     .sidebar-content::-webkit-scrollbar-thumb {
       background: var(--gold);
       border-radius: 2px;
     }
-
+ 
     .reset-btn {
       width: 100%;
       padding: 12px;
@@ -2150,12 +2088,12 @@
       gap: 8px;
       transition: all 0.2s;
     }
-
+ 
     .reset-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(140, 109, 48, 0.3);
     }
-
+ 
     .sidebar-report-btn {
       width: 100%;
       padding: 12px;
@@ -2172,23 +2110,23 @@
       gap: 8px;
       transition: all 0.2s;
     }
-
+ 
     .sidebar-report-btn:hover {
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(140, 109, 48, 0.3);
       background: linear-gradient(135deg, #d3b77a, #a98d4d);
       color: #1f180a !important;
     }
-
-
-
+ 
+ 
+ 
     .accordion-item {
       border: 1.5px solid var(--border);
       border-radius: 8px;
       background: #151413;
       overflow: hidden;
     }
-
+ 
     .accordion-header {
       width: 100%;
       padding: 14px;
@@ -2204,21 +2142,21 @@
       align-items: center;
       transition: background 0.2s;
     }
-
+ 
     .accordion-header:hover {
       background: rgba(255, 255, 255, 0.02);
     }
-
+ 
     .accordion-arrow {
       font-size: 10px;
       color: var(--muted);
       transition: transform 0.3s;
     }
-
+ 
     .accordion-item.active .accordion-arrow {
       transform: rotate(180deg);
     }
-
+ 
     .accordion-body {
       max-height: 0;
       overflow: hidden;
@@ -2227,11 +2165,11 @@
       flex-direction: column;
       background: #0e0d0c;
     }
-
+ 
     .accordion-item.active .accordion-body {
       max-height: 350px;
     }
-
+ 
     .sub-option {
       width: 100%;
       padding: 10px 20px;
@@ -2244,21 +2182,21 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-
+ 
     .sub-option:last-child {
       border-bottom: none;
     }
-
+ 
     .sub-option:hover {
       background: rgba(140, 109, 48, 0.08);
       color: white;
       padding-left: 24px;
     }
-
+ 
     .block-chart-row.single-layout {
       grid-template-columns: 1fr !important;
     }
-
+ 
     .note-btn {
       display: inline-flex;
       align-items: center;
@@ -2275,7 +2213,7 @@
       transition: all 0.2s;
       text-transform: uppercase;
     }
-
+ 
     .note-btn:hover {
       background: #735925;
       color: white;
@@ -2283,9 +2221,9 @@
     }
   </style>
 </head>
-
+ 
 <body oncontextmenu="return false;">
-
+ 
   {% if role == 'admin' %}
   <!-- SHORTLIST SIDEBAR -->
   <div class="sidebar-backdrop" id="sidebarBackdrop" onclick="toggleSidebar(false)"></div>
@@ -2298,7 +2236,7 @@
       <button class="reset-btn" onclick="shortlistDashboard('all', 'all')">
         <span>🏠</span> All Hostel
       </button>
-
+ 
       <!-- Collapsible Accordion Boys -->
       <div class="accordion-item" id="boys-accordion-item">
         <button class="accordion-header" onclick="toggleAccordion('boys-accordion-item')">
@@ -2314,7 +2252,7 @@
           <button class="sub-option" onclick="shortlistDashboard('boys', 'F')">Block F</button>
         </div>
       </div>
-
+ 
       <!-- Collapsible Accordion Girls -->
       <div class="accordion-item" id="girls-accordion-item">
         <button class="accordion-header" onclick="toggleAccordion('girls-accordion-item')">
@@ -2330,21 +2268,17 @@
           <button class="sub-option" onclick="shortlistDashboard('girls', 'F')">Block F</button>
         </div>
       </div>
-
+ 
       <a href="/admin/reports" class="sidebar-report-btn">
         <span>📄</span> Generate Report
       </a>
-
+ 
       <a href="/admin/wardens" class="sidebar-report-btn">
         <span>📞</span> Contact Warden
       </a>
-
+ 
       <a href="/admin/notices" class="sidebar-report-btn">
         <span>📢</span> Notice Board
-      </a>
-
-      <a href="/logout" class="sidebar-report-btn" style="color: #f87171 !important; border-color: rgba(239, 68, 68, 0.4);">
-        <span>⏻</span> Logout
       </a>
     </div>
   </div>
@@ -2372,13 +2306,10 @@
         onclick="toggleStudentSidebar(false); openWardensModal(); event.preventDefault();">
         <span>📞</span> Contact Warden
       </a>
-      <a href="/logout" class="sidebar-report-btn" style="color: #f87171 !important; border-color: rgba(239, 68, 68, 0.4);">
-        <span>⏻</span> Logout
-      </a>
     </div>
   </div>
   {% endif %}
-
+ 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nb-left">
@@ -2418,7 +2349,7 @@
       <a href="/logout" class="nb-link logout">Logout ⏻</a>
     </div>
   </nav>
-
+ 
   <!-- SECONDARY TABS -->
   {% if role == 'admin' %}
   <div class="nav-tabs-container">
@@ -2431,7 +2362,7 @@
     </div>
   </div>
   {% endif %}
-
+ 
   <!-- HERO -->
   <section class="hero">
     <div class="hero-orb1"></div>
@@ -2456,7 +2387,7 @@
       </div>
     </div>
   </section>
-
+ 
   <!-- STAT STRIP -->
   <div class="stats-wrap">
     <div class="stats-strip">
@@ -2490,13 +2421,13 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- MAIN CONTENT -->
   <div class="page-wrap">
-
+ 
     {% if role == 'admin' %}
     <!-- ═══ ADMIN VIEW ══════════════════════════════════════════════════════════ -->
-
+ 
     <div class="info-strip" style="margin-top:32px;">
       <div class="info-card">
         <div class="ic-label">📊 Resolution Rate</div>
@@ -2516,7 +2447,7 @@
         <div class="ic-sub" id="info-active-sub">Currently open in system</div>
       </div>
     </div>
-
+ 
     <div class="sec-label" id="analytics">Analytics Overview</div>
     <div class="charts-row1">
       <div class="chart-card">
@@ -2543,7 +2474,7 @@
         </div>
       </div>
     </div>
-
+ 
     <div class="charts-row2">
       <div class="chart-card">
         <h4>📋 Status Distribution</h4>
@@ -2592,7 +2523,7 @@
         </div>
       </div>
     </div>
-
+ 
     <!-- BLOCK-WISE ANALYTICS -->
     <div class="block-section" id="blockSection">
       <div class="sec-label">Block-Wise Complaint Analysis</div>
@@ -2629,11 +2560,11 @@
         </div>
       </div>
     </div>
-
+ 
     <!-- ═══ HOSTEL EXPLORER ════════════════════════════════════════════════ -->
     <div id="hostelExplorer" style="margin-bottom:24px;">
       <div class="sec-label">Hostel-wise Complaint Explorer</div>
-
+ 
       <!-- STEP 1: Hostel switcher -->
       <div style="display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap;align-items:center;">
         <button id="htab-boys" onclick="switchHostel('boys')" class="h-tab-btn">
@@ -2657,7 +2588,7 @@
           complaints
         </div>
       </div>
-
+ 
       <!-- STEP 2: Hostel summary strip -->
       <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px;"
         id="hostelSummaryStrip">
@@ -2697,9 +2628,9 @@
           </div>
         </div>
       </div>
-
+ 
       <!-- STEP 3: Charts row (bar + doughnut) always visible -->
-      <div class="explorer-charts-grid" style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:18px;">
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:18px;">
         <div class="chart-card">
           <h4 id="hostelBarTitle">🏢 Block-wise Complaints</h4>
           <p class="chart-sub" id="hostelBarSub">Pending · In Progress · Resolved per block — click a bar or a block tab
@@ -2712,7 +2643,7 @@
           <div style="position:relative;height:210px;"><canvas id="hostelCatPieChart"></canvas></div>
         </div>
       </div>
-
+ 
       <!-- STEP 4: Block pills (A–F) -->
       <div style="margin-bottom:14px;">
         <div
@@ -2722,7 +2653,7 @@
           <!-- filled by JS -->
         </div>
       </div>
-
+ 
       <!-- STEP 5: Block detail panel (shown after block click) -->
       <div id="hostelBlockPanel"
         style="display:none;border-radius:16px;border:1px solid var(--border);background:var(--card);overflow:hidden;margin-bottom:8px;">
@@ -2759,7 +2690,7 @@
         <!-- Panel tri-bar -->
         <div id="hostelBlockPanelBar" style="height:6px;display:flex;"></div>
         <!-- Panel complaint list -->
-        <div class="tbl-scroll">
+        <div style="overflow-x:auto;">
           <table style="width:100%;border-collapse:collapse;min-width:680px;">
             <thead>
               <tr style="border-bottom:1px solid var(--border);">
@@ -2794,7 +2725,7 @@
         </div>
       </div>
     </div>
-
+ 
     <!-- ADMIN TABLE -->
     <div id="complaints" style="margin-top:8px;">
       <div class="sec-label">All Student Complaints</div>
@@ -2857,7 +2788,7 @@
                   </div>
                   {% endif %}
                   {% if c.image_filename %}<a class="photo-link"
-                    href="{{ url_for('static', filename='uploads/' ~ c.image_filename) }}" target="_blank">🖼
+                    href="{{ url_for('uploaded_file', filename=c.image_filename) }}" target="_blank">🖼
                     Photo</a>{% endif %}
                 </td>
                 <td style="font-weight:600;white-space:nowrap;">
@@ -2912,7 +2843,7 @@
         </div>
       </div>
     </div>
-
+ 
     {% else %}
     <!-- ═══ STUDENT VIEW ════════════════════════════════════════════════════════ -->
     <div class="student-banner" style="margin-top:28px;">
@@ -3018,7 +2949,7 @@
                     </div>
                     {% endif %}
                     {% if c.image_filename %}<a class="photo-link"
-                      href="{{ url_for('static', filename='uploads/' ~ c.image_filename) }}" target="_blank">🖼
+                      href="{{ url_for('uploaded_file', filename=c.image_filename) }}" target="_blank">🖼
                       Photo</a>{% endif %}
                   </td>
                   <td style="font-weight:600;white-space:nowrap;">
@@ -3063,7 +2994,7 @@
           </div>
         </div>
       </div>
-
+ 
       <div class="sidebar">
         <div class="side-card">
           <h4>⚡ Quick Report</h4>
@@ -3089,7 +3020,7 @@
     </div>
     {% endif %}
   </div>
-
+ 
   <!-- ADMIN MODAL -->
   {% if role == 'admin' %}
   <div class="modal-backdrop" id="modalBackdrop">
@@ -3126,7 +3057,7 @@
       <h3 style="font-family: 'Cinzel', serif; color: #8a1e2b; margin-bottom: 4px; text-transform: uppercase;">Student
         Details</h3>
       <p class="modal-sub">Official registration details for this student.</p>
-
+ 
       <div
         style="display: flex; flex-direction: column; gap: 14px; background: #faf6eb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 15px;">
         <div
@@ -3191,9 +3122,9 @@
       </div>
     </div>
   </div>
-
+ 
   {% endif %}
-
+ 
   <!-- ADMIN NOTE VIEW MODAL -->
   <div class="modal-backdrop" id="noteModalBackdrop">
     <div class="modal" style="max-width: 480px;">
@@ -3209,7 +3140,7 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- COMPLAINT DESCRIPTION VIEW MODAL -->
   <div class="modal-backdrop" id="descModalBackdrop">
     <div class="modal" style="max-width: 480px;">
@@ -3224,23 +3155,23 @@
       </div>
     </div>
   </div>
-
+ 
   <!-- STUDENT PROFILE MODAL -->
   {% if role == 'student' and profile %}
   <div class="modal-backdrop" id="profileModalBackdrop">
     <div class="modal" style="max-width: 480px; position: relative;">
       <button class="modal-close" onclick="closeProfileModal()">✕</button>
-
+ 
       <!-- Edit button in top right of the modal card content -->
       <button id="profileEditBtn" onclick="toggleProfileEdit()"
         style="position: absolute; top: 32px; right: 48px; background: none; border: none; color: var(--gold); font-size: 14px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px; z-index: 30;">
         ✏️ Edit
       </button>
-
+ 
       <h3 style="font-family: 'Cinzel', serif; color: #8a1e2b; margin-bottom: 4px; text-transform: uppercase;">Student
         Profile</h3>
       <p class="modal-sub">Your official portal registration details.</p>
-
+ 
       <!-- Profile View Mode -->
       <div id="profileViewMode" style="position: relative; z-index: 10; display: block; margin-top: 15px;">
         <div
@@ -3318,7 +3249,7 @@
           <button type="button" class="btn-cancel" onclick="closeProfileModal()">Close</button>
         </div>
       </div>
-
+ 
       <!-- Profile Edit Mode (Form) -->
       <div id="profileEditMode" style="position: relative; z-index: 10; display: none; margin-top: 15px;">
         <form action="/update_profile" method="POST" onsubmit="return validateProfileForm()">
@@ -3383,7 +3314,7 @@
     </div>
   </div>
   {% endif %}
-
+ 
   <!-- STUDENT WARDENS MODAL -->
   {% if role == 'student' %}
   <div class="modal-backdrop" id="wardensModalBackdrop">
@@ -3392,10 +3323,10 @@
       <h3 style="font-family: 'Cinzel', serif; color: #8a1e2b; margin-bottom: 4px; text-transform: uppercase;">Warden
         Directory 📞</h3>
       <p class="modal-sub">Contact information for hostel wardens.</p>
-
+ 
       <div
         style="display: flex; flex-direction: column; gap: 20px; max-height: 50vh; overflow-y: auto; padding-right: 8px;">
-
+ 
         <div>
           <div
             style="font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); border-bottom: 1.5px solid rgba(140, 109, 48, 0.2); padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase; font-weight: 700;">
@@ -3416,7 +3347,7 @@
             {% endfor %}
           </div>
         </div>
-
+ 
         <div>
           <div
             style="font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); border-bottom: 1.5px solid rgba(140, 109, 48, 0.2); padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase; font-weight: 700;">
@@ -3437,16 +3368,16 @@
             {% endfor %}
           </div>
         </div>
-
+ 
       </div>
-
+ 
       <div class="modal-actions" style="margin-top: 24px;">
         <button type="button" class="btn-cancel" onclick="closeWardensModal()">Close</button>
       </div>
     </div>
   </div>
   {% endif %}
-
+ 
   <!-- FLASH TOAST -->
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
@@ -3460,7 +3391,7 @@
   </script>
   {% endif %}
   {% endwith %}
-
+ 
   <script>
     /* ── Filter buttons ── */
     document.querySelectorAll('.flt').forEach(btn => {
@@ -3473,7 +3404,7 @@
         });
       });
     });
-
+ 
     /* ── Admin search ── */
     function filterTable() {
       const q = (document.getElementById('searchInp')?.value || '').toLowerCase();
@@ -3481,7 +3412,7 @@
         row.style.display = (row.dataset.search || '').includes(q) ? '' : 'none';
       });
     }
-
+ 
     /* ── Admin modal ── */
     function openModal(id, status, note) {
       document.getElementById('updateForm').action = '/admin/update_complaint/' + id;
@@ -3493,7 +3424,7 @@
     document.getElementById('modalBackdrop')?.addEventListener('click', e => {
       if (e.target === e.currentTarget) closeModal();
     });
-
+ 
     /* ── Admin student details modal ── */
     function showStudentDetails(email) {
       fetch('/admin/student_details/' + encodeURIComponent(email))
@@ -3524,7 +3455,7 @@
     document.getElementById('studentDetailsModalBackdrop')?.addEventListener('click', e => {
       if (e.target === e.currentTarget) closeStudentDetailsModal();
     });
-
+ 
     /* ── Student profile modal ── */
     function openProfileModal() {
       const modal = document.getElementById('profileModalBackdrop');
@@ -3570,7 +3501,7 @@
     document.getElementById('profileModalBackdrop')?.addEventListener('click', e => {
       if (e.target === e.currentTarget) closeProfileModal();
     });
-
+ 
     /* ── Admin note modal ── */
     function openNoteModal(noteText) {
       const modal = document.getElementById('noteModalBackdrop');
@@ -3589,7 +3520,7 @@
     document.getElementById('noteModalBackdrop')?.addEventListener('click', e => {
       if (e.target === e.currentTarget) closeNoteModal();
     });
-
+ 
     /* ── Complaint description modal ── */
     function openDescModal(descText) {
       const modal = document.getElementById('descModalBackdrop');
@@ -3608,12 +3539,12 @@
     document.getElementById('descModalBackdrop')?.addEventListener('click', e => {
       if (e.target === e.currentTarget) closeDescModal();
     });
-
+ 
     const role = '{{ role }}';
     const complaintsData = {{ complaints_json | safe }};
     let currentSelectedHostel = 'all';
     let currentSelectedBlock = 'all';
-
+ 
     function toggleSidebar(show) {
       const sidebar = document.getElementById('shortlistSidebar');
       const backdrop = document.getElementById('sidebarBackdrop');
@@ -3627,7 +3558,7 @@
         }
       }
     }
-
+ 
     function toggleStudentSidebar(show) {
       const sidebar = document.getElementById('studentSidebar');
       const backdrop = document.getElementById('studentSidebarBackdrop');
@@ -3641,7 +3572,7 @@
         }
       }
     }
-
+ 
     function scrollToSection(e, selector) {
       e.preventDefault();
       const el = document.querySelector(selector);
@@ -3649,19 +3580,19 @@
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
-
+ 
     function openWardensModal() {
       document.getElementById('wardensModalBackdrop')?.classList.add('open');
     }
-
+ 
     function closeWardensModal() {
       document.getElementById('wardensModalBackdrop')?.classList.remove('open');
     }
-
+ 
     document.getElementById('wardensModalBackdrop')?.addEventListener('click', e => {
       if (e.target === e.currentTarget) closeWardensModal();
     });
-
+ 
     function toggleAccordion(id) {
       const item = document.getElementById(id);
       if (item) {
@@ -3672,32 +3603,32 @@
         }
       }
     }
-
+ 
     function shortlistDashboard(hostel, block) {
       toggleSidebar(false);
-
+ 
       currentSelectedHostel = hostel;
       currentSelectedBlock = block;
-
+ 
       // Highlight current active options in sidebar
       document.querySelectorAll('.sub-option').forEach(btn => btn.classList.remove('active'));
-
+ 
       // Filter complaints table
       const rows = document.querySelectorAll('tr.complaint-row');
       rows.forEach(row => {
         const rowBlock = (row.dataset.block || '').toUpperCase();
         const rowHostel = (row.dataset.hostel || '').toLowerCase();
-
+ 
         let matchesHostel = (hostel === 'all' || rowHostel === hostel);
         let matchesBlock = (block === 'all' || rowBlock === block);
-
+ 
         if (matchesHostel && matchesBlock) {
           row.style.display = '';
         } else {
           row.style.display = 'none';
         }
       });
-
+ 
       // Sync block tabs on dashboard
       const blockTabs = document.querySelectorAll('.block-tab');
       blockTabs.forEach(tab => {
@@ -3706,12 +3637,12 @@
           tab.classList.add('active');
         }
       });
-
+ 
       if (role === 'admin') {
         updateAdminDashboard(hostel, block);
       }
     }
-
+ 
     function getMonthlyData(filteredComplaints) {
       const now = new Date();
       const monthlyIssued = [];
@@ -3741,7 +3672,7 @@
       }
       return { monthlyIssued, monthlyResolved };
     }
-
+ 
     function getCategoryData(filteredComplaints) {
       const counts = {};
       const categories = ["Electrical", "Plumbing", "Wi-Fi", "Cleaning", "Furniture", "Hostel food", "Others"];
@@ -3760,7 +3691,7 @@
       const data = labels.map(cat => counts[cat]);
       return { labels, data };
     }
-
+ 
     function getPriorityData(filteredComplaints) {
       let low = 0, med = 0, high = 0;
       filteredComplaints.forEach(c => {
@@ -3770,7 +3701,7 @@
       });
       return [low, med, high];
     }
-
+ 
     function getStatusData(filteredComplaints) {
       let pending = 0, inProg = 0, resolved = 0;
       filteredComplaints.forEach(c => {
@@ -3780,7 +3711,7 @@
       });
       return [pending, inProg, resolved];
     }
-
+ 
     function getBlockStatusCounts(hostel, block) {
       let filtered = complaintsData;
       if (hostel !== 'all') {
@@ -3794,7 +3725,7 @@
       let r = filtered.filter(c => c.status === 'Resolved').length;
       return { p, ip, r, total: filtered.length };
     }
-
+ 
     function updateAdminDashboard(hostel, block) {
       let filtered = complaintsData;
       if (hostel !== 'all') {
@@ -3803,64 +3734,64 @@
       if (block !== 'all') {
         filtered = filtered.filter(c => c.block === block);
       }
-
+ 
       let total = filtered.length;
       let pending = filtered.filter(c => c.status === 'Pending').length;
       let inProgress = filtered.filter(c => c.status === 'In Progress').length;
       let resolved = filtered.filter(c => c.status === 'Resolved').length;
-
+ 
       document.getElementById('stat-total').textContent = total;
       document.getElementById('stat-pending').textContent = pending;
       document.getElementById('stat-in-progress').textContent = inProgress;
       document.getElementById('stat-resolved').textContent = resolved;
-
+ 
       let resRate = total > 0 ? Math.round((resolved / total) * 100) : 0;
       document.getElementById('info-res-rate').textContent = total > 0 ? resRate + '%' : '—';
       document.getElementById('info-res-sub').textContent = resolved + ' of ' + total + ' resolved';
-
+ 
       let highPriorityCount = filtered.filter(c => c.priority === 'High' && c.status !== 'Resolved').length;
       document.getElementById('info-high-priority').textContent = highPriorityCount;
       document.getElementById('info-active-issues').textContent = total;
-
+ 
       const { monthlyIssued, monthlyResolved } = getMonthlyData(filtered);
       if (monthlyChartInstance) {
         monthlyChartInstance.data.datasets[0].data = monthlyIssued;
         monthlyChartInstance.data.datasets[1].data = monthlyResolved;
         monthlyChartInstance.update();
       }
-
+ 
       const catData = getCategoryData(filtered);
       if (catChartInstance) {
         catChartInstance.data.labels = catData.labels;
         catChartInstance.data.datasets[0].data = catData.data;
         catChartInstance.update();
       }
-
+ 
       const priData = getPriorityData(filtered);
       if (priChartInstance) {
         priChartInstance.data.datasets[0].data = priData;
         priChartInstance.update();
       }
-
+ 
       const statusData = getStatusData(filtered);
       if (statusChartInstance) {
         statusChartInstance.data.datasets[0].data = statusData;
         statusChartInstance.update();
       }
-
+ 
       document.getElementById('progress-pending-count').textContent = pending;
       document.getElementById('progress-inprog-count').textContent = inProgress;
       document.getElementById('progress-resolved-count').textContent = resolved;
       document.getElementById('progress-total-raised').textContent = total;
-
+ 
       let pendingPct = total > 0 ? Math.round((pending / total) * 100) : 0;
       let inProgPct = total > 0 ? Math.round((inProgress / total) * 100) : 0;
       let resolvedPct = total > 0 ? Math.round((resolved / total) * 100) : 0;
-
+ 
       document.getElementById('progress-pending-bar').style.width = pendingPct + '%';
       document.getElementById('progress-inprog-bar').style.width = inProgPct + '%';
       document.getElementById('progress-resolved-bar').style.width = resolvedPct + '%';
-
+ 
       const resFillEl = document.getElementById('resFill');
       if (resFillEl) {
         resFillEl.style.width = resRate + '%';
@@ -3869,12 +3800,12 @@
       if (resPctEl) {
         resPctEl.textContent = total > 0 ? resRate + '%' : '—';
       }
-
+ 
       const blockBarChartCard = document.getElementById('blockBarChartCard');
       const blockChartRow = document.getElementById('blockChartRow');
       const blockTabRow = document.getElementById('blockTabRow');
       const hostelExplorer = document.getElementById('hostelExplorer');
-
+ 
       if (blockTabRow) {
         if (hostel === 'all' && block === 'all') {
           blockTabRow.style.display = '';
@@ -3882,7 +3813,7 @@
           blockTabRow.style.display = 'none';
         }
       }
-
+ 
       if (hostelExplorer) {
         if (hostel === 'all' && block === 'all') {
           hostelExplorer.style.display = '';
@@ -3890,7 +3821,7 @@
           hostelExplorer.style.display = 'none';
         }
       }
-
+ 
       const tabHostelExplorer = document.getElementById('tabHostelExplorer');
       if (tabHostelExplorer) {
         if (hostel === 'all' && block === 'all') {
@@ -3899,7 +3830,7 @@
           tabHostelExplorer.style.display = 'none';
         }
       }
-
+ 
       const titleEl = document.getElementById('dashboardTitle');
       if (titleEl) {
         if (hostel === 'all' && block === 'all') {
@@ -3908,18 +3839,18 @@
           let hostelText = '';
           if (hostel === 'boys') hostelText = 'Boys ';
           else if (hostel === 'girls') hostelText = 'Girls ';
-
+ 
           let blockText = '';
           if (block !== 'all') {
             blockText = block + ' Block';
           } else {
             hostelText += 'Hostel';
           }
-
+ 
           titleEl.innerHTML = 'Admin Dashboard - ' + hostelText + (blockText ? (hostelText ? '' : '') + blockText : '');
         }
       }
-
+ 
       if (block !== 'all') {
         if (blockBarChartCard) blockBarChartCard.style.display = 'none';
         if (blockChartRow) blockChartRow.classList.add('single-layout');
@@ -3928,7 +3859,7 @@
         if (blockBarChartCard) blockBarChartCard.style.display = '';
         if (blockChartRow) blockChartRow.classList.remove('single-layout');
         renderBlockStatusChartDynamic(hostel, 'all');
-
+ 
         const ALL_BLOCKS = ['A', 'B', 'C', 'D', 'E', 'F'];
         const blockCounts = ALL_BLOCKS.map(b => {
           let f = complaintsData.filter(c => c.block === b);
@@ -3939,7 +3870,7 @@
           blockBarChart.data.datasets[0].data = blockCounts;
           blockBarChart.update();
         }
-
+ 
         const btcAll = document.getElementById('btc-all');
         if (btcAll) btcAll.textContent = total;
         ALL_BLOCKS.forEach(b => {
@@ -3950,7 +3881,7 @@
         });
       }
     }
-
+ 
     {% if role == 'admin' %}
     const monthLabels = {{ month_labels     | safe }};
     const monthlyIssued = {{ monthly_issued   | safe }};
@@ -3964,13 +3895,13 @@
     const hostelTotals = {{ hostel_totals        | safe }};
     const hostelStatusData = {{ hostel_status_data   | safe }};
     const hostelBlockData = {{ hostel_block_data     | safe }};
-
+ 
     const resPct = {{ ((stats.resolved / stats.active * 100) | round | int) if stats.active > 0 else 0 }};
     setTimeout(() => { const el = document.getElementById('resFill'); if (el) el.style.width = resPct + '%'; }, 200);
-
+ 
     Chart.defaults.color = '#6e6454';
     Chart.defaults.font.family = 'Inter';
-
+ 
     monthlyChartInstance = new Chart(document.getElementById('monthlyChart'), {
       data: {
         labels: monthLabels,
@@ -3981,7 +3912,7 @@
       },
       options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { color: '#2c251a', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 12 } } }, scales: { x: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', font: { size: 11 } } }, y: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', stepSize: 1, font: { size: 11 } }, beginAtZero: true } } }
     });
-
+ 
     if (catLabels.length > 0) {
       const catColors = ['#8a1e2b', '#c5a86a', '#166534', '#0369a1', '#92400e', '#6b21a8', '#9d174d', '#0f766e'];
       catChartInstance = new Chart(document.getElementById('catChart'), {
@@ -3994,19 +3925,19 @@
       ctx.fillStyle = '#6e6454'; ctx.textAlign = 'center'; ctx.font = '13px Inter';
       ctx.fillText('No data yet', document.getElementById('catChart').width / 2, 100);
     }
-
+ 
     priChartInstance = new Chart(document.getElementById('priChart'), {
       type: 'bar',
       data: { labels: ['Low', 'Moderate', 'High'], datasets: [{ data: [priDict['Low'] || 0, priDict['Moderate'] || 0, priDict['High'] || 0], backgroundColor: ['rgba(140,109,48,0.25)', 'rgba(22,101,52,0.25)', 'rgba(153,27,27,0.25)'], borderColor: ['#8c6d30', '#166534', '#991b1b'], borderWidth: 1.5, borderRadius: 5 }] },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', font: { size: 11 } } }, y: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', stepSize: 1, font: { size: 11 } }, beginAtZero: true } } }
     });
-
+ 
     statusChartInstance = new Chart(document.getElementById('statusChart'), {
       type: 'doughnut',
       data: { labels: ['Pending', 'In Progress', 'Resolved'], datasets: [{ data: [{{ stats.pending }}, {{ stats.in_progress }},{{ stats.resolved }}], backgroundColor: ['rgba(146,64,14,0.25)', 'rgba(30,64,175,0.25)', 'rgba(22,101,52,0.25)'], borderColor: ['#92400e', '#1e40af', '#166534'], borderWidth: 2, hoverOffset: 6 }] },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#2c251a', font: { size: 12, weight: '600' }, boxWidth: 14, padding: 10 } } }, cutout: '55%' }
 });
-
+ 
     /* ── BLOCK BAR CHART ── */
     const ALL_BLOCKS = ['A', 'B', 'C', 'D', 'E', 'F'];
     const blockCounts = ALL_BLOCKS.map(b => blockData[b] || 0);
@@ -4041,17 +3972,17 @@
         }
       }
     });
-
+ 
     /* ── BLOCK STATUS DETAIL CHART ── */
     let blockStatusChartInst = null;
     function renderBlockStatusChartDynamic(hostel, block) {
       const ctx = document.getElementById('blockStatusChart');
       if (!ctx) return;
       if (blockStatusChartInst) { blockStatusChartInst.destroy(); blockStatusChartInst = null; }
-
+ 
       let labels = ['Pending', 'In Progress', 'Resolved'];
       let data, title, sub, showStats;
-
+ 
       if (block === 'all') {
         let counts = getBlockStatusCounts(hostel, 'all');
         data = [counts.p, counts.ip, counts.r];
@@ -4064,34 +3995,34 @@
         title = '🏢 Block ' + block + ' Details';
         sub = counts.total + ' complaint' + (counts.total !== 1 ? 's' : '') + ' in Block ' + block;
         showStats = true;
-
+ 
         document.getElementById('bsPending').textContent = counts.p;
         document.getElementById('bsProgress').textContent = counts.ip;
         document.getElementById('bsSolved').textContent = counts.r;
       }
-
+ 
       document.getElementById('blockDetailTitle').textContent = title;
       document.getElementById('blockDetailSub').textContent = sub;
       document.getElementById('blockStatRow').style.display = showStats ? 'grid' : 'none';
-
+ 
       blockStatusChartInst = new Chart(ctx, {
         type: 'doughnut',
         data: { labels, datasets: [{ data, backgroundColor: ['rgba(146,64,14,0.25)', 'rgba(30,64,175,0.25)', 'rgba(22,101,52,0.25)'], borderColor: ['#92400e', '#1e40af', '#166534'], borderWidth: 2, hoverOffset: 6 }] },
         options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#2c251a', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 8 } } }, cutout: '58%', animation: { animateRotate: true, duration: 500 } }
       });
     }
-
+ 
     /* ── BLOCK TAB SELECT + TABLE FILTER ── */
     function selectBlock(btn, block) {
       shortlistDashboard(currentSelectedHostel, block);
     }
-
+ 
     renderBlockStatusChartDynamic('all', 'all');
-
+ 
     /* ═══════════════════════════════════════════════════════════════════
        HOSTEL EXPLORER — Boys / Girls tabs → Block pills → Complaint panel
     ═══════════════════════════════════════════════════════════════════ */
-
+ 
     const HOSTEL_CFG = {
       boys: {
         accent: '#0369a1', accentDark: '#1e40af',
@@ -4108,12 +4039,12 @@
     };
     const ALL_CATS_H = ['Electrical', 'Plumbing', 'Wi-Fi', 'Cleaning', 'Furniture', 'Hostel food', 'Others'];
     const CAT_COLORS = ['#8a1e2b', '#c5a86a', '#166534', '#0369a1', '#92400e', '#9d174d', '#6b21a8'];
-
+ 
     let activeHostel = 'boys';
     let activeBlock = null;
     let hBarChart = null;
     let hCatChart = null;
-
+ 
     /* ── helpers ── */
     function hStats(ht) {
       const s = (hostelStatusData || {})[ht] || {};
@@ -4124,7 +4055,7 @@
       const b = ((hostelBlockData || {})[ht] || {})[blk] || {};
       return (b['Pending'] || 0) + (b['In Progress'] || 0) + (b['Resolved'] || 0);
     }
-
+ 
     /* ── seed tab counts ── */
     ['boys', 'girls'].forEach(h => {
       const s = hStats(h);
@@ -4133,15 +4064,15 @@
       const sub = document.getElementById('htab-' + h + '-sub');
       if (sub) sub.textContent = s.total + ' complaint' + (s.total !== 1 ? 's' : '');
     });
-
+ 
     /* ── switch hostel ── */
     function switchHostel(ht) {
       activeHostel = ht;
       activeBlock = null;
-
+ 
       const cfg = HOSTEL_CFG[ht];
       const label = ht === 'boys' ? '♂ Boys Hostel' : '♀ Girls Hostel';
-
+ 
       /* tab styles */
       ['boys', 'girls'].forEach(h => {
         const btn = document.getElementById('htab-' + h);
@@ -4158,7 +4089,7 @@
           if (badge) { badge.style.background = 'rgba(255,255,255,0.08)'; badge.style.color = 'var(--muted)'; }
         }
       });
-
+ 
       /* summary strip */
       const s = hStats(ht);
       const rate = s.total > 0 ? Math.round(s.resolved / s.total * 100) : 0;
@@ -4167,7 +4098,7 @@
       document.getElementById('hs-inprog').textContent = s.inProgress;
       document.getElementById('hs-resolved').textContent = s.resolved;
       document.getElementById('hs-rate').textContent = rate + '%';
-
+ 
       /* labels */
       const barTitle = document.getElementById('hostelBarTitle');
       const barSub = document.getElementById('hostelBarSub');
@@ -4177,13 +4108,13 @@
       if (barSub) barSub.textContent = 'Pending · In Progress · Resolved per block — click a block pill to drill down';
       if (catTitle) catTitle.textContent = '🏷 Category Distribution — ' + label;
       if (blkLabel) blkLabel.textContent = label + ' · Select a Block';
-
+ 
       buildBlockPills(ht);
       renderHBar(ht, null);
       renderHCat(ht);
       closeBlockPanel();
     }
-
+ 
     /* ── block pills ── */
     function buildBlockPills(ht) {
       const cfg = HOSTEL_CFG[ht];
@@ -4210,12 +4141,12 @@
         wrap.appendChild(pill);
       });
     }
-
+ 
     /* ── select a block → show panel ── */
     function selectExplorerBlock(ht, blk) {
       activeBlock = blk;
       const cfg = HOSTEL_CFG[ht];
-
+ 
       /* highlight active pill */
       document.querySelectorAll('.h-block-pill').forEach(p => {
         p.classList.remove('active');
@@ -4230,16 +4161,16 @@
         activePill.style.background = cfg.bg;
         activePill.style.boxShadow = '0 0 20px ' + cfg.pillGlow;
       }
-
+ 
       /* update bar chart highlight */
       renderHBar(ht, blk);
-
+ 
       /* build panel */
       const bd = ((hostelBlockData[ht] || {})[blk]) || {};
       const p = bd['Pending'] || 0, ip = bd['In Progress'] || 0, r = bd['Resolved'] || 0;
       const total = p + ip + r;
       const hostelLabel = ht === 'boys' ? '♂ Boys' : '♀ Girls';
-
+ 
       const badge = document.getElementById('hostelBlockPanelBadge');
       const title = document.getElementById('hostelBlockPanelTitle');
       const sub = document.getElementById('hostelBlockPanelSub');
@@ -4251,14 +4182,14 @@
       }
       if (title) title.textContent = hostelLabel + ' Hostel — Block ' + blk + ' Complaints';
       if (sub) sub.textContent = total + ' complaint' + (total !== 1 ? 's' : '') + ' in this block';
-
+ 
       const bpp = document.getElementById('bpBadgePending');
       const bpg = document.getElementById('bpBadgeProgress');
       const bpr = document.getElementById('bpBadgeResolved');
       if (bpp) bpp.textContent = '⏳ ' + p + ' Pending';
       if (bpg) bpg.textContent = '🔧 ' + ip + ' In Progress';
       if (bpr) bpr.textContent = '✅ ' + r + ' Resolved';
-
+ 
       /* tri-colour bar */
       const triBar = document.getElementById('hostelBlockPanelBar');
       if (triBar && total > 0) {
@@ -4269,7 +4200,7 @@
       } else if (triBar) {
         triBar.innerHTML = '<div style="width:100%;background:rgba(255,255,255,0.06);"></div>';
       }
-
+ 
       /* complaint rows — filter from all complaint rows in the main table */
       const tbody = document.getElementById('hostelBlockPanelBody');
       if (tbody) {
@@ -4303,7 +4234,7 @@
           tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:36px;color:var(--muted);font-size:13px;">No complaints recorded for Block ${blk} in this hostel</td></tr>`;
         }
       }
-
+ 
       /* show panel */
       const panel = document.getElementById('hostelBlockPanel');
       if (panel) {
@@ -4311,7 +4242,7 @@
         setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
       }
     }
-
+ 
     function closeBlockPanel() {
       activeBlock = null;
       const panel = document.getElementById('hostelBlockPanel');
@@ -4324,25 +4255,25 @@
       });
       if (hBarChart) renderHBar(activeHostel, null);
     }
-
+ 
     /* ── bar chart: all blocks × 3 statuses, highlight selected ── */
     function renderHBar(ht, selectedBlk) {
       const cfg = HOSTEL_CFG[ht];
       const blocks = cfg.blocks;
       const blkD = hostelBlockData[ht] || {};
-
+ 
       const pData = blocks.map(b => ((blkD[b]) || {})['Pending'] || 0);
       const ipData = blocks.map(b => ((blkD[b]) || {})['In Progress'] || 0);
       const rData = blocks.map(b => ((blkD[b]) || {})['Resolved'] || 0);
-
+ 
       const dimAlpha = selectedBlk ? '0.18' : '0.75';
       const mkColors = (base, solidAlpha) =>
         blocks.map(b => b === selectedBlk ? base.replace('ALPHA', solidAlpha) : base.replace('ALPHA', dimAlpha));
-
+ 
       const pendingBg = mkColors('rgba(146,64,14,ALPHA)', '0.85');
       const progressBg = mkColors('rgba(30,64,175,ALPHA)', '0.85');
       const resolvedBg = mkColors('rgba(22,101,52,ALPHA)', '0.85');
-
+ 
       if (hBarChart) { hBarChart.destroy(); hBarChart = null; }
       const ctx = document.getElementById('hostelBlockBarChart');
       if (!ctx) return;
@@ -4377,7 +4308,7 @@
         }
       });
     }
-
+ 
     /* ── category doughnut ── */
     function renderHCat(ht) {
       const catD = (hostelCategoryData[ht]) || {};
@@ -4407,10 +4338,10 @@
         }
       });
     }
-
+ 
     /* ── initial render ── */
     switchHostel('boys');
-
+ 
     // Secondary tabs active state and smooth scroll
     document.querySelectorAll('.nav-tab').forEach(tab => {
       tab.addEventListener('click', function (e) {
@@ -4426,10 +4357,10 @@
         }
       });
     });
-
-
+ 
+ 
     {% endif %}
   </script>
 </body>
-
+ 
 </html>
