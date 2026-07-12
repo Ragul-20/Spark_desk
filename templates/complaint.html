@@ -1,422 +1,671 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>SPARK Desk — Submit Complaint</title>
+  <meta charset="UTF-8">
+  <title>SPARK Desk — SECE Login</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    :root {
-      --bg: #eae3d0; /* Light warm parchment outer body background */
-      --surface: #0e0d0c; /* Rich charcoal-black for header */
-      --card: #faf5e9; /* Light parchment card background */
-      --card2: #f7f1e3;
-      --border: #d6caa9; /* Warm gold/parchment border */
-      --blue: #1e40af;
-      --gold: #8c6d30; /* Medieval gold */
-      --green: #166534;
-      --orange: #92400e;
-      --red: #991b1b;
-      --text: #2c251a; /* Dark brown-slate for text */
-      --muted: #6e6454;
-      --dim: #8f826d;
+    body {
+      font-family: 'Inter', sans-serif;
+      height: 100vh;
+      display: flex;
+      background: #0a0a0b;
+      overflow: hidden;
     }
-    body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
-    
-    /* NAVBAR */
-    .navbar { position: sticky; top: 0; z-index: 200; background: var(--surface); border-bottom: 2px solid var(--gold); display: flex; align-items: center; justify-content: space-between; padding: 0 40px; height: 64px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-    .nb-brand { display:flex; align-items:center; gap:10px; text-decoration:none; }
-    .nb-icon { width:34px; height:34px; background: linear-gradient(135deg, var(--gold), #5a451e); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; box-shadow: 0 2px 8px rgba(140,109,48,0.4); }
-    .nb-name { font-family: 'Cinzel', serif; font-size: 20px; font-weight: 700; color: #ffd700; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
-    .nb-name span { color: white; }
-    .nb-right { display:flex; align-items:center; gap:12px; }
-    
-    .nb-link { text-decoration: none; color: #a8b3cf; font-size: 12px; font-weight: 700; padding: 8px 16px; border-radius: 20px; border: 1.5px solid rgba(140, 109, 48, 0.4); background: rgba(255,255,255,0.02); color: #ffd700; transition: .18s; white-space: nowrap; }
-    .nb-link:hover, .nb-link.active { color: #0e0d0c; background: linear-gradient(135deg, #c5a86a, #9e8143); border-color: #8c6d30; box-shadow: 0 0 10px rgba(140,109,48,0.3); }
-    .nb-link.logout { color: #f87171; border: 1.5px solid rgba(239,68,68,0.4); background: transparent; }
-    .nb-link.logout:hover { background: rgba(239,68,68,0.15); color: #ef4444; }
  
-    /* BREADCRUMB */
-    .breadcrumb { max-width:1100px; margin:0 auto; padding:18px 40px 0; font-size:12px; color:var(--muted); display:flex; align-items:center; gap:8px; }
-    .breadcrumb a { color:var(--gold); text-decoration:none; font-weight: 600; }
-    .breadcrumb a:hover { color:#8a1e2b; }
+    /* LEFT PANEL */
+    .left {
+      flex: 1;
+      position: relative;
+      background: url("{{ url_for('static', filename='hostelimage.png') }}") center / cover no-repeat;
+    }
+    .left-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(125deg, rgba(14, 13, 12, 0.85) 0%, rgba(14, 13, 12, 0.3) 100%);
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      padding: 44px 52px;
+    }
+    .top-logo {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #faf5e9; border: 1.5px solid #d6caa9; border-radius: 12px;
+      padding: 10px 20px; width: fit-content;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    .top-logo img { height: 40px; display: block; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3);
+      color: #ffd700; font-size: 10px; font-weight: 700;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 30px; margin-bottom: 22px;
+    }
+    .head-text h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(28px, 3vw, 46px);
+      color: #fff; line-height: 1.18; margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+    .head-text h1 span { color: #ffd700; }
+    .head-text p {
+      color: rgba(255,255,255,0.72); font-size: 14px;
+      line-height: 1.85; max-width: 380px; margin-bottom: 32px;
+    }
+    .stats { display: flex; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 26px; }
+    .stat { flex: 1; padding-right: 24px; border-right: 1px solid rgba(255,255,255,0.12); margin-right: 24px; }
+    .stat:last-child { border-right: none; margin-right: 0; }
+    .stat-n { font-family: 'Cinzel', serif; font-size: 28px; font-weight: 800; color: #ffd700; line-height: 1; }
+    .stat-l { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; }
  
-    /* PAGE GRID (Parchment scroll container) */
-    .page { max-width:1100px; margin:24px auto 80px; padding:32px 40px; display:grid; grid-template-columns:1fr 320px; gap:28px; align-items:start; background: #faf5e9; border: 2.5px solid var(--gold); border-radius: 12px; position: relative; box-shadow: 0 10px 40px rgba(0,0,0,0.3); }
-    .page::before { content: ''; position: absolute; inset: 6px; border: 1px double rgba(140, 109, 48, 0.4); border-radius: 8px; pointer-events: none; }
-    .page::after {
+    /* RIGHT PANEL (Parchment side scroll style) */
+    .right {
+      width: 480px; min-width: 480px;
+      background: #faf5e9;
+      border-left: 2.5px solid #8c6d30;
+      position: relative; overflow: hidden;
+      color: #2c251a;
+      display: flex;
+      flex-direction: column;
+    }
+    .right::before {
+      content: ''; position: absolute; inset: 6px;
+      border: 1px double rgba(140, 109, 48, 0.4);
+      border-radius: 8px; pointer-events: none;
+    }
+    .right::after {
       content: ''; position: absolute; inset: 6px; pointer-events: none; border-radius: 8px;
       background:
-        linear-gradient(to right, var(--gold) 3px, transparent 3px) 0 0,
-        linear-gradient(to bottom, var(--gold) 3px, transparent 3px) 0 0,
-        linear-gradient(to left, var(--gold) 3px, transparent 3px) 100% 0,
-        linear-gradient(to bottom, var(--gold) 3px, transparent 3px) 100% 0,
-        linear-gradient(to right, var(--gold) 3px, transparent 3px) 0 100%,
-        linear-gradient(to top, var(--gold) 3px, transparent 3px) 0 100%,
-        linear-gradient(to left, var(--gold) 3px, transparent 3px) 100% 100%,
-        linear-gradient(to top, var(--gold) 3px, transparent 3px) 100% 100%;
-      background-repeat: no-repeat; background-size: 20px 20px;
+        linear-gradient(to right, #8c6d30 3px, transparent 3px) 0 0,
+        linear-gradient(to bottom, #8c6d30 3px, transparent 3px) 0 0,
+        linear-gradient(to left, #8c6d30 3px, transparent 3px) 100% 0,
+        linear-gradient(to bottom, #8c6d30 3px, transparent 3px) 100% 0,
+        linear-gradient(to right, #8c6d30 3px, transparent 3px) 0 100%,
+        linear-gradient(to top, #8c6d30 3px, transparent 3px) 0 100%,
+        linear-gradient(to left, #8c6d30 3px, transparent 3px) 100% 100%,
+        linear-gradient(to top, #8c6d30 3px, transparent 3px) 100% 100%;
+      background-repeat: no-repeat; background-size: 16px 16px;
+    }
+    .right-scroll-container {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .right-content {
+      padding: 52px 50px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .glow { display: none; } /* Disable default neon glows */
+ 
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; position: relative; z-index: 10; }
+    .brand-icon {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, #c5a86a, #9e8143);
+      border: 1.5px solid #8c6d30;
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 2px 8px rgba(140,109,48,0.25);
+    }
+    .brand-name { font-family: 'Cinzel', serif; font-size: 21px; font-weight: 700; color: #8c6d30; text-transform: uppercase; letter-spacing: 0.5px; }
+    .brand-name span { color: #8a1e2b; }
+ 
+    .form-head { position: relative; z-index: 10; }
+    .form-head h2 { font-family: 'Cinzel', serif; font-size: 24px; font-weight: 700; color: #8a1e2b; margin-bottom: 6px; text-transform: uppercase; }
+    .form-head p { font-size: 13px; color: #6e6454; margin-bottom: 32px; line-height: 1.65; font-style: italic; }
+ 
+    .field { margin-bottom: 20px; position: relative; z-index: 10; }
+    .field label {
+      display: block; font-size: 11px; font-weight: 700;
+      letter-spacing: 1.1px; text-transform: uppercase;
+      color: #6e6454; margin-bottom: 8px;
+    }
+    .iw { position: relative; }
+    .iw .ico {
+      position: absolute; left: 14px; top: 50%;
+      transform: translateY(-50%); font-size: 14px;
+      opacity: 0.6; pointer-events: none;
+    }
+    .field input {
+      width: 100%; padding: 13px 16px 13px 42px;
+      background: #ffffff;
+      border: 1.5px solid #d0c8b6;
+      border-radius: 8px; color: #2c251a;
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      outline: none; transition: border-color .22s, box-shadow .22s;
+    }
+    #password { padding-right: 48px; }
+    .field input::placeholder { color: #8f826d; }
+    .field input:focus {
+      border-color: #8c6d30;
+      box-shadow: 0 0 0 3px rgba(140, 109, 48, 0.15);
     }
  
-    /* FORM CARD & SIDEBAR CARDS */
-    .form-card, .side-card { background:#fdfcf7; border:1.5px solid var(--border); border-radius:10px; overflow:hidden; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.06); }
-    .form-card::before, .side-card::before { content: ''; position: absolute; inset: 4px; border: 1px solid rgba(140, 109, 48, 0.1); border-radius: 7px; pointer-events: none; }
-    .form-card::after, .side-card::after {
-      content: ''; position: absolute; inset: 4px; pointer-events: none; border-radius: 7px;
-      background:
-        linear-gradient(to right, var(--gold) 1.5px, transparent 1.5px) 0 0,
-        linear-gradient(to bottom, var(--gold) 1.5px, transparent 1.5px) 0 0,
-        linear-gradient(to left, var(--gold) 1.5px, transparent 1.5px) 100% 0,
-        linear-gradient(to bottom, var(--gold) 1.5px, transparent 1.5px) 100% 0,
-        linear-gradient(to right, var(--gold) 1.5px, transparent 1.5px) 0 100%,
-        linear-gradient(to top, var(--gold) 1.5px, transparent 1.5px) 0 100%,
-        linear-gradient(to left, var(--gold) 1.5px, transparent 1.5px) 100% 100%,
-        linear-gradient(to top, var(--gold) 1.5px, transparent 1.5px) 100% 100%;
-      background-repeat: no-repeat; background-size: 8px 8px;
+    /* PASSWORD VISIBILITY TOGGLE */
+    .pw-toggle {
+      position: absolute; right: 12px; top: 50%;
+      transform: translateY(-50%);
+      background: none; border: none; cursor: pointer;
+      color: #8f826d; padding: 4px;
+      border-radius: 6px; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      transition: color .18s, background .18s;
+    }
+    .pw-toggle:hover {
+      color: #2c251a;
+      background: rgba(140, 109, 48, 0.08);
+    }
+    .pw-toggle svg {
+      width: 17px; height: 17px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.8px; stroke-linecap: round; stroke-linejoin: round;
     }
  
-    .form-topbar { height:4px; background:linear-gradient(90deg, var(--gold), #5a451e); }
-    .form-body { padding:36px 40px; position: relative; z-index: 10; }
-    .f-tag { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
-    .form-body h2, .side-card h4 { font-family:'Cinzel',serif; font-size:22px; font-weight:700; color:#8a1e2b; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; }
-    .f-sub { font-size:13px; color:var(--muted); margin-bottom:30px; line-height:1.6; font-style: italic; }
- 
-    /* Steps */
-    .steps { display:flex; border-radius:8px; overflow:hidden; border:1.5px solid var(--border); margin-bottom:30px; background: #faf6eb; }
-    .step { flex:1; padding:11px 8px; text-align:center; background:rgba(0,0,0,0.02); font-size:11px; font-weight:700; color:var(--muted); border-right:1.5px solid var(--border); transition:.2s; text-transform: uppercase; letter-spacing:0.5px; }
-    .step:last-child { border-right:none; }
-    .step.active { background:#fdfcf7; color:#8a1e2b; border-bottom: 2.5px solid var(--gold); }
-    .step.done { background:#e2d5c0; color:#166534; }
-    .step-ico { font-size:15px; display:block; margin-bottom:3px; }
- 
-    /* Form layout */
-    .fg { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-    .full { grid-column:1/-1; }
-    .field { display:flex; flex-direction:column; }
-    .field label { font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
-    .req::after { content:' *'; color:var(--red); }
-    .iw { position:relative; }
-    .iw .ico { position:absolute; left:14px; top:50%; transform:translateY(-50%); font-size:14px; opacity:.6; pointer-events:none; }
- 
-    input, select, textarea {
-      width:100%; padding:12px 16px 12px 42px;
-      background:#ffffff; border:1.5px solid #d0c8b6;
-      border-radius:8px; color:var(--text);
-      font-family:'Inter',sans-serif; font-size:14px; outline:none;
-      transition:border-color .22s, box-shadow .22s;
+    .btn-login {
+      width: 100%; margin-top: 8px; padding: 14px;
+      background: linear-gradient(135deg, #c5a86a, #9e8143);
+      border: 1.5px solid #8c6d30; border-radius: 8px; color: #1f180a;
+      font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+      cursor: pointer; letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 12px rgba(140, 109, 48, 0.25);
+      position: relative; z-index: 10;
     }
-    input::placeholder, textarea::placeholder { color:var(--dim); }
-    input:focus, select:focus, textarea:focus { border-color:var(--gold); box-shadow:0 0 0 3px rgba(140, 109, 48, 0.15); }
-    select { appearance:none; cursor:pointer; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238c6d30' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 16px center; padding-right:40px; }
-    select option { background:#ffffff; color:var(--text); }
-    textarea { resize:vertical; min-height:108px; line-height:1.65; padding-top:12px; padding-left:16px; }
-    .no-ico { padding-left:16px; }
-    .char-c { font-size:11px; color:var(--muted); margin-top:5px; text-align:right; font-weight: 600; }
+    .btn-login:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(140, 109, 48, 0.4); background: linear-gradient(135deg, #d3b77a, #a98d4d); }
+    .btn-login:active { transform: translateY(0); }
  
-    /* Chips */
-    .chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
-    .chip { display:inline-flex; align-items:center; gap:6px; padding:7px 14px; border-radius:8px; background:#faf6eb; border:1.5px solid var(--border); color:var(--muted); cursor:pointer; font-size:13px; font-weight:600; transition:.18s; user-select:none; }
-    .chip:hover { border-color:var(--gold); color:var(--text); background:#fdfcf7; }
-    .chip.on { border-color:var(--gold); color:#8a1e2b; background:#fdfcf7; font-weight:800; box-shadow: inset 0 2px 4px rgba(140,109,48,0.08); }
+    .err {
+      margin-top: 16px; padding: 12px 16px;
+      background: #fee2e2;
+      border: 1px solid #ef4444;
+      border-radius: 8px; color: #991b1b;
+      font-size: 13px; display: flex; align-items: center; gap: 9px;
+      font-weight: 700;
+      animation: errIn .28s ease;
+      position: relative; z-index: 10;
+    }
+    @keyframes errIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
  
-    .pri-row { display:flex; gap:10px; }
-    .pri { flex:1; padding:10px 8px; border-radius:8px; text-align:center; background:#faf6eb; border:1.5px solid var(--border); font-size:12px; font-weight:700; color:var(--muted); cursor:pointer; transition:.18s; text-transform: uppercase; }
-    .pri:hover { border-color:var(--gold); color:var(--text); }
-    .pri.on.low  { border-color:var(--green);  background:#d1fae5;  color:#166534; }
-    .pri.on.med  { border-color:var(--gold); background:#fef3c7; color:#854d0e; }
-    .pri.on.high { border-color:var(--red);    background:#fee2e2;  color:#991b1b; }
-    .pri-ico { font-size:17px; display:block; margin-bottom:4px; }
+    .shake { animation: shake .36s ease; }
+    @keyframes shake {
+      0%,100%{transform:translateX(0)}
+      20%{transform:translateX(-7px)}
+      40%{transform:translateX(7px)}
+      60%{transform:translateX(-4px)}
+      80%{transform:translateX(4px)}
+    }
  
-    .file-drop { border:2px dashed #c8bc9c; background:#faf6eb; border-radius:8px; padding:28px 20px; text-align:center; position:relative; cursor:pointer; transition:.22s; }
-    .file-drop:hover { border-color:var(--gold); background:#fdfcf7; }
-    .file-drop input[type=file] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; }
-    .fd-ico { font-size:26px; opacity:.6; margin-bottom:8px; }
-    .file-drop p { font-size:13px; color:var(--muted); line-height:1.7; }
-    .file-drop span { color:var(--gold); font-weight:700; }
-    .fname { font-size:12px; color:var(--green); margin-top:6px; font-weight:700; }
+    hr.divider { border: none; border-top: 1.5px solid #d6caa9; margin: 26px 0; position: relative; z-index: 10; }
  
-    .btn-submit { width:100%; margin-top:6px; padding:14px; background:linear-gradient(135deg,#c5a86a,#9e8143); border:1.5px solid #8c6d30; border-radius:8px; color:#1f180a; font-family:'Inter',sans-serif; font-size:14px; font-weight:700; cursor:pointer; letter-spacing:.5px; text-transform: uppercase; transition:transform .2s, box-shadow .2s; box-shadow:0 4px 12px rgba(140,109,48,0.25); }
-    .btn-submit:hover { transform:translateY(-2px); box-shadow:0 6px 18px rgba(140,109,48,0.4); background:linear-gradient(135deg,#d3b77a,#a98d4d); }
+    /* --- GOOGLE OAUTH ADDITION ---
+       Styling for the "Continue with Google" button. Kept visually distinct
+       from .btn-login (white/neutral, Google-style) but matches the same
+       rounded, bordered shape and spacing so it fits the existing design. */
+    .or-divider {
+      display: flex; align-items: center; gap: 12px;
+      margin: 18px 0; position: relative; z-index: 10;
+    }
+    .or-divider::before, .or-divider::after {
+      content: ""; flex: 1; height: 1px; background: #d6caa9;
+    }
+    .or-divider span {
+      font-size: 11px; font-weight: 700; color: #6e6454;
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .btn-google {
+      width: 100%; padding: 12px 14px;
+      background: #ffffff; border: 1.5px solid #d6caa9; border-radius: 8px;
+      color: #2c251a; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      cursor: pointer; text-decoration: none;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      position: relative; z-index: 10;
+    }
+    .btn-google:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(140, 109, 48, 0.18); background: #fbf9f4; }
+    .btn-google:active { transform: translateY(0); }
+    .btn-google svg { width: 18px; height: 18px; flex-shrink: 0; }
+    /* --- END GOOGLE OAUTH ADDITION --- */
+    .footer { text-align: center; position: relative; z-index: 10; }
+    .footer p { font-size: 11px; color: #6e6454; line-height: 1.7; font-weight: 600; }
  
-    .sidebar { display:flex; flex-direction:column; gap:18px; position: relative; z-index: 10; }
-    .side-card { padding: 22px; }
-    .side-card h4 { font-size:13px; margin-bottom:16px; display:flex; align-items:center; gap:8px; }
-    .hw-list { list-style:none; display:flex; flex-direction:column; }
-    .hw-list li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; border-bottom:1px solid rgba(140,109,48,0.12); font-size:12px; color:var(--muted); line-height:1.65; }
-    .hw-list li:last-child { border-bottom:none; padding-bottom:0; }
-    .hw-n { width:22px; height:22px; border-radius:50%; flex-shrink:0; background:#faf6eb; border:1px solid var(--border); color:#8a1e2b; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; margin-top:1px; }
-    .cat-leg { display:flex; flex-direction:column; gap:9px; }
-    .cl { display:flex; align-items:center; gap:10px; font-size:12px; color:var(--muted); }
-    .cl-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
-    .cl strong { color:var(--text); font-weight:700; }
-    
-    .emer { background:#faf6eb; border:1px solid var(--border); border-radius:8px; padding:16px; font-size:12px; color:var(--muted); line-height:1.75; }
-    .emer strong { color:#8a1e2b; font-family:'Cinzel',serif; font-size:13px; }
-    .ew { color:var(--red); font-weight:700; margin-top:8px; display:block; }
+    /* Side-by-side layout rows for signup */
+    .row {
+      display: flex;
+      gap: 16px;
+    }
+    .row .field {
+      flex: 1;
+    }
+    select.custom-select {
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%236e6454' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position-x: calc(100% - 12px);
+      background-position-y: 50%;
+      cursor: pointer;
+    }
+    .success-alert {
+      margin-top: 16px; padding: 12px 16px;
+      background: #ecfdf5;
+      border: 1px solid #10b981;
+      border-radius: 8px; color: #065f46;
+      font-size: 13px; display: flex; align-items: center; gap: 9px;
+      font-weight: 700;
+      animation: errIn .28s ease;
+      position: relative; z-index: 10;
+    }
  
-    .toast { position:fixed; bottom:30px; right:30px; background:linear-gradient(135deg, #d1fae5, #a7f3d0); border:1.5px solid #34d399; border-radius:10px; padding:15px 22px; color:#065f46; font-size:14px; font-weight:700; box-shadow:0 8px 30px rgba(0,0,0,0.15); display:flex; align-items:center; gap:10px; z-index:999; animation:su .3s ease; }
-    .toast-err { position:fixed; bottom:30px; right:30px; background:linear-gradient(135deg, #fee2e2, #fecaca); border:1.5px solid #ef4444; border-radius:10px; padding:15px 22px; color:#991b1b; font-size:14px; font-weight:700; box-shadow:0 8px 30px rgba(0,0,0,0.15); display:flex; align-items:center; gap:10px; z-index:999; animation:su .3s ease; }
-    .toast-warn { position:fixed; bottom:30px; right:30px; background:linear-gradient(135deg, #fef3c7, #fde68a); border:1.5px solid #f59e0b; border-radius:10px; padding:15px 22px; color:#92400e; font-size:14px; font-weight:700; box-shadow:0 8px 30px rgba(0,0,0,0.15); display:flex; align-items:center; gap:10px; z-index:999; animation:su .3s ease; }
-    @keyframes su { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
- 
-    @media(max-width:900px) {
-      .page { grid-template-columns:1fr; padding:20px; }
-      .form-body { padding:24px 20px; }
-      .fg { grid-template-columns:1fr; }
-      .navbar { padding:0 20px; }
-      .breadcrumb { padding:14px 20px 0; }
+    @media (max-width: 860px) {
+      .left { display: none; }
+      .right { width: 100%; min-width: 100%; border-left: none; }
+    }
+    @media (max-height: 750px) {
+      .left-overlay { padding: 24px 32px; }
+      .left-overlay .stats { display: none; }
+      .left-overlay .head-text p { display: none; }
+      .brand { margin-bottom: 24px; }
+      .right-content { padding: 36px 40px; }
     }
   </style>
 </head>
-<body oncontextmenu="return false;">
- 
-  <nav class="navbar">
-    <a class="nb-brand" href="/welcome">
-      <div class="nb-icon">🏠</div>
-      <div class="nb-name">SPARK <span>Desk</span></div>
-    </a>
-    <div class="nb-right">
-      <a href="/welcome"   class="nb-link"><span>⌂</span> Dashboard</a>
-      <a href="/complaint" class="nb-link active"><span>✍</span> Complaint</a>
-      <a href="/logout"    class="nb-link logout">Logout ⏻</a>
+<body oncontextmenu="return false;"> 
+  <div class="left">
+    <div class="left-overlay">
+      <div class="top-logo">
+        <img src="{{ url_for('static', filename='SECElogo.png') }}" alt="SECE Logo">
+      </div>
+      <div class="head-text">
+        <div class="pill">🏛 SECE Hostel Management System</div>
+        <h1>SPARK Desk <br><span>Faster Every Time.</span></h1>
+        <p>Sri Eshwar College of Engineering's official platform for reporting and tracking hostel maintenance issues. Submit once, resolved fast.</p>
+        <div class="stats">
+          <div class="stat"><div class="stat-n">24h</div><div class="stat-l">Avg. Response</div></div>
+          <div class="stat"><div class="stat-n">6+</div><div class="stat-l">Issue Categories</div></div>
+          <div class="stat"><div class="stat-n">100%</div><div class="stat-l">SECE Students</div></div>
+        </div>
+      </div>
     </div>
-  </nav>
- 
-  <div class="breadcrumb">
-    <a href="/welcome">Dashboard</a>
-    <span>›</span>
-    <span style="color:var(--text)">Submit Complaint</span>
   </div>
  
-  <div class="page">
+  <div class="right">
+    <div class="glow g1"></div>
+    <div class="glow g2"></div>
  
-    <div class="form-card">
-      <div class="form-topbar"></div>
-      <div class="form-body">
-        <div class="f-tag">Maintenance Request</div>
-        <h2>Submit a Complaint</h2>
-        <p class="f-sub">Fill in the details below. Our team responds within <strong style="color:white;">24 hours</strong>.</p>
- 
-        <div class="steps" id="steps">
-          <div class="step active"><span class="step-ico">📝</span>DETAILS</div>
-          <div class="step"><span class="step-ico">📷</span>PHOTO</div>
-          <div class="step"><span class="step-ico">✅</span>SUBMIT</div>
+    <div class="right-scroll-container">
+      <div class="right-content">
+        <div class="brand">
+          <div class="brand-icon">🏠</div>
+          <div class="brand-name">SPARK <span>Desk</span></div>
         </div>
  
-        <form method="POST" action="/submit_complaint" enctype="multipart/form-data">
-          <div class="fg">
- 
-            <div class="field">
-              <label class="req">Student Name</label>
-              <div class="iw">
-                <span class="ico">👤</span>
-                <input type="text" name="name" placeholder="Your full name" value="{{ profile.name or full_name }}" required>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="req">Room Number</label>
-              <div class="iw">
-                <span class="ico">🚪</span>
-                <input type="text" name="room" placeholder="e.g. 204" value="{{ profile.room_no or '' }}" required>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="req">Hostel Type</label>
-              <div class="iw">
-                <span class="ico">🏠</span>
-                <select name="hostel_type" id="hostelType" required>
-                  <option value="">Select hostel type</option>
-                  <option value="boys" {% if profile and profile.hostel_type == 'boys' %}selected{% endif %}>Boys Hostel</option>
-                  <option value="girls" {% if profile and profile.hostel_type == 'girls' %}selected{% endif %}>Girls Hostel</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field">
-              <label>Block <span style="color:var(--dim);font-weight:400;">(Select hostel type first)</span></label>
-              <div class="iw">
-                <span class="ico">🏢</span>
-                <select name="block" id="blockSel">
-                  <option value="">Select hostel type first</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="req">Floor Number</label>
-              <div class="iw">
-                <span class="ico">🪜</span>
-                <input type="text" name="floor" placeholder="e.g. 2nd Floor" value="{{ profile.floor or '' }}" required>
-              </div>
-            </div>
- 
-            <div class="field full">
-              <label class="req">Complaint Category</label>
-              <div class="chips">
-                <span class="chip" data-v="Electrical"  onclick="pickCat(this)">⚡ Electrical</span>
-                <span class="chip" data-v="Plumbing"    onclick="pickCat(this)">🚿 Plumbing</span>
-                <span class="chip" data-v="Wi-Fi"       onclick="pickCat(this)">📶 Wi-Fi</span>
-                <span class="chip" data-v="Cleaning"    onclick="pickCat(this)">🧹 Cleaning</span>
-                <span class="chip" data-v="Furniture"   onclick="pickCat(this)">🪑 Furniture</span>
-                <span class="chip" data-v="Hostel food" onclick="pickCat(this)">🍱 Hostel food</span>
-                <span class="chip" data-v="Others"      onclick="pickCat(this)">📌 Others</span>
-              </div>
-              <input type="hidden" name="category" id="catSel" value="">
-            </div>
-
-            <div class="field full" id="otherCategoryField" style="display: none; margin-top: 10px;">
-              <label class="req">Specify Category</label>
-              <input type="text" name="other_category" id="otherCategoryInput" placeholder="Specify your category..." class="no-ico">
-            </div>
- 
- 
-            <div class="field full">
-              <label class="req">Description</label>
-              <textarea name="description" id="desc" class="no-ico"
-                placeholder="Describe the issue — what happened, exact location, since when, how severe..."
-                required maxlength="500"></textarea>
-              <div class="char-c"><span id="cn">0</span> / 500</div>
-            </div>
- 
-            <div class="field full">
-              <label>Attach Photo <span style="color:var(--dim);font-weight:400;">(Optional — recommended)</span></label>
-              <div class="file-drop">
-                <input type="file" name="image" accept="image/*" id="fileIn">
-                <div class="fd-ico">📎</div>
-                <p><span>Click to upload</span> or drag &amp; drop<br>PNG, JPG, WEBP — Max 10 MB</p>
-              </div>
-              <div class="fname" id="fname"></div>
-            </div>
- 
+        <!-- Login Panel -->
+        <div id="login-panel">
+          <div class="form-head">
+            <h2>Student Login</h2>
+            <p>Sign in with your official SECE college email and password to access the hostel grievance portal.</p>
           </div>
  
-          <button type="submit" class="btn-submit">Submit Complaint →</button>
-        </form>
-      </div>
-    </div>
+          <form action="/login" method="POST" id="loginForm">
+            <div class="field">
+              <label for="email">College Email</label>
+              <div class="iw">
+                <span class="ico">✉</span>
+                <input type="email" name="email" id="email"
+                       placeholder="yourname@sece.ac.in"
+                       required autocomplete="username">
+              </div>
+            </div>
  
-    <div class="sidebar">
-      <div class="side-card">
-        <h4>📋 How It Works</h4>
-        <ul class="hw-list">
-          <li><div class="hw-n">1</div><div>Enter your name, room number and select a category</div></li>
-          <li><div class="hw-n">2</div><div>Describe the problem clearly (priority is automatically determined)</div></li>
-          <li><div class="hw-n">3</div><div>Attach a photo to help our team understand faster</div></li>
-          <li><div class="hw-n">4</div><div>Submit — our team will respond within 24 hours</div></li>
-          <li><div class="hw-n">5</div><div>Track your status on the dashboard anytime</div></li>
-        </ul>
-      </div>
+            <div class="field">
+              <label for="password">Password</label>
+              <div class="iw">
+                <span class="ico">🔒</span>
+                <input type="password" name="password" id="password"
+                       placeholder="Enter your password"
+                       required autocomplete="current-password">
  
-      <div class="side-card">
-        <h4>🏷 Category Guide</h4>
-        <div class="cat-leg">
-          <div class="cl"><div class="cl-dot" style="background:#f59e0b;"></div><strong>Electrical</strong> — lights, fans, sockets</div>
-          <div class="cl"><div class="cl-dot" style="background:#3b82f6;"></div><strong>Plumbing</strong> — leaks, taps, drainage</div>
-          <div class="cl"><div class="cl-dot" style="background:#10b981;"></div><strong>Wi-Fi</strong> — slow speed, no signal</div>
-          <div class="cl"><div class="cl-dot" style="background:#8b5cf6;"></div><strong>Cleaning</strong> — hygiene, common areas</div>
-          <div class="cl"><div class="cl-dot" style="background:#ec4899;"></div><strong>Furniture</strong> — broken beds, chairs</div>
-          <div class="cl"><div class="cl-dot" style="background:#9d174d;"></div><strong>Hostel food</strong> — quality, hygiene, timing</div>
-          <div class="cl"><div class="cl-dot" style="background:#4e5d78;"></div><strong>Others</strong> — anything else (specify)</div>
+                <button type="button" class="pw-toggle" id="pwToggle"
+                        aria-label="Toggle password visibility"
+                        aria-pressed="false">
+                  <!-- Eye open (shown when password is hidden) -->
+                  <svg id="iconEye" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <!-- Eye closed (shown when password is visible) -->
+                  <svg id="iconEyeOff" viewBox="0 0 24 24" style="display:none;" aria-hidden="true">
+                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+ 
+            <button type="submit" class="btn-login">Login to Portal →</button>
+ 
+            {% if error and not show_signup %}
+            <div class="err" role="alert">⚠ {{ error }}</div>
+            {% endif %}
+ 
+            {% if success %}
+            <div class="success-alert" role="alert">✓ {{ success }}</div>
+            {% endif %}
+          </form>
+ 
+          <!-- GOOGLE OAUTH ADDITION: "Continue with Google" button.
+               Links to the /login/google route added in app.py, which starts
+               the OpenID Connect flow. Restricted server-side to @sece.ac.in
+               accounts. Existing email/password login above is unchanged. -->
+          <div class="or-divider"><span>OR</span></div>
+          <a href="{{ url_for('google_login') }}" class="btn-google">
+            <svg viewBox="0 0 48 48" aria-hidden="true">
+              <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12s5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24s8.955,20,20,20s20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+              <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+              <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+              <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+            </svg>
+            Continue with Google
+          </a>
+ 
+          <div style="text-align: center; margin-top: 20px; font-size: 13px; font-weight: 600; color: #6e6454;">
+            Don't have an account? <a href="#" id="to-signup" style="color: #8a1e2b; text-decoration: none; font-weight: 700; transition: color 0.2s;">Sign Up</a>
+          </div>
+        </div>
+ 
+        <!-- Signup Panel -->
+        <div id="signup-panel" style="display: none;">
+          <div class="form-head">
+            <h2>Student Sign Up</h2>
+            <p>Create a new student account using your official college details to access the hostel portal.</p>
+          </div>
+ 
+          <form action="/signup" method="POST" id="signupForm">
+            <div class="err" id="signup-js-error" style="display: none;" role="alert"></div>
+ 
+            <div class="field">
+              <label for="signup-name">Full Name</label>
+              <div class="iw">
+                <span class="ico">👤</span>
+                <input type="text" name="name" id="signup-name"
+                       placeholder="Enter your full name" required autocomplete="name">
+              </div>
+            </div>
+ 
+            <div class="row">
+              <div class="field">
+                <label for="signup-roll">Roll Number</label>
+                <div class="iw">
+                  <span class="ico">🆔</span>
+                  <input type="text" name="roll_number" id="signup-roll"
+                         placeholder="25AD167" required autocomplete="off">
+                </div>
+              </div>
+ 
+              <div class="field">
+                <label for="signup-dept">Department</label>
+                <div class="iw">
+                  <span class="ico">🎓</span>
+                  <select name="dept" id="signup-dept" class="custom-select" required style="
+                    width: 100%; padding: 13px 16px 13px 42px;
+                    background: #ffffff;
+                    border: 1.5px solid #d0c8b6;
+                    border-radius: 8px; color: #2c251a;
+                    font-family: 'Inter', sans-serif; font-size: 14px;
+                    outline: none; transition: border-color .22s, box-shadow .22s;
+                    appearance: none;
+                  ">
+                    <option value="" disabled selected hidden>Select Dept</option>
+                    <option value="CSE">CSE</option>
+                    <option value="AIDS">AIDS</option>
+                    <option value="AIML">AIML</option>
+                    <option value="IT">IT</option>
+                    <option value="ECE">ECE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="CSBS">CSBS</option>
+                    <option value="CYS">CYS</option>
+                    <option value="Mech">Mech</option>
+                    <option value="CCE">CCE</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+ 
+            <div class="row">
+              <div class="field">
+                <label for="signup-year">Year</label>
+                <div class="iw">
+                  <span class="ico">📅</span>
+                  <select name="year" id="signup-year" class="custom-select" required style="
+                    width: 100%; padding: 13px 16px 13px 42px;
+                    background: #ffffff;
+                    border: 1.5px solid #d0c8b6;
+                    border-radius: 8px; color: #2c251a;
+                    font-family: 'Inter', sans-serif; font-size: 14px;
+                    outline: none; transition: border-color .22s, box-shadow .22s;
+                    appearance: none;
+                  ">
+                    <option value="" disabled selected hidden>Select Year</option>
+                    <option value="I">I Year</option>
+                    <option value="II">II Year</option>
+                    <option value="III">III Year</option>
+                    <option value="IV">IV Year</option>
+                  </select>
+                </div>
+              </div>
+ 
+              <div class="field">
+                <label for="signup-phone">Phone Number</label>
+                <div class="iw">
+                  <span class="ico">📞</span>
+                  <input type="tel" name="phone" id="signup-phone"
+                         placeholder="9876543210" required autocomplete="tel" pattern="[0-9]{10}">
+                </div>
+              </div>
+            </div>
+ 
+            <div class="row">
+              <div class="field">
+                <label for="signup-hostel">Hostel Type</label>
+                <div class="iw">
+                  <span class="ico">🏢</span>
+                  <select name="hostel_type" id="signup-hostel" class="custom-select" required style="
+                    width: 100%; padding: 13px 16px 13px 42px;
+                    background: #ffffff;
+                    border: 1.5px solid #d0c8b6;
+                    border-radius: 8px; color: #2c251a;
+                    font-family: 'Inter', sans-serif; font-size: 14px;
+                    outline: none; transition: border-color .22s, box-shadow .22s;
+                    appearance: none;
+                  ">
+                    <option value="" disabled selected hidden>Select Hostel</option>
+                    <option value="boys">Boys Hostel</option>
+                    <option value="girls">Girls Hostel</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="signup-block">Block</label>
+                <div class="iw">
+                  <span class="ico">🏢</span>
+                  <select name="block" id="signup-block" class="custom-select" required style="
+                    width: 100%; padding: 13px 16px 13px 42px;
+                    background: #ffffff;
+                    border: 1.5px solid #d0c8b6;
+                    border-radius: 8px; color: #2c251a;
+                    font-family: 'Inter', sans-serif; font-size: 14px;
+                    outline: none; transition: border-color .22s, box-shadow .22s;
+                    appearance: none;
+                  ">
+                    <option value="" disabled selected hidden>Select Block</option>
+                    <option value="A">Block A</option>
+                    <option value="B">Block B</option>
+                    <option value="C">Block C</option>
+                    <option value="D">Block D</option>
+                    <option value="E">Block E</option>
+                    <option value="F">Block F</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <label for="signup-floor">Floor</label>
+                <div class="iw">
+                  <span class="ico">🪜</span>
+                  <input type="text" name="floor" id="signup-floor"
+                         placeholder="e.g. 2" required autocomplete="off">
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="signup-room">Room No.</label>
+                <div class="iw">
+                  <span class="ico">🔑</span>
+                  <input type="text" name="room_no" id="signup-room"
+                         placeholder="e.g. 211" required autocomplete="off">
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="signup-email">Official Email</label>
+              <div class="iw">
+                <span class="ico">✉</span>
+                <input type="email" name="email" id="signup-email"
+                       placeholder="xyz@sece.ac.in" required autocomplete="email">
+              </div>
+            </div>
+ 
+            <div class="field">
+              <label for="signup-password">Password</label>
+              <div class="iw">
+                <span class="ico">🔒</span>
+                <input type="password" name="password" id="signup-password"
+                       placeholder="Create a password" required autocomplete="new-password">
+                <button type="button" class="pw-toggle" id="signupPwToggle"
+                        aria-label="Toggle password visibility"
+                        aria-pressed="false">
+                  <!-- Eye open (shown when password is hidden) -->
+                  <svg class="iconEye" viewBox="0 0 24 24" aria-hidden="true" style="width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8px; stroke-linecap: round; stroke-linejoin: round;">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <!-- Eye closed (shown when password is visible) -->
+                  <svg class="iconEyeOff" viewBox="0 0 24 24" style="display:none; width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 1.8px; stroke-linecap: round; stroke-linejoin: round;" aria-hidden="true">
+                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+                    <line x1="1" y1="1" x2="23" y2="23"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+ 
+            <button type="submit" class="btn-login">Sign Up &amp; Register →</button>
+ 
+            {% if error and show_signup %}
+            <div class="err" role="alert">⚠ {{ error }}</div>
+            {% endif %}
+          </form>
+ 
+          <div style="text-align: center; margin-top: 20px; font-size: 13px; font-weight: 600; color: #6e6454;">
+            Already have an account? <a href="#" id="to-login" style="color: #8a1e2b; text-decoration: none; font-weight: 700; transition: color 0.2s;">Log In</a>
+          </div>
+        </div>
+ 
+        <hr class="divider">
+        <div class="footer">
+          <p>Sri Eshwar College of Engineering<br>Hostel Grievance &amp; Maintenance Portal · 2026</p>
         </div>
       </div>
- 
-      <div class="side-card">
-        <h4>🚨 Emergency Contact</h4>
-        <div class="emer">
-          <strong>Hostel Warden Office</strong><br>
-          For power failures or major water leaks, contact the warden via block intercom or visit the hostel office.
-          <span class="ew">⚠ Do not wait — report immediately.</span>
-        </div>
-      </div>
     </div>
- 
   </div>
  
-  {% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for cat, msg in messages %}
-    <div class="toast {% if cat == 'error' %}toast-err{% elif cat == 'warning' %}toast-warn{% else %}toast{% endif %}" id="toast">
-      {% if cat == 'error' %}⚠{% elif cat == 'warning' %}⚡{% else %}✅{% endif %} {{ msg }}
-    </div>
-    {% endfor %}
-    <script>
-      setTimeout(()=>{document.querySelectorAll('.toast, .toast-err, .toast-warn').forEach(t=>{t.style.transition='opacity .4s';t.style.opacity='0';setTimeout(()=>t.remove(),400);})},4000);
-    </script>
-  {% endif %}
-  {% endwith %}
- 
   <script>
-    const BLOCKS = {
-      boys:  ['A','B','C','D','E','F'],
-      girls: ['A','B','C']
-    };
-    function updateBlocks() {
-      const type = document.getElementById('hostelType').value;
-      const sel  = document.getElementById('blockSel');
-      const selectedBlock = '{{ profile.block if (profile and profile.block) else "" }}';
-      sel.innerHTML = '<option value="">Select a block</option>';
-      if (type && BLOCKS[type]) {
-        BLOCKS[type].forEach(b => {
-          const opt = document.createElement('option');
-          opt.value = b; opt.textContent = 'Block ' + b;
-          if (b === selectedBlock) opt.selected = true;
-          sel.appendChild(opt);
-        });
-        sel.disabled = false;
-      } else {
-        sel.innerHTML = '<option value="">Select hostel type first</option>';
-        sel.disabled = true;
-      }
-    }
-    document.getElementById('hostelType').addEventListener('change', updateBlocks);
-    updateBlocks();
+    // Toggle password visibility for Login password
+    document.getElementById('pwToggle').addEventListener('click', function () {
+      const inp     = document.getElementById('password');
+      const isHidden = inp.type === 'password';
+      inp.type      = isHidden ? 'text' : 'password';
+      document.getElementById('iconEye').style.display    = isHidden ? 'none' : '';
+      document.getElementById('iconEyeOff').style.display = isHidden ? ''     : 'none';
+      this.setAttribute('aria-pressed', isHidden ? 'true' : 'false');
+    });
  
-    function pickCat(el) {
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('on'));
-      el.classList.add('on');
-      const val = el.dataset.v;
-      document.getElementById('catSel').value = val;
+    // Toggle password visibility for Signup password
+    document.getElementById('signupPwToggle').addEventListener('click', function () {
+      const inp     = document.getElementById('signup-password');
+      const isHidden = inp.type === 'password';
+      inp.type      = isHidden ? 'text' : 'password';
+      this.querySelector('.iconEye').style.display    = isHidden ? 'none' : '';
+      this.querySelector('.iconEyeOff').style.display = isHidden ? ''     : 'none';
+      this.setAttribute('aria-pressed', isHidden ? 'true' : 'false');
+    });
+ 
+    // Panel Toggle Event Listeners
+    document.getElementById('to-signup').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('login-panel').style.display = 'none';
+      document.getElementById('signup-panel').style.display = 'block';
+      // Clear error and success elements when switching panels
+      const errors = document.querySelectorAll('.err, .success-alert');
+      errors.forEach(el => el.style.display = 'none');
+    });
+ 
+    document.getElementById('to-login').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('signup-panel').style.display = 'none';
+      document.getElementById('login-panel').style.display = 'block';
+      // Clear error and success elements when switching panels
+      const errors = document.querySelectorAll('.err, .success-alert');
+      errors.forEach(el => el.style.display = 'none');
+    });
+ 
+    // Frontend Sign Up Email domain and form validation
+    document.getElementById('signupForm').addEventListener('submit', function(e) {
+      const email = document.getElementById('signup-email').value.trim().toLowerCase();
+      const errorDiv = document.getElementById('signup-js-error');
       
-      const otherField = document.getElementById('otherCategoryField');
-      const otherInput = document.getElementById('otherCategoryInput');
-      if (val === 'Others') {
-        otherField.style.display = 'flex';
-        otherInput.required = true;
-      } else {
-        otherField.style.display = 'none';
-        otherInput.required = false;
-        otherInput.value = '';
+      if (!email.endsWith('@sece.ac.in')) {
+        e.preventDefault();
+        errorDiv.textContent = '⚠ Use your college official email';
+        errorDiv.style.display = 'flex';
+        
+        // Shake form on error
+        this.classList.add('shake');
+        this.addEventListener('animationend', () => this.classList.remove('shake'), { once: true });
+        return;
       }
-      advStep(1);
-    }
-    document.getElementById('catSel').addEventListener('change', function () {
-      const val = this.value;
-      document.querySelectorAll('.chip').forEach(c => c.classList.toggle('on', c.dataset.v === val));
-      const otherField = document.getElementById('otherCategoryField');
-      const otherInput = document.getElementById('otherCategoryInput');
-      if (val === 'Others') {
-        otherField.style.display = 'flex';
-        otherInput.required = true;
-      } else {
-        otherField.style.display = 'none';
-        otherInput.required = false;
-        otherInput.value = '';
-      }
+      errorDiv.style.display = 'none';
     });
-    const desc = document.getElementById('desc');
-    desc.addEventListener('input', () => { document.getElementById('cn').textContent = desc.value.length; advStep(1); });
-    document.getElementById('fileIn').addEventListener('change', function () {
-      document.getElementById('fname').textContent = this.files.length ? '📎 '+this.files[0].name : '';
-      advStep(2);
-    });
-    function advStep(idx) {
-      const steps = document.querySelectorAll('.step');
-      for (let i = 0; i < idx; i++) { if(!steps[i].classList.contains('done')){steps[i].classList.remove('active');steps[i].classList.add('done');} }
-      if (!steps[idx].classList.contains('done')) steps[idx].classList.add('active');
-    }
-  </script>
  
+    // Shake and route logic on DOM load
+    window.addEventListener('DOMContentLoaded', function () {
+      {% if show_signup %}
+        document.getElementById('login-panel').style.display = 'none';
+        document.getElementById('signup-panel').style.display = 'block';
+        {% if error %}
+          const f = document.getElementById('signupForm');
+          f.classList.add('shake');
+          f.addEventListener('animationend', () => f.classList.remove('shake'), { once: true });
+        {% endif %}
+      {% else %}
+        {% if error %}
+          const f = document.getElementById('loginForm');
+          f.classList.add('shake');
+          f.addEventListener('animationend', () => f.classList.remove('shake'), { once: true });
+        {% endif %}
+      {% endif %}
+    });
+  </script>
 </body>
 </html>
