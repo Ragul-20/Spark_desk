@@ -18,36 +18,36 @@
     }
 
     :root {
-      --bg: #eae3d0;
-      /* Light warm parchment outer body background */
-      --surface: #0e0d0c;
-      /* Rich charcoal-black for header and navs */
-      --card: #faf5e9;
-      /* Light parchment card background */
-      --card2: #f7f1e3;
-      /* Slightly darker parchment accent */
-      --border: #d6caa9;
-      /* Warm gold/parchment border */
+      --bg: #eef1f7;
+      /* Light cool background */
+      --surface: #0a2472;
+      /* SECE deep blue for header and navs */
+      --card: #ffffff;
+      /* Clean white card background */
+      --card2: #f5f7fb;
+      /* Slightly cooler white accent */
+      --border: #cdd6e6;
+      /* Soft blue-grey border */
       --blue: #1e40af;
       /* Muted deep blue */
-      --gold: #8c6d30;
-      /* Metallic medieval gold */
+      --gold: #ffc107;
+      /* SECE modern yellow/gold accent */
       --green: #166534;
       /* Muted forest green */
       --orange: #92400e;
       /* Deep bronze orange */
       --red: #991b1b;
-      /* Deep medieval burgundy */
+      /* Deep burgundy */
       --sky: #0369a1;
       /* Deep slate sky */
       --purple: #6b21a8;
       /* Deep royal purple */
-      --text: #2c251a;
-      /* Dark brown-slate for high contrast text */
-      --muted: #6e6454;
-      /* Muted brown-slate for labels */
-      --dim: #8f826d;
-      /* Dimmed brown-slate */
+      --text: #1c2536;
+      /* Dark slate-blue for high contrast text */
+      --muted: #5b6478;
+      /* Muted slate-blue for labels */
+      --dim: #8a93a8;
+      /* Dimmed slate-blue */
     }
 
     html,
@@ -97,21 +97,21 @@
     .nb-icon {
       width: 34px;
       height: 34px;
-      background: linear-gradient(135deg, var(--gold), #5a451e);
+      background: linear-gradient(135deg, var(--gold), #c98f00);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(140, 109, 48, 0.4);
+      box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
     }
 
     .nb-name {
       font-family: 'Cinzel', serif;
       font-size: 20px;
       font-weight: 700;
-      color: #ffd700;
+      color: #ffc107;
       text-transform: uppercase;
       letter-spacing: 1px;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
@@ -154,9 +154,9 @@
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
-      background: rgba(255, 215, 0, 0.1);
+      background: rgba(255, 193, 7, 0.1);
       border: 1.5px solid var(--gold);
-      color: #ffd700;
+      color: #ffc107;
       padding: 6px 12px;
       border-radius: 20px;
       white-space: nowrap;
@@ -165,15 +165,15 @@
 
     @keyframes glowPulse {
       0% {
-        box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+        box-shadow: 0 0 5px rgba(255, 193, 7, 0.2);
       }
 
       50% {
-        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
       }
 
       100% {
-        box-shadow: 0 0 5px rgba(255, 215, 0, 0.2);
+        box-shadow: 0 0 5px rgba(255, 193, 7, 0.2);
       }
     }
 
@@ -182,11 +182,11 @@
       align-items: center;
       gap: 8px;
       background: var(--gold);
-      border: 1.5px solid #8c6d30;
+      border: 1.5px solid #ffc107;
       border-radius: 30px;
       padding: 5px 14px 5px 6px;
       font-size: 12px;
-      color: #1f180a;
+      color: #0a2472;
       max-width: 220px;
       overflow: hidden;
       font-weight: 600;
@@ -202,7 +202,7 @@
     .user-av {
       width: 26px;
       height: 26px;
-      background: #1f180a;
+      background: #0a2472;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -214,7 +214,7 @@
     }
 
     .user-av.admin-av {
-      background: #1f180a;
+      background: #0a2472;
       color: var(--gold);
     }
 
@@ -225,19 +225,19 @@
       font-weight: 700;
       padding: 8px 16px;
       border-radius: 20px;
-      border: 1.5px solid rgba(140, 109, 48, 0.4);
+      border: 1.5px solid rgba(255, 193, 7, 0.4);
       background: rgba(255, 255, 255, 0.02);
-      color: #ffd700;
+      color: #ffc107;
       transition: .18s;
       white-space: nowrap;
     }
 
     .nb-link:hover,
     .nb-link.active {
-      color: #0e0d0c;
-      background: linear-gradient(135deg, #c5a86a, #9e8143);
-      border-color: #8c6d30;
-      box-shadow: 0 0 10px rgba(140, 109, 48, 0.3);
+      color: #0a2472;
+      background: linear-gradient(135deg, #ffd54f, #ffc107);
+      border-color: #ffc107;
+      box-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
     }
 
     .nb-link.logout {
@@ -297,22 +297,22 @@
     }
 
     .nav-tab.active {
-      color: #ffd700;
-      background: #151413;
+      color: #ffc107;
+      background: #0a1a3d;
       border-top-color: var(--gold);
-      border-left-color: rgba(140, 109, 48, 0.3);
-      border-right-color: rgba(140, 109, 48, 0.3);
-      box-shadow: inset 0 2px 8px rgba(140, 109, 48, 0.15);
+      border-left-color: rgba(255, 193, 7, 0.3);
+      border-right-color: rgba(255, 193, 7, 0.3);
+      box-shadow: inset 0 2px 8px rgba(255, 193, 7, 0.15);
     }
 
     .tab-icon {
       font-size: 13px;
-      color: #ffd700;
+      color: #ffc107;
     }
 
     /* HERO */
     .hero {
-      background: linear-gradient(135deg, #121213 0%, #080809 100%);
+      background: linear-gradient(135deg, #0a1a3d 0%, #051233 100%);
       border-bottom: 2px solid var(--gold);
       padding: 44px 32px 68px;
       position: relative;
@@ -325,7 +325,7 @@
       width: 400px;
       height: 400px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(140, 109, 48, 0.1), transparent 68%);
+      background: radial-gradient(circle, rgba(255, 193, 7, 0.1), transparent 68%);
       top: -160px;
       right: -60px;
       pointer-events: none;
@@ -336,7 +336,7 @@
       width: 240px;
       height: 240px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.05), transparent 70%);
+      background: radial-gradient(circle, rgba(255, 193, 7, 0.05), transparent 70%);
       bottom: -80px;
       left: 240px;
       pointer-events: none;
@@ -359,14 +359,14 @@
       font-weight: 700;
       letter-spacing: 2.2px;
       text-transform: uppercase;
-      color: #ffd700;
+      color: #ffc107;
       margin-bottom: 10px;
     }
 
     .hero h1 {
       font-family: 'Cinzel', serif;
       font-size: clamp(22px, 2.6vw, 36px);
-      color: #ffd700;
+      color: #ffc107;
       line-height: 1.22;
       margin-bottom: 8px;
       text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
@@ -389,16 +389,16 @@
       align-items: center;
       gap: 8px;
       padding: 10px 20px;
-      background: linear-gradient(135deg, #c5a86a, #9e8143);
-      color: #1f180a;
+      background: linear-gradient(135deg, #ffd54f, #ffc107);
+      color: #0a2472;
       text-decoration: none;
       border-radius: 8px;
       font-size: 12px;
       font-weight: 700;
-      border: 1.5px solid #8c6d30;
+      border: 1.5px solid #ffc107;
       cursor: pointer;
       transition: transform .2s, box-shadow .2s;
-      box-shadow: 0 4px 12px rgba(140, 109, 48, 0.25);
+      box-shadow: 0 4px 12px rgba(255, 193, 7, 0.25);
       text-transform: uppercase;
       letter-spacing: .5px;
       white-space: nowrap;
@@ -406,8 +406,8 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(140, 109, 48, 0.4);
-      background: linear-gradient(135deg, #d3b77a, #a98d4d);
+      box-shadow: 0 6px 18px rgba(255, 193, 7, 0.4);
+      background: linear-gradient(135deg, #ffe082, #ffca28);
     }
 
     .btn-ghost {
@@ -415,9 +415,9 @@
       align-items: center;
       gap: 8px;
       padding: 10px 20px;
-      background: #eae3d0;
-      border: 1.5px solid #c8bc9c;
-      color: #5a503f;
+      background: #eef1f7;
+      border: 1.5px solid #b9c4dc;
+      color: #4a5568;
       text-decoration: none;
       border-radius: 8px;
       font-size: 12px;
@@ -429,9 +429,9 @@
     }
 
     .btn-ghost:hover {
-      background: #dfd8c2;
-      color: #2c251a;
-      border-color: #8c6d30;
+      background: #dde4f0;
+      color: #1c2536;
+      border-color: #ffc107;
     }
 
     /* STATS STRIP */
@@ -442,6 +442,21 @@
       margin-top: -36px;
       position: relative;
       z-index: 10;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateX(-14px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
     }
 
     .stats-strip {
@@ -458,21 +473,28 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      transition: transform .22s, border-color .22s;
+      transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s, box-shadow .3s;
       position: relative;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      animation: fadeSlideUp .5s cubic-bezier(.22,1,.36,1) both;
     }
 
+    .stats-strip .s-card:nth-child(1) { animation-delay: .03s; }
+    .stats-strip .s-card:nth-child(2) { animation-delay: .09s; }
+    .stats-strip .s-card:nth-child(3) { animation-delay: .15s; }
+    .stats-strip .s-card:nth-child(4) { animation-delay: .21s; }
+
     .s-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       border-color: var(--gold);
+      box-shadow: 0 10px 28px rgba(10, 36, 114, 0.16);
     }
 
     .s-card::before {
       content: '';
       position: absolute;
       inset: 4px;
-      border: 1px solid rgba(140, 109, 48, 0.12);
+      border: 1px solid rgba(255, 193, 7, 0.12);
       border-radius: 7px;
       pointer-events: none;
     }
@@ -532,7 +554,7 @@
       font-family: 'Sora', sans-serif;
       font-size: 26px;
       font-weight: 800;
-      color: #2c251a;
+      color: #1c2536;
       line-height: 1;
     }
 
@@ -562,7 +584,7 @@
       max-width: 1280px;
       margin: 0 auto;
       padding: 28px 32px 80px;
-      background: #faf5e9;
+      background: #ffffff;
       border: 2.5px solid var(--gold);
       border-radius: 12px;
       position: relative;
@@ -574,7 +596,7 @@
       content: '';
       position: absolute;
       inset: 6px;
-      border: 1px double rgba(140, 109, 48, 0.4);
+      border: 1px double rgba(255, 193, 7, 0.4);
       border-radius: 8px;
       pointer-events: none;
     }
@@ -604,7 +626,7 @@
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #8a1e2b;
+      color: #0a2472;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -635,14 +657,28 @@
     .chart-card,
     .tbl-card,
     .side-card {
-      background: #fdfcf7;
+      background: #ffffff;
       border: 1.5px solid var(--border);
       border-radius: 10px;
       padding: 20px 22px;
       min-width: 0;
       position: relative;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+      animation: fadeSlideUp .55s cubic-bezier(.22,1,.36,1) both;
+      transition: box-shadow .3s, transform .3s cubic-bezier(.22,1,.36,1);
     }
+
+    .chart-card:hover,
+    .tbl-card:hover,
+    .side-card:hover {
+      box-shadow: 0 10px 26px rgba(10, 36, 114, 0.1);
+    }
+
+    .charts-row1 .chart-card:nth-child(1) { animation-delay: .04s; }
+    .charts-row1 .chart-card:nth-child(2) { animation-delay: .1s; }
+    .charts-row1 .chart-card:nth-child(3) { animation-delay: .16s; }
+    .charts-row2 .chart-card:nth-child(1) { animation-delay: .06s; }
+    .charts-row2 .chart-card:nth-child(2) { animation-delay: .12s; }
 
     .chart-card::before,
     .tbl-card::before,
@@ -650,7 +686,7 @@
       content: '';
       position: absolute;
       inset: 4px;
-      border: 1px solid rgba(140, 109, 48, 0.1);
+      border: 1px solid rgba(255, 193, 7, 0.1);
       border-radius: 7px;
       pointer-events: none;
     }
@@ -683,7 +719,7 @@
       font-family: 'Cinzel', serif;
       font-size: 14px;
       font-weight: 700;
-      color: #8a1e2b;
+      color: #0a2472;
       margin-bottom: 4px;
       display: flex;
       align-items: center;
@@ -717,7 +753,7 @@
     .res-meter {
       margin-top: 14px;
       padding: 12px;
-      background: #faf6eb;
+      background: #f5f7fb;
       border: 1px solid var(--border);
       border-radius: 8px;
     }
@@ -778,7 +814,7 @@
     }
 
     .flt {
-      background: #faf6eb;
+      background: #f5f7fb;
       border: 1.5px solid var(--border);
       color: var(--muted);
       font-size: 11px;
@@ -798,11 +834,11 @@
     }
 
     .flt.on {
-      background: #fdfcf7;
+      background: #ffffff;
       border-color: var(--gold);
-      color: #8a1e2b;
+      color: #0a2472;
       font-weight: 800;
-      box-shadow: inset 0 2px 4px rgba(140, 109, 48, 0.08);
+      box-shadow: inset 0 2px 4px rgba(255, 193, 7, 0.08);
     }
 
     .tbl-scroll {
@@ -818,7 +854,7 @@
 
     thead tr {
       border-bottom: 1.5px solid var(--border);
-      background: #faf6eb;
+      background: #f5f7fb;
     }
 
     th {
@@ -827,7 +863,7 @@
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: #5a503f;
+      color: #4a5568;
       padding: 12px 14px;
       text-align: left;
       white-space: nowrap;
@@ -837,7 +873,7 @@
       padding: 13px 14px;
       font-size: 13px;
       color: var(--text);
-      border-bottom: 1px solid rgba(140, 109, 48, 0.12);
+      border-bottom: 1px solid rgba(255, 193, 7, 0.12);
       vertical-align: middle;
     }
 
@@ -845,9 +881,27 @@
       border-bottom: none;
     }
 
-    tbody tr:hover td {
-      background: rgba(140, 109, 48, 0.03);
+    tbody tr td {
+      transition: background .22s ease;
     }
+
+    tbody tr:hover td {
+      background: rgba(255, 193, 7, 0.05);
+    }
+
+    tbody tr.complaint-row {
+      animation: fadeSlideIn .4s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    tbody tr.complaint-row:nth-child(1) { animation-delay: .02s; }
+    tbody tr.complaint-row:nth-child(2) { animation-delay: .05s; }
+    tbody tr.complaint-row:nth-child(3) { animation-delay: .08s; }
+    tbody tr.complaint-row:nth-child(4) { animation-delay: .11s; }
+    tbody tr.complaint-row:nth-child(5) { animation-delay: .14s; }
+    tbody tr.complaint-row:nth-child(6) { animation-delay: .17s; }
+    tbody tr.complaint-row:nth-child(7) { animation-delay: .2s; }
+    tbody tr.complaint-row:nth-child(8) { animation-delay: .23s; }
+    tbody tr.complaint-row:nth-child(n+9) { animation-delay: .25s; }
 
     /* BADGES */
     .badge {
@@ -907,9 +961,9 @@
     .cat-tag {
       font-size: 11px;
       font-weight: 600;
-      color: #5a503f;
-      background: #eae3d0;
-      border: 1.5px solid #c8bc9c;
+      color: #4a5568;
+      background: #eef1f7;
+      border: 1.5px solid #b9c4dc;
       padding: 3px 9px;
       border-radius: 6px;
       white-space: nowrap;
@@ -940,7 +994,7 @@
       display: inline-block;
       font-size: 12px;
       font-weight: 700;
-      color: #8c6d30;
+      color: #ffc107;
       background: #fef3c7;
       border: 1.5px solid #fde68a;
       padding: 3px 10px;
@@ -970,8 +1024,8 @@
       align-items: center;
       gap: 4px;
       background: var(--gold);
-      border: 1.5px solid #8c6d30;
-      color: #1f180a;
+      border: 1.5px solid #ffc107;
+      color: #0a2472;
       font-size: 10px;
       font-weight: 700;
       padding: 4px 8px;
@@ -983,9 +1037,9 @@
     }
 
     .student-details-btn:hover {
-      background: #735925;
+      background: #0a2472;
       color: white;
-      border-color: #735925;
+      border-color: #0a2472;
     }
 
     .desc-cell {
@@ -1018,8 +1072,8 @@
       align-items: center;
       gap: 4px;
       background: var(--gold);
-      border: 1.5px solid #8c6d30;
-      color: #1f180a;
+      border: 1.5px solid #ffc107;
+      color: #0a2472;
       font-size: 10px;
       font-weight: 700;
       padding: 4px 8px;
@@ -1032,9 +1086,9 @@
     }
 
     .photo-link:hover {
-      background: #735925;
+      background: #0a2472;
       color: white;
-      border-color: #735925;
+      border-color: #0a2472;
       text-decoration: none;
     }
 
@@ -1097,7 +1151,7 @@
       font-family: 'Cinzel', serif;
       font-size: 12px;
       font-weight: 700;
-      color: #8a1e2b;
+      color: #0a2472;
       margin-bottom: 14px;
       display: flex;
       align-items: center;
@@ -1124,8 +1178,8 @@
     }
 
     .qa:hover {
-      background: rgba(140, 109, 48, 0.06);
-      color: #8a1e2b;
+      background: rgba(255, 193, 7, 0.06);
+      color: #0a2472;
     }
 
     .qa-ico {
@@ -1157,12 +1211,12 @@
     }
 
     .student-notices-container::-webkit-scrollbar-thumb {
-      background: rgba(140, 109, 48, 0.4);
+      background: rgba(255, 193, 7, 0.4);
       border-radius: 3px;
     }
 
     .student-notices-container::-webkit-scrollbar-track {
-      background: rgba(140, 109, 48, 0.08);
+      background: rgba(255, 193, 7, 0.08);
       border-radius: 3px;
     }
 
@@ -1184,7 +1238,7 @@
       font-family: 'Cinzel', serif;
       font-size: 12px;
       font-weight: 700;
-      color: #8a1e2b;
+      color: #0a2472;
       margin-bottom: 2px;
     }
 
@@ -1195,7 +1249,7 @@
     }
 
     .emer-box {
-      background: #faf6eb;
+      background: #f5f7fb;
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 14px;
@@ -1205,7 +1259,7 @@
     }
 
     .emer-box strong {
-      color: #8a1e2b;
+      color: #0a2472;
       font-family: 'Cinzel', serif;
     }
 
@@ -1246,7 +1300,7 @@
 
     .search-inp:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(140, 109, 48, 0.15);
+      box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.15);
     }
 
     /* MODAL */
@@ -1267,7 +1321,7 @@
     }
 
     .modal {
-      background: #faf5e9;
+      background: #ffffff;
       border: 2.5px solid var(--gold);
       border-radius: 12px;
       padding: 32px;
@@ -1284,7 +1338,7 @@
       content: '';
       position: absolute;
       inset: 6px;
-      border: 1px double rgba(140, 109, 48, 0.3);
+      border: 1px double rgba(255, 193, 7, 0.3);
       border-radius: 8px;
       pointer-events: none;
     }
@@ -1304,7 +1358,7 @@
     .modal h3 {
       font-family: 'Cinzel', serif;
       font-size: 18px;
-      color: #8a1e2b;
+      color: #0a2472;
       margin-bottom: 4px;
       text-transform: uppercase;
     }
@@ -1332,7 +1386,7 @@
       width: 100%;
       padding: 10px 14px;
       background: #ffffff;
-      border: 1.5px solid #d0c8b6;
+      border: 1.5px solid #cdd6e6;
       border-radius: 8px;
       color: var(--text);
       font-family: 'Inter', sans-serif;
@@ -1367,9 +1421,9 @@
 
     .btn-cancel {
       padding: 10px 20px;
-      background: #eae3d0;
-      border: 1.5px solid #c8bc9c;
-      color: #5a503f;
+      background: #eef1f7;
+      border: 1.5px solid #b9c4dc;
+      color: #4a5568;
       border-radius: 8px;
       font-size: 13px;
       cursor: pointer;
@@ -1379,16 +1433,16 @@
     }
 
     .btn-cancel:hover {
-      background: #dfd8c2;
+      background: #dde4f0;
       color: var(--text);
     }
 
     .btn-save {
       padding: 10px 22px;
-      background: linear-gradient(135deg, #c5a86a, #9e8143);
-      border: 1.5px solid #8c6d30;
+      background: linear-gradient(135deg, #ffd54f, #ffc107);
+      border: 1.5px solid #ffc107;
       border-radius: 8px;
-      color: #1f180a;
+      color: #0a2472;
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
@@ -1398,7 +1452,7 @@
 
     .btn-save:hover {
       transform: translateY(-1px);
-      background: linear-gradient(135deg, #d3b77a, #a98d4d);
+      background: linear-gradient(135deg, #ffe082, #ffca28);
     }
 
     .modal-close {
@@ -1414,7 +1468,7 @@
     }
 
     .modal-close:hover {
-      color: #8a1e2b;
+      color: #0a2472;
     }
 
     /* TOAST */
@@ -1501,7 +1555,19 @@
       border-radius: 10px;
       padding: 16px 20px;
       position: relative;
+      animation: fadeSlideUp .5s cubic-bezier(.22,1,.36,1) both;
+      transition: transform .28s cubic-bezier(.22,1,.36,1), box-shadow .28s, border-color .28s;
     }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold);
+      box-shadow: 0 10px 24px rgba(10, 36, 114, 0.12);
+    }
+
+    .info-strip .info-card:nth-child(1) { animation-delay: .05s; }
+    .info-strip .info-card:nth-child(2) { animation-delay: .12s; }
+    .info-strip .info-card:nth-child(3) { animation-delay: .19s; }
 
     .info-card .ic-label {
       font-size: 10px;
@@ -1516,7 +1582,7 @@
       font-family: 'Sora', sans-serif;
       font-size: 22px;
       font-weight: 800;
-      color: #2c251a;
+      color: #1c2536;
     }
 
     .info-card .ic-sub {
@@ -1550,7 +1616,7 @@
       font-weight: 700;
       letter-spacing: .5px;
       border: 1.5px solid var(--border);
-      background: #faf6eb;
+      background: #f5f7fb;
       color: var(--muted);
       transition: all .2s;
       white-space: nowrap;
@@ -1561,7 +1627,7 @@
       font-family: 'Cinzel', serif;
       font-size: 14px;
       font-weight: 700;
-      color: #8a1e2b;
+      color: #0a2472;
     }
 
     .block-tab .bt-count {
@@ -1579,26 +1645,26 @@
     }
 
     .block-tab.active {
-      background: #fdfcf7;
+      background: #ffffff;
       border-color: var(--gold);
-      box-shadow: inset 0 2px 4px rgba(140, 109, 48, 0.08);
+      box-shadow: inset 0 2px 4px rgba(255, 193, 7, 0.08);
     }
 
     .block-tab.active .bt-count {
-      background: #8c6d30;
+      background: #ffc107;
       color: white;
     }
 
     .block-tab-all {
-      background: #eae3d0;
-      border-color: #c8bc9c;
-      color: #8a1e2b;
+      background: #eef1f7;
+      border-color: #b9c4dc;
+      color: #0a2472;
     }
 
     .block-tab-all.active {
-      background: #fdfcf7;
+      background: #ffffff;
       border-color: var(--gold);
-      color: #8a1e2b;
+      color: #0a2472;
     }
 
     .block-chart-row {
@@ -1616,7 +1682,7 @@
     }
 
     .bstat {
-      background: #faf6eb;
+      background: #f5f7fb;
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 12px 14px;
@@ -1642,7 +1708,7 @@
 
     /* STUDENT PERSONAL BANNER */
     .student-banner {
-      background: #faf6eb !important;
+      background: #f5f7fb !important;
       border: 1.5px solid var(--border) !important;
       border-radius: 10px !important;
       padding: 16px 20px;
@@ -1655,14 +1721,14 @@
     .sb-avatar {
       width: 48px;
       height: 48px;
-      background: linear-gradient(135deg, var(--gold), #5a451e);
+      background: linear-gradient(135deg, var(--gold), #c98f00);
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 22px;
       flex-shrink: 0;
-      box-shadow: 0 2px 8px rgba(140, 109, 48, 0.3);
+      box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
     }
 
     .sb-info {
@@ -1688,7 +1754,7 @@
       font-family: 'Sora', sans-serif;
       font-size: 20px;
       font-weight: 800;
-      color: #2c251a;
+      color: #1c2536;
       line-height: 1;
     }
 
@@ -1789,7 +1855,7 @@
       padding: 14px 24px;
       border-radius: 10px;
       border: 1.5px solid var(--border);
-      background: #faf6eb;
+      background: #f5f7fb;
       color: var(--muted);
       cursor: pointer;
       transition: all .22s;
@@ -1816,7 +1882,7 @@
     }
 
     .h-stat-card {
-      background: #fdfcf7;
+      background: #ffffff;
       border: 1.5px solid var(--border);
       border-radius: 8px;
       padding: 13px 16px;
@@ -1864,7 +1930,7 @@
       padding: 12px 20px;
       border-radius: 10px;
       border: 1.5px solid var(--border);
-      background: #faf6eb;
+      background: #f5f7fb;
       cursor: pointer;
       transition: all .2s;
       color: var(--muted);
@@ -1982,7 +2048,7 @@
     .sidebar-header h3 {
       font-family: 'Cinzel', serif;
       font-size: 18px;
-      color: #ffd700;
+      color: #ffc107;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -1997,7 +2063,7 @@
     }
 
     .sidebar-close-btn:hover {
-      color: #8a1e2b;
+      color: #0a2472;
     }
 
     .sidebar-content {
@@ -2021,10 +2087,10 @@
     .reset-btn {
       width: 100%;
       padding: 12px;
-      background: linear-gradient(135deg, #c5a86a, #9e8143);
-      border: 1.5px solid #8c6d30;
+      background: linear-gradient(135deg, #ffd54f, #ffc107);
+      border: 1.5px solid #ffc107;
       border-radius: 8px;
-      color: #1f180a;
+      color: #0a2472;
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
@@ -2038,16 +2104,16 @@
 
     .reset-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(140, 109, 48, 0.3);
+      box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
     }
 
     .sidebar-report-btn {
       width: 100%;
       padding: 12px;
-      background: linear-gradient(135deg, #c5a86a, #9e8143);
-      border: 1.5px solid #8c6d30;
+      background: linear-gradient(135deg, #ffd54f, #ffc107);
+      border: 1.5px solid #ffc107;
       border-radius: 8px;
-      color: #1f180a !important;
+      color: #0a2472 !important;
       font-size: 13px;
       font-weight: 700;
       text-transform: uppercase;
@@ -2060,9 +2126,9 @@
 
     .sidebar-report-btn:hover {
       transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(140, 109, 48, 0.3);
-      background: linear-gradient(135deg, #d3b77a, #a98d4d);
-      color: #1f180a !important;
+      box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+      background: linear-gradient(135deg, #ffe082, #ffca28);
+      color: #0a2472 !important;
     }
 
 
@@ -2070,7 +2136,7 @@
     .accordion-item {
       border: 1.5px solid var(--border);
       border-radius: 8px;
-      background: #151413;
+      background: #0a1a3d;
       overflow: hidden;
     }
 
@@ -2079,7 +2145,7 @@
       padding: 14px;
       background: transparent;
       border: none;
-      color: #ffd700;
+      color: #ffc107;
       font-size: 14px;
       font-weight: 700;
       text-transform: uppercase;
@@ -2110,7 +2176,7 @@
       transition: max-height 0.3s ease-out;
       display: flex;
       flex-direction: column;
-      background: #0e0d0c;
+      background: #0a2472;
     }
 
     .accordion-item.active .accordion-body {
@@ -2122,7 +2188,7 @@
       padding: 10px 20px;
       background: transparent;
       border: none;
-      border-bottom: 1px solid rgba(140, 109, 48, 0.12);
+      border-bottom: 1px solid rgba(255, 193, 7, 0.12);
       color: var(--muted);
       font-size: 13px;
       text-align: left;
@@ -2135,7 +2201,7 @@
     }
 
     .sub-option:hover {
-      background: rgba(140, 109, 48, 0.08);
+      background: rgba(255, 193, 7, 0.08);
       color: white;
       padding-left: 24px;
     }
@@ -2149,8 +2215,8 @@
       align-items: center;
       gap: 4px;
       background: var(--gold);
-      border: 1.5px solid #8c6d30;
-      color: #1f180a;
+      border: 1.5px solid #ffc107;
+      color: #0a2472;
       font-size: 10px;
       font-weight: 700;
       padding: 4px 8px;
@@ -2162,9 +2228,9 @@
     }
 
     .note-btn:hover {
-      background: #735925;
+      background: #0a2472;
       color: white;
-      border-color: #735925;
+      border-color: #0a2472;
     }
   </style>
 </head>
@@ -2613,7 +2679,7 @@
               A</div>
             <div>
               <div id="hostelBlockPanelTitle"
-                style="font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#8a1e2b;">Block A Complaints
+                style="font-family:'Sora',sans-serif;font-size:16px;font-weight:800;color:#0a2472;">Block A Complaints
               </div>
               <div id="hostelBlockPanelSub" style="font-size:12px;color:var(--muted);margin-top:2px;">— complaints in
                 this block</div>
@@ -2797,7 +2863,7 @@
       <div class="sb-avatar">👤</div>
       <div class="sb-info">
         <div class="sb-name">{{ full_name }}</div>
-        <div class="sb-email">{{ email }} &nbsp;·&nbsp; <span style="color:#ffd700;font-weight:600;">Student</span>
+        <div class="sb-email">{{ email }} &nbsp;·&nbsp; <span style="color:#ffc107;font-weight:600;">Student</span>
         </div>
       </div>
       <div class="sb-stats">
@@ -2827,7 +2893,7 @@
             {% if notices %}
               {% for n in notices %}
                 <div class="notice" style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; background: var(--card2); border: 1.5px solid var(--border); border-radius: 8px; margin-bottom: 8px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.02); transition: all 0.2s;">
-                  <div style="font-family: 'Cinzel', serif; font-size: 13.5px; font-weight: 800; color: #8a1e2b; display: flex; align-items: center; gap: 8px; border-bottom: 1.5px solid rgba(140, 109, 48, 0.2); padding-bottom: 6px; width: 100%;">
+                  <div style="font-family: 'Cinzel', serif; font-size: 13.5px; font-weight: 800; color: #0a2472; display: flex; align-items: center; gap: 8px; border-bottom: 1.5px solid rgba(255, 193, 7, 0.2); padding-bottom: 6px; width: 100%;">
                     <span style="font-size: 14px; line-height: 1; display: inline-flex; align-items: center;">📌</span>
                     {% if n.hostel_type == 'all' %}All Hostels{% else %}{{ n.hostel_type | capitalize }} Hostel{% endif %} 
                     · 
@@ -3001,59 +3067,59 @@
   <div class="modal-backdrop" id="studentDetailsModalBackdrop">
     <div class="modal" style="max-width: 480px; position: relative;">
       <button class="modal-close" onclick="closeStudentDetailsModal()">✕</button>
-      <h3 style="font-family: 'Cinzel', serif; color: #8a1e2b; margin-bottom: 4px; text-transform: uppercase;">Student
+      <h3 style="font-family: 'Cinzel', serif; color: #0a2472; margin-bottom: 4px; text-transform: uppercase;">Student
         Details</h3>
       <p class="modal-sub">Official registration details for this student.</p>
 
       <div
-        style="display: flex; flex-direction: column; gap: 14px; background: #faf6eb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 15px;">
+        style="display: flex; flex-direction: column; gap: 14px; background: #f5f7fb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 15px;">
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Full
             Name</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_name">—</span>
         </div>
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Roll
             Number</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_roll">—</span>
         </div>
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span
             style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Department</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_dept">—</span>
         </div>
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Year</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_year">—</span>
         </div>
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Phone
             Number</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_phone">—</span>
         </div>
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Hostel
             Type</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_hostel">—</span>
         </div>
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Block</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_block">—</span>
         </div>
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Floor</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_floor">—</span>
         </div>
         <div
-          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+          style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
           <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Room
             No.</span>
           <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="sd_room_no">—</span>
@@ -3076,11 +3142,11 @@
   <div class="modal-backdrop" id="noteModalBackdrop">
     <div class="modal" style="max-width: 480px;">
       <button class="modal-close" onclick="closeNoteModal()">✕</button>
-      <h3 style="font-family: 'Cinzel', serif; color: #8a1e2b; margin-bottom: 4px; text-transform: uppercase;">Admin
+      <h3 style="font-family: 'Cinzel', serif; color: #0a2472; margin-bottom: 4px; text-transform: uppercase;">Admin
         Notes</h3>
       <p class="modal-sub">Official response/notes from the hostel administration.</p>
       <div
-        style="background: #faf6eb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 15px; min-height: 100px; white-space: pre-wrap; font-size: 14px; color: var(--text);"
+        style="background: #f5f7fb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 15px; min-height: 100px; white-space: pre-wrap; font-size: 14px; color: var(--text);"
         id="noteModalContent"></div>
       <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
         <button type="button" class="btn-cancel" onclick="closeNoteModal()">Close</button>
@@ -3095,7 +3161,7 @@
       <h3 style="font-family: 'Cinzel', serif; color: var(--gold); margin-bottom: 4px; text-transform: uppercase;">Complaint Description</h3>
       <p class="modal-sub">Full description of the reported issue.</p>
       <div
-        style="background: #faf6eb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 15px; min-height: 100px; white-space: pre-wrap; word-break: break-word; font-size: 14px; color: var(--text);"
+        style="background: #f5f7fb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px; margin-top: 15px; min-height: 100px; white-space: pre-wrap; word-break: break-word; font-size: 14px; color: var(--text);"
         id="descModalContent"></div>
       <div style="margin-top: 20px; display: flex; justify-content: flex-end;">
         <button type="button" class="btn-cancel" onclick="closeDescModal()">Close</button>
@@ -3115,71 +3181,71 @@
         ✏️ Edit
       </button>
 
-      <h3 style="font-family: 'Cinzel', serif; color: #8a1e2b; margin-bottom: 4px; text-transform: uppercase;">Student
+      <h3 style="font-family: 'Cinzel', serif; color: #0a2472; margin-bottom: 4px; text-transform: uppercase;">Student
         Profile</h3>
       <p class="modal-sub">Your official portal registration details.</p>
 
       <!-- Profile View Mode -->
       <div id="profileViewMode" style="position: relative; z-index: 10; display: block; margin-top: 15px;">
         <div
-          style="display: flex; flex-direction: column; gap: 14px; background: #faf6eb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px;">
+          style="display: flex; flex-direction: column; gap: 14px; background: #f5f7fb; border: 1.5px solid var(--border); border-radius: 10px; padding: 20px;">
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Full
               Name</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_name">{{ profile.name or '—'
               }}</span>
           </div>
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Roll
               Number</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_roll">{{ profile.roll_number
               or '—' }}</span>
           </div>
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span
               style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Department</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_dept">{{ profile.dept or '—'
               }}</span>
           </div>
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Year</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_year">{{ profile.year or '—'
               }}</span>
           </div>
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Phone
               Number</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_phone">{{ profile.phone or '—'
               }}</span>
           </div>
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Hostel
               Type</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_hostel">{{
               (profile.hostel_type or '—')|capitalize }}</span>
           </div>
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span
               style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Block</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_block">{{ profile.block or '—'
               }}</span>
           </div>
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span
               style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Floor</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_floor">{{ profile.floor or '—'
               }}</span>
           </div>
           <div
-            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(140, 109, 48, 0.12); padding-bottom: 8px;">
+            style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255, 193, 7, 0.12); padding-bottom: 8px;">
             <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted);">Room
               No.</span>
             <span style="font-size: 14px; font-weight: 600; color: var(--text);" id="view_room_no">{{ profile.room_no or
@@ -3223,7 +3289,7 @@
           <div class="mfield">
             <label class="req">Hostel Type</label>
             <select name="hostel_type" id="edit_hostel" class="custom-select" required
-              style="width:100%; padding:10px 14px; background:#fff; border:1.5px solid #d0c8b6; border-radius:8px; color:var(--text);">
+              style="width:100%; padding:10px 14px; background:#fff; border:1.5px solid #cdd6e6; border-radius:8px; color:var(--text);">
               <option value="boys" {% if profile.hostel_type=='boys' %}selected{% endif %}>Boys Hostel</option>
               <option value="girls" {% if profile.hostel_type=='girls' %}selected{% endif %}>Girls Hostel</option>
             </select>
@@ -3231,7 +3297,7 @@
           <div class="mfield">
             <label class="req">Block</label>
             <select name="block" id="edit_block" class="custom-select" required
-              style="width:100%; padding:10px 14px; background:#fff; border:1.5px solid #d0c8b6; border-radius:8px; color:var(--text);">
+              style="width:100%; padding:10px 14px; background:#fff; border:1.5px solid #cdd6e6; border-radius:8px; color:var(--text);">
               <option value="A" {% if profile.block=='A' %}selected{% endif %}>Block A</option>
               <option value="B" {% if profile.block=='B' %}selected{% endif %}>Block B</option>
               <option value="C" {% if profile.block=='C' %}selected{% endif %}>Block C</option>
@@ -3267,7 +3333,7 @@
   <div class="modal-backdrop" id="wardensModalBackdrop">
     <div class="modal" style="max-width: 500px; position: relative;">
       <button class="modal-close" onclick="closeWardensModal()">✕</button>
-      <h3 style="font-family: 'Cinzel', serif; color: #8a1e2b; margin-bottom: 4px; text-transform: uppercase;">Warden
+      <h3 style="font-family: 'Cinzel', serif; color: #0a2472; margin-bottom: 4px; text-transform: uppercase;">Warden
         Directory 📞</h3>
       <p class="modal-sub">Contact information for hostel wardens.</p>
 
@@ -3276,13 +3342,13 @@
 
         <div>
           <div
-            style="font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); border-bottom: 1.5px solid rgba(140, 109, 48, 0.2); padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase; font-weight: 700;">
+            style="font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); border-bottom: 1.5px solid rgba(255, 193, 7, 0.2); padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase; font-weight: 700;">
             ♂ Boys Hostel Wardens
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             {% for w in wardens if w.hostel_type == 'boys' %}
             <div
-              style="background: #faf6eb; border: 1.5px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              style="background: #f5f7fb; border: 1.5px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
               <span
                 style="background: rgba(30, 64, 175, 0.08); border: 1px solid rgba(30, 64, 175, 0.2); color: var(--blue); font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; white-space: nowrap;">Block
                 {{ w.block }}</span>
@@ -3297,13 +3363,13 @@
 
         <div>
           <div
-            style="font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); border-bottom: 1.5px solid rgba(140, 109, 48, 0.2); padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase; font-weight: 700;">
+            style="font-family: 'Cinzel', serif; font-size: 13px; color: var(--gold); border-bottom: 1.5px solid rgba(255, 193, 7, 0.2); padding-bottom: 4px; margin-bottom: 10px; text-transform: uppercase; font-weight: 700;">
             ♀ Girls Hostel Wardens
           </div>
           <div style="display: flex; flex-direction: column; gap: 10px;">
             {% for w in wardens if w.hostel_type == 'girls' %}
             <div
-              style="background: #faf6eb; border: 1.5px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              style="background: #f5f7fb; border: 1.5px solid var(--border); border-radius: 8px; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
               <span
                 style="background: rgba(153, 27, 27, 0.08); border: 1px solid rgba(153, 27, 27, 0.2); color: var(--red); font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 6px; white-space: nowrap;">Block
                 {{ w.block }}</span>
@@ -3846,43 +3912,43 @@
     const resPct = {{ ((stats.resolved / stats.active * 100) | round | int) if stats.active > 0 else 0 }};
     setTimeout(() => { const el = document.getElementById('resFill'); if (el) el.style.width = resPct + '%'; }, 200);
 
-    Chart.defaults.color = '#6e6454';
+    Chart.defaults.color = '#5b6478';
     Chart.defaults.font.family = 'Inter';
 
     monthlyChartInstance = new Chart(document.getElementById('monthlyChart'), {
       data: {
         labels: monthLabels,
         datasets: [
-          { type: 'bar', label: 'Issued', data: monthlyIssued, backgroundColor: 'rgba(140, 109, 48, 0.25)', borderColor: '#8c6d30', borderWidth: 1.5, borderRadius: 5, order: 2 },
+          { type: 'bar', label: 'Issued', data: monthlyIssued, backgroundColor: 'rgba(255, 193, 7, 0.25)', borderColor: '#ffc107', borderWidth: 1.5, borderRadius: 5, order: 2 },
           { type: 'line', label: 'Resolved', data: monthlyResolved, borderColor: '#166534', backgroundColor: 'rgba(22, 101, 52, 0.08)', borderWidth: 2.5, pointBackgroundColor: '#166534', pointRadius: 4, tension: 0.38, fill: true, order: 1 }
         ]
       },
-      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { color: '#2c251a', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 12 } } }, scales: { x: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', font: { size: 11 } } }, y: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', stepSize: 1, font: { size: 11 } }, beginAtZero: true } } }
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'top', labels: { color: '#1c2536', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 12 } } }, scales: { x: { grid: { color: '#fff3cd' }, ticks: { color: '#5b6478', font: { size: 11 } } }, y: { grid: { color: '#fff3cd' }, ticks: { color: '#5b6478', stepSize: 1, font: { size: 11 } }, beginAtZero: true } } }
     });
 
     if (catLabels.length > 0) {
-      const catColors = ['#8a1e2b', '#c5a86a', '#166534', '#0369a1', '#92400e', '#6b21a8', '#9d174d', '#0f766e'];
+      const catColors = ['#0a2472', '#ffd54f', '#166534', '#0369a1', '#92400e', '#6b21a8', '#9d174d', '#0f766e'];
       catChartInstance = new Chart(document.getElementById('catChart'), {
         type: 'doughnut',
-        data: { labels: catLabels, datasets: [{ data: catCounts, backgroundColor: catColors, borderColor: '#fdfcf7', borderWidth: 3, hoverOffset: 6 }] },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#2c251a', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 8 } } }, cutout: '60%' }
+        data: { labels: catLabels, datasets: [{ data: catCounts, backgroundColor: catColors, borderColor: '#ffffff', borderWidth: 3, hoverOffset: 6 }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#1c2536', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 8 } } }, cutout: '60%' }
       });
     } else {
       const ctx = document.getElementById('catChart').getContext('2d');
-      ctx.fillStyle = '#6e6454'; ctx.textAlign = 'center'; ctx.font = '13px Inter';
+      ctx.fillStyle = '#5b6478'; ctx.textAlign = 'center'; ctx.font = '13px Inter';
       ctx.fillText('No data yet', document.getElementById('catChart').width / 2, 100);
     }
 
     priChartInstance = new Chart(document.getElementById('priChart'), {
       type: 'bar',
-      data: { labels: ['Low', 'Moderate', 'High'], datasets: [{ data: [priDict['Low'] || 0, priDict['Moderate'] || 0, priDict['High'] || 0], backgroundColor: ['rgba(140,109,48,0.25)', 'rgba(22,101,52,0.25)', 'rgba(153,27,27,0.25)'], borderColor: ['#8c6d30', '#166534', '#991b1b'], borderWidth: 1.5, borderRadius: 5 }] },
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', font: { size: 11 } } }, y: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', stepSize: 1, font: { size: 11 } }, beginAtZero: true } } }
+      data: { labels: ['Low', 'Moderate', 'High'], datasets: [{ data: [priDict['Low'] || 0, priDict['Moderate'] || 0, priDict['High'] || 0], backgroundColor: ['rgba(140,109,48,0.25)', 'rgba(22,101,52,0.25)', 'rgba(153,27,27,0.25)'], borderColor: ['#ffc107', '#166534', '#991b1b'], borderWidth: 1.5, borderRadius: 5 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { grid: { color: '#fff3cd' }, ticks: { color: '#5b6478', font: { size: 11 } } }, y: { grid: { color: '#fff3cd' }, ticks: { color: '#5b6478', stepSize: 1, font: { size: 11 } }, beginAtZero: true } } }
     });
 
     statusChartInstance = new Chart(document.getElementById('statusChart'), {
       type: 'doughnut',
       data: { labels: ['Pending', 'In Progress', 'Resolved'], datasets: [{ data: [{{ stats.pending }}, {{ stats.in_progress }},{{ stats.resolved }}], backgroundColor: ['rgba(146,64,14,0.25)', 'rgba(30,64,175,0.25)', 'rgba(22,101,52,0.25)'], borderColor: ['#92400e', '#1e40af', '#166534'], borderWidth: 2, hoverOffset: 6 }] },
-      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#2c251a', font: { size: 12, weight: '600' }, boxWidth: 14, padding: 10 } } }, cutout: '55%' }
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#1c2536', font: { size: 12, weight: '600' }, boxWidth: 14, padding: 10 } } }, cutout: '55%' }
 });
 
     /* ── BLOCK BAR CHART ── */
@@ -3899,7 +3965,7 @@
             'rgba(138,30,43,0.25)', 'rgba(140,109,48,0.25)', 'rgba(22,101,52,0.25)',
             'rgba(3,105,161,0.25)', 'rgba(146,64,14,0.25)', 'rgba(107,33,168,0.25)'
           ],
-          borderColor: ['#8a1e2b', '#8c6d30', '#166534', '#0369a1', '#92400e', '#6b21a8'],
+          borderColor: ['#0a2472', '#ffc107', '#166534', '#0369a1', '#92400e', '#6b21a8'],
           borderWidth: 2, borderRadius: 7, hoverBorderWidth: 3
         }]
       },
@@ -3914,8 +3980,8 @@
         },
         plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ' ' + ctx.raw + ' complaint' + (ctx.raw !== 1 ? 's' : '') } } },
         scales: {
-          x: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', font: { size: 12, weight: '600' } } },
-          y: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', stepSize: 1, font: { size: 11 } }, beginAtZero: true }
+          x: { grid: { color: '#fff3cd' }, ticks: { color: '#5b6478', font: { size: 12, weight: '600' } } },
+          y: { grid: { color: '#fff3cd' }, ticks: { color: '#5b6478', stepSize: 1, font: { size: 11 } }, beginAtZero: true }
         }
       }
     });
@@ -3955,7 +4021,7 @@
       blockStatusChartInst = new Chart(ctx, {
         type: 'doughnut',
         data: { labels, datasets: [{ data, backgroundColor: ['rgba(146,64,14,0.25)', 'rgba(30,64,175,0.25)', 'rgba(22,101,52,0.25)'], borderColor: ['#92400e', '#1e40af', '#166534'], borderWidth: 2, hoverOffset: 6 }] },
-        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#2c251a', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 8 } } }, cutout: '58%', animation: { animateRotate: true, duration: 500 } }
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { color: '#1c2536', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 8 } } }, cutout: '58%', animation: { animateRotate: true, duration: 500 } }
       });
     }
 
@@ -3985,7 +4051,7 @@
       }
     };
     const ALL_CATS_H = ['Electrical', 'Plumbing', 'Wi-Fi', 'Cleaning', 'Furniture', 'Hostel food', 'Others'];
-    const CAT_COLORS = ['#8a1e2b', '#c5a86a', '#166534', '#0369a1', '#92400e', '#9d174d', '#6b21a8'];
+    const CAT_COLORS = ['#0a2472', '#ffd54f', '#166534', '#0369a1', '#92400e', '#9d174d', '#6b21a8'];
 
     let activeHostel = 'boys';
     let activeBlock = null;
@@ -4244,12 +4310,12 @@
             }
           },
           plugins: {
-            legend: { position: 'top', labels: { color: '#2c251a', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 10 } },
+            legend: { position: 'top', labels: { color: '#1c2536', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 10 } },
             tooltip: { callbacks: { title: t => 'Block ' + t[0].label.replace('Block ', '') } }
           },
           scales: {
-            x: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', font: { size: 11, weight: '600' } } },
-            y: { grid: { color: '#e2d5c0' }, ticks: { color: '#6e6454', stepSize: 1, font: { size: 11 } }, beginAtZero: true }
+            x: { grid: { color: '#fff3cd' }, ticks: { color: '#5b6478', font: { size: 11, weight: '600' } } },
+            y: { grid: { color: '#fff3cd' }, ticks: { color: '#5b6478', stepSize: 1, font: { size: 11 } }, beginAtZero: true }
           },
           animation: { duration: 400 }
         }
@@ -4277,10 +4343,10 @@
       if (!ctx) return;
       hCatChart = new Chart(ctx, {
         type: 'doughnut',
-        data: { labels: ALL_CATS_H, datasets: [{ data: counts, backgroundColor: CAT_COLORS, borderColor: '#fdfcf7', borderWidth: 3, hoverOffset: 6 }] },
+        data: { labels: ALL_CATS_H, datasets: [{ data: counts, backgroundColor: CAT_COLORS, borderColor: '#ffffff', borderWidth: 3, hoverOffset: 6 }] },
         options: {
           responsive: true, maintainAspectRatio: false,
-          plugins: { legend: { position: 'right', labels: { color: '#2c251a', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 8 } } },
+          plugins: { legend: { position: 'right', labels: { color: '#1c2536', font: { size: 11, weight: '600' }, boxWidth: 12, padding: 8 } } },
           cutout: '60%', animation: { duration: 450 }
         }
       });
