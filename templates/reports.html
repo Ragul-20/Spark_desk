@@ -52,6 +52,28 @@
     .nb-link.logout { border-color: rgba(239, 68, 68, 0.4); color: #ef4444; }
     .nb-link.logout:hover { background: rgba(239, 68, 68, 0.1); border-color: #ef4444; }
 
+    @media (max-width: 768px) {
+      .navbar { flex-wrap: wrap; height: auto; min-height: 64px; row-gap: 12px; padding: 12px 20px; }
+      .nb-left, .nb-right { flex-wrap: wrap; row-gap: 10px; column-gap: 10px; }
+      .nb-right { width: 100%; justify-content: flex-start; }
+      .nb-logo-wrap { display: none; }
+      .user-chip { max-width: 160px; }
+      .hero { padding: 32px 20px 48px; }
+      .page-wrap { padding: 32px 16px 60px; }
+      .card { padding: 24px 20px; }
+      .date-row, .btn-row { flex-wrap: wrap; }
+      .date-row > .field, .btn-row > button { flex: 1 1 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .nb-name { font-size: 16px; }
+      .nb-link { padding: 7px 12px; font-size: 11px; }
+      .admin-badge { display: none; }
+      .user-chip span { display: none; }
+      .user-chip { max-width: none; padding: 5px; }
+    }
+
+
     /* HERO */
     .hero { position: relative; background: radial-gradient(circle at 80% 20%, #0A1F3D 0%, #0A1F3D 100%); border-bottom: 2px solid var(--gold); color: white; padding: 48px 32px 64px; text-align: left; overflow: hidden; }
     .hero-orb1 { position: absolute; top: -100px; right: -100px; width: 350px; height: 350px; background: radial-gradient(circle, rgba(244,180,0,0.12) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
@@ -153,7 +175,7 @@
         </div>
 
         <!-- Date Filters -->
-        <div style="display: flex; gap: 16px; margin-bottom: 24px;">
+        <div class="date-row" style="display: flex; gap: 16px; margin-bottom: 24px;">
           <div class="field" style="flex: 1; margin-bottom: 0;">
             <label for="from_date">From Date</label>
             <input type="date" name="from_date" id="from_date">
@@ -187,7 +209,7 @@
         </div>
 
         <!-- Download Actions -->
-        <div style="display: flex; gap: 16px; margin-top: 10px;">
+        <div class="btn-row" style="display: flex; gap: 16px; margin-top: 10px;">
           <button type="submit" formaction="/admin/reports/download" class="btn-download" style="flex: 1;">
             📥 Download CSV
           </button>
