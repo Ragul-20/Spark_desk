@@ -35,6 +35,12 @@
     .nb-link:hover, .nb-link.active { color: #0a2472; background: linear-gradient(135deg, #ffd54f, #ffc107); border-color: #ffc107; box-shadow: 0 0 10px rgba(255,193,7,0.35); }
     .nb-link.logout { color: #f87171; border: 1.5px solid rgba(239,68,68,0.4); background: transparent; }
     .nb-link.logout:hover { background: rgba(239,68,68,0.15); color: #ef4444; }
+
+    @media (max-width: 768px) {
+      .navbar { flex-wrap: wrap; height: auto; min-height: 64px; row-gap: 10px; padding: 12px 20px; }
+      .nb-right { flex-wrap: wrap; row-gap: 8px; }
+    }
+
  
     /* BREADCRUMB */
     .breadcrumb { max-width:1100px; margin:0 auto; padding:18px 40px 0; font-size:12px; color:var(--muted); display:flex; align-items:center; gap:8px; }
