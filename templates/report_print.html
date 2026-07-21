@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SECE Hostel Report - {{ scope_str }}</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <style>
@@ -186,6 +187,15 @@
     }
 
     /* PRINT LAYOUT ADJUSTMENTS */
+    .table-scroll-wrap {
+      overflow-x: auto;
+      width: 100%;
+    }
+    @media (max-width: 700px) {
+      body { padding: 20px 16px; }
+      .metadata-section { grid-template-columns: 1fr; gap: 10px; }
+      table { min-width: 900px; }
+    }
     @media print {
       body {
         padding: 0;
@@ -193,6 +203,12 @@
       }
       .no-print {
         display: none !important;
+      }
+      .table-scroll-wrap {
+        overflow: visible;
+      }
+      table {
+        min-width: 0;
       }
       @page {
         size: A4 landscape;
@@ -246,6 +262,7 @@
   </div>
 
   <!-- COMPLAINTS DATA TABLE -->
+  <div class="table-scroll-wrap">
   <table>
     <thead>
       <tr>
@@ -304,6 +321,7 @@
       {% endif %}
     </tbody>
   </table>
+  </div>
 
   <!-- SIGNATURE BLOCKS -->
   <div class="signature-area">
