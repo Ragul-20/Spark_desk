@@ -251,6 +251,58 @@
       color: #ef4444;
     }
 
+    /* NAVBAR — TABLET & MOBILE: wrap instead of clipping so Logout is always reachable */
+    @media (max-width: 860px) {
+      .navbar {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 64px;
+        row-gap: 12px;
+        padding: 12px 16px;
+      }
+
+      .nb-left,
+      .nb-right {
+        flex-wrap: wrap;
+        row-gap: 10px;
+        column-gap: 10px;
+      }
+
+      .nb-right {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .user-chip {
+        max-width: 160px;
+      }
+    }
+
+    /* NAVBAR — MOBILE: simplify to avoid crowding on very small screens */
+    @media (max-width: 480px) {
+      .nb-name {
+        font-size: 16px;
+      }
+
+      .nb-link {
+        padding: 7px 12px;
+        font-size: 11px;
+      }
+
+      .admin-badge {
+        display: none;
+      }
+
+      .user-chip span {
+        display: none;
+      }
+
+      .user-chip {
+        max-width: none;
+        padding: 5px;
+      }
+    }
+
     /* SECONDARY TABS BAR */
     .nav-tabs-container {
       background: var(--surface);
@@ -1809,6 +1861,14 @@
       .info-strip {
         grid-template-columns: 1fr 1fr;
       }
+
+      .charts-row-hostel {
+        grid-template-columns: 1fr;
+      }
+
+      #hostelSummaryStrip {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
 
     @media (max-width: 700px) {
@@ -1817,7 +1877,7 @@
       }
 
       .navbar {
-        padding: 0 16px;
+        padding: 12px 16px;
       }
 
       .page-wrap {
@@ -1834,6 +1894,21 @@
 
       .nb-logo-wrap {
         display: none;
+      }
+
+      .search-inp {
+        width: 100%;
+      }
+
+      #hostelSummaryStrip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      #hostelSummaryStrip {
+        grid-template-columns: 1fr;
+        gap: 8px;
       }
     }
 
@@ -2021,6 +2096,7 @@
       top: 0;
       left: -320px;
       width: 320px;
+      max-width: 90vw;
       height: 100vh;
       background: var(--surface);
       border-right: 2px solid var(--gold);
@@ -2643,7 +2719,7 @@
       </div>
 
       <!-- STEP 3: Charts row (bar + doughnut) always visible -->
-      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:18px;">
+      <div class="charts-row-hostel" style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;margin-bottom:18px;">
         <div class="chart-card">
           <h4 id="hostelBarTitle">🏢 Block-wise Complaints</h4>
           <p class="chart-sub" id="hostelBarSub">Pending · In Progress · Resolved per block — click a bar or a block tab
