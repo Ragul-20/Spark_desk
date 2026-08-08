@@ -1,87 +1,122 @@
-
 import os
 import re
 import json
 
-
 def safe_json(obj):
-    """json.dumps(), but safe to embed inside a <script> tag with |safe.
-    Plain json.dumps() does NOT escape '</', so a complaint description (or
-    any other user-supplied free text) containing the literal string
-    '</script>' could prematurely close the script block and inject
-    attacker-controlled markup/script into the admin dashboard — a stored
-    XSS vector. Escaping the forward slash after '<' closes that gap while
-    leaving the JSON semantically identical (browsers ignore the escape
-    inside string literals when parsed back by JSON.parse)."""
     return json.dumps(obj).replace("</", "<\\/")
+
 import secrets
 import hmac
 import time
 from datetime import datetime, timedelta
 from functools import wraps
-from flask import Flask, flash, redirect, render_template, request, session, url_for, abort, send_from_directory, Response
+
+from flask import (
+    Flask, flash, redirect, render_template, request, session,
+    url_for, abort, send_from_directory, Response
+)
+
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
-# --- DB INIT FIX: `inspect` lets us check which tables ALREADY exist in
-# Postgres/SQLite before trying to create anything, so create_all() is
-# only ever called when a table is genuinely missing (e.g. first deploy).
+
 from sqlalchemy import inspect as sa_inspect
- 
+
 from authlib.integrations.flask_client import OAuth
 from werkzeug.middleware.proxy_fix import ProxyFix
+
 try:
     from dotenv import load_dotenv
     load_dotenv()
 except ImportError:
     pass
- 
+
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
- 
-app = Flask(__name__, static_folder='static')
- 
+
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates"),
+    static_folder=os.path.join(BASE_DIR, "static")
+)
+
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
- 
+
 IS_PRODUCTION = bool(os.environ.get("VERCEL")) or bool(os.environ.get("DATABASE_URL"))
+
 _secret_key_env = os.environ.get("SECRET_KEY")
+
 if not _secret_key_env and IS_PRODUCTION:
-    print("[HOSTEL APP] WARNING: SECRET_KEY is not set in a production environment. "
-          "Sessions will be invalidated on every restart/cold-start and may not be "
-          "shared correctly across serverless instances. Set SECRET_KEY in your "
-          "environment variables.")
+    print(
+        "[HOSTEL APP] WARNING: SECRET_KEY is not set in a production environment. "
+        "Sessions will be invalidated on every restart/cold-start and may not be "
+        "shared correctly across serverless instances. Set SECRET_KEY in your "
+        "environment variables."
+    )
+
 app.secret_key = _secret_key_env or secrets.token_hex(32)
+
 DATABASE_URL = os.environ.get("DATABASE_URL")
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "templates"),
+    static_folder=os.path.join(BASE_DIR, "static")
+)
+
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
+
+IS_PRODUCTION = bool(os.environ.get("VERCEL")) or bool(os.environ.get("DATABASE_URL"))
+
+_secret_key_env = os.environ.get("SECRET_KEY")
+
+if not _secret_key_env and IS_PRODUCTION:
+    print(
+        "[HOSTEL APP] WARNING: SECRET_KEY is not set in a production environment. "
+        "Sessions will be invalidated on every restart/cold-start and may not be "
+        "shared correctly across serverless instances. Set SECRET_KEY in your "
+        "environment variables."
+    )
+
+app.secret_key = _secret_key_env or secrets.token_hex(32)
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
+
 if DATABASE_URL:
     if DATABASE_URL.startswith("postgres://"):
         DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
     app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
+
     app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
         "pool_pre_ping": True,
         "pool_recycle": 300,
     }
+
 elif os.environ.get("VERCEL"):
-    # On Vercel the deployed bundle (BASE_DIR) is READ-ONLY — only /tmp is
-    # writable. Writing app.sqlite3 next to app.py would crash on the first
-    # database write ("unable to open database file"). If DATABASE_URL
-    # wasn't set, fall back to a SQLite file under /tmp so the app still
-    # boots and functions instead of hard-crashing — data just won't
-    # persist across cold starts/deploys, which is why this is a fallback,
-    # not the recommended setup.
     os.makedirs("/tmp", exist_ok=True)
+
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/app.sqlite3"
-    print("[HOSTEL APP] WARNING: DATABASE_URL is not set. Using a temporary SQLite "
-          "database in /tmp so the app can still run, but ALL DATA WILL BE LOST on "
-          "every cold start/redeploy. Set DATABASE_URL to a real Postgres connection "
-          "string in your Vercel project's environment variables for real persistence.")
+
+    print(
+        "[HOSTEL APP] WARNING: DATABASE_URL is not set. Using a temporary SQLite "
+        "database in /tmp so the app can still run, but ALL DATA WILL BE LOST on "
+        "every cold start/redeploy. Set DATABASE_URL to a real Postgres connection "
+        "string in your Vercel project's environment variables for real persistence."
+    )
+
 else:
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(BASE_DIR, "app.sqlite3")
+    app.config["SQLALCHEMY_DATABASE_URI"] = (
+        "sqlite:///" + os.path.join(BASE_DIR, "app.sqlite3")
+    )
+
     print("WARNING: Using SQLite database - data will not persist on server restart!")
+
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024
 app.config["SESSION_COOKIE_SECURE"] = IS_PRODUCTION
 app.config["SESSION_COOKIE_HTTPONLY"] = True
 app.config["SESSION_COOKIE_SAMESITE"] = "Lax"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=24)
- 
 db = SQLAlchemy(app)
  
 oauth = OAuth(app)
@@ -94,14 +129,6 @@ google_oauth = oauth.register(
         "scope": "openid email profile"
     },
 )
-# --- END GOOGLE OAUTH ADDITION ---
- 
-# On Vercel the deployed app bundle is READ-ONLY (only /tmp is writable),
-# so uploaded complaint photos can't be saved under static/uploads there.
-# NOTE: /tmp on Vercel is EPHEMERAL — files can disappear between requests
-# once the serverless instance recycles. This keeps the app from crashing,
-# but for real persistent photo storage, plug in Vercel Blob / S3 / Cloudinary
-# and store the returned URL instead of a local filename.
 if os.environ.get("VERCEL"):
     UPLOAD_DIR = os.path.join("/tmp", "uploads")
 else:
