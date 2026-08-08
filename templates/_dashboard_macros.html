@@ -1,0 +1,53 @@
+{# ─────────────────────────────────────────────────────────────────────
+   Reusable dashboard component macros — Flask/Jinja equivalent of the
+   "ReportGenerator / ExportDropdown / QuickActions / ActivityTimeline /
+   LoadingSkeleton" component list, adapted to a server-rendered app
+   instead of React. Kept in their own file so they can be imported
+   anywhere without duplicating markup.
+───────────────────────────────────────────────────────────────────── #}
+
+{% macro modal_shell(modal_id, title, icon='') %}
+<div class="sd-modal-backdrop" id="{{ modal_id }}-backdrop" onclick="closeModal('{{ modal_id }}')"></div>
+<div class="sd-modal" id="{{ modal_id }}" role="dialog" aria-modal="true" aria-labelledby="{{ modal_id }}-title">
+  <div class="sd-modal-head">
+    <span id="{{ modal_id }}-title">{{ icon }} {{ title }}</span>
+    <button type="button" class="sd-modal-close" onclick="closeModal('{{ modal_id }}')" aria-label="Close">✕</button>
+  </div>
+  <div class="sd-modal-body">
+    {{ caller() }}
+  </div>
+</div>
+{% endmacro %}
+
+{% macro quick_action_btn(icon, label, onclick) %}
+<button type="button" class="quick-action-btn" onclick="{{ onclick }}">
+  <span class="qa-icon">{{ icon }}</span>
+  <span class="qa-label">{{ label }}</span>
+</button>
+{% endmacro %}
+
+{% macro timeline_entry(icon, title_text, meta, timestamp, extra_class='') %}
+<div class="timeline-entry {{ extra_class }}">
+  <div class="timeline-icon">{{ icon }}</div>
+  <div class="timeline-content">
+    <div class="timeline-title">{{ title_text }}</div>
+    {% if meta %}<div class="timeline-meta">{{ meta }}</div>{% endif %}
+  </div>
+  <div class="timeline-time">{{ timestamp }}</div>
+</div>
+{% endmacro %}
+
+{% macro mini_chart_card(title, canvas_id, subtitle='') %}
+<div class="mini-chart-card">
+  <div class="mini-chart-head">
+    <div class="mini-chart-title">{{ title }}</div>
+    {% if subtitle %}<div class="mini-chart-sub">{{ subtitle }}</div>{% endif %}
+  </div>
+  <div class="mini-chart-body">
+    <div class="chart-skeleton" data-for="{{ canvas_id }}">
+      <div class="skeleton-bar" style="width:92%;height:100%;"></div>
+    </div>
+    <canvas id="{{ canvas_id }}"></canvas>
+  </div>
+</div>
+{% endmacro %}

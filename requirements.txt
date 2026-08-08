@@ -1,0 +1,11 @@
+Flask==3.1.0
+Flask-SQLAlchemy==3.1.1
+gunicorn==23.0.0
+psycopg2-binary==2.9.10
+Authlib==1.7.2
+requests==2.32.3
+python-dotenv==1.0.1
+google-genai==1.36.0
+Pillow==11.0.0
+openpyxl==3.1.5
+reportlab==4.4.10
